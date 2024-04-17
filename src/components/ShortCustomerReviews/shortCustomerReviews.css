@@ -1,0 +1,17 @@
+
+
+.short-customer-review-card{
+    background-color: #58BBA6;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.short-customer-review-h3{
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.short-customer-review-rating-container{
+    padding-bottom: 20px;
+}

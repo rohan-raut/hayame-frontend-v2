@@ -1,0 +1,61 @@
+.home-main-image{
+    background-image: url("../../assets/floor-cleaning-supplies.jpg");
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-services-row{
+    background-color: white;
+    box-shadow: 0px 5px 15px -5px #b7d3d3;
+    width: 70vw;
+    padding: 20px 0;
+    margin-top: -80px;
+    border-radius: 20px;
+}
+
+.home-services-container{
+    margin: 0 auto;
+}
+
+
+.home-services-icon svg{
+    height: 88px;
+    width: 88px;
+    padding: 28px;
+    border-radius: 100%;
+    background-color: #F0FBF9;
+    overflow: visible !important;
+    fill: #58bba6;
+    margin: 10px auto;
+}
+
+.home-services-icon{
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+
+/* vertical tab  */
+@media screen and (min-width: 769px) and (max-width: 991px) {
+    .home-services-row{
+        width: 95vw;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .home-services-row{
+        width: 95vw;
+    }
+
+    .home-services-icon{
+        padding: 15px 0;
+    }
+
+
+    .home-services-icon svg{
+        border-radius: 30%;
+    }
+}

@@ -1,0 +1,36 @@
+.contact-us-contact-info{
+    background-color: #58BBA6;
+    padding: 30px;
+}
+
+.contact-us-form-container{
+    background-color: white;
+    padding: 30px 50px;
+}
+
+.contact-us-contact-info div{
+    padding-bottom: 15px;
+}
+
+.contact-us-h2{
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.contact-us-container{
+    box-shadow: 2px 4px 15px 2px #b7d3d3;
+    padding: 0;
+}
+
+.contact-us-form-btn{
+    background-color: #58BBA6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.contact-us-form-btn:hover{
+    background-color: #515559;
+}

@@ -1,0 +1,52 @@
+
+.faq-h2{
+	font-size: 3rem;
+	font-weight: 600;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.accordion-item {
+	border-radius: 8px;
+	margin-bottom: 20px;
+}
+
+.accordion-header {
+	background-color: transparent;
+	padding: 20px;
+	width: 100%;
+	text-align: left;
+	cursor: pointer;
+	outline: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: background-color 0.3s ease;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+	color: black;
+}
+
+
+.accordion-content {
+	overflow: hidden;
+	padding: 0 15px;
+	max-height: 0;
+	transition: max-height 0.3s ease;
+	text-align: left;
+    border-bottom: 1px solid #58bba6;
+}
+
+.accordion-content p {
+	margin: 15px 0;
+}
+
+.icon {
+    font-size: 1.3rem;
+	transition: transform 0.1s ease;
+}
+
+.active .icon {
+	transform: rotate(45deg);
+}
