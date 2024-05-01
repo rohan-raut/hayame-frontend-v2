@@ -10,3 +10,45 @@
     justify-content:space-around;
     padding: 40px 40px;
 }
+
+.login-form-card{
+    padding: 20px;
+    height: fit-content;
+    text-align: center;
+}
+
+
+.login-right-content{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login-h2{
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+.login-form{
+    margin-top: 40px;
+}
+
+
+.login-form-btn{
+    width: 100%;
+    background-color: #58BBA6;
+    color: white;
+    padding: 10px 0;
+    border: none;
+    border-radius: 20px;
+}
+
+.login-form-btn:hover{
+    background-color: #515559;
+}
+

@@ -1,0 +1,232 @@
+#map {
+  height: 50vh;
+}
+
+.pac-container {
+  box-shadow: 0px 1px 1px #b7d3d3;
+}
+
+
+.cleaner-booking-form-container {
+  background-color: white;
+  padding: 40px 50px;
+  box-shadow: 2px 4px 10px 2px #b7d3d3;
+}
+
+.cleaner-booking-current-location-btn {
+  background-color: #58BBA6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.cleaner-booking-current-location-btn svg {
+  fill: white;
+  margin-right: 7px;
+}
+
+.cleaner-booking-current-location-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.form-label-bold{
+  font-weight: 600;
+  padding: 0px 0px 15px 0px;
+}
+
+.form-section-row{
+  margin: 80px 0px;
+}
+
+
+/* Frequency Radio Button */
+
+.cleaner-booking-freq-radio-buttons {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cleaner-booking-freq-custom-radio input {
+  display: none;
+}
+
+.cleaner-booking-freq-custom-radio{
+  width: 30%;
+}
+
+.cleaner-booking-freq-radio-btn {
+  width: 100%;
+  height: 280px;
+  border: 1px solid #58BBA6;
+  display: inline-block;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cleaner-booking-freq-radio-btn>i {
+  color: #ffffff;
+  background-color: #58BBA6;
+  font-size: 15px;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) scale(2);
+  border-radius: 100%;
+  padding: 5px;
+  transition: 0.5s;
+  pointer-events: none;
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.cleaner-booking-freq-radio-btn .cleaner-booking-freq-inner-card {
+  padding: 20px 25px;
+}
+
+.cleaner-booking-freq-radio-btn .cleaner-booking-freq-inner-card i {
+  color: #58BBA6;
+  line-height: 80px;
+  font-size: 60px;
+}
+
+.cleaner-booking-h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-top: 15px;
+  margin: 0;
+}
+
+.cleaner-booking-freq-price {
+  margin-top: 15px;
+}
+
+.cleaner-booking-freq-price span {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.cleaner-booking-freq-price-discount {
+  font-size: 0.8rem;
+}
+
+.cleaner-booking-freq-list {
+  text-align: left;
+  font-size: 0.9rem;
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cleaner-booking-freq-list>div {
+  flex-basis: 25px;
+}
+
+.cleaner-booking-freq-btn {
+  border: 1px solid #58BBA6;
+  color: #58BBA6;
+  border-radius: 5px;
+  padding: 5px 0;
+}
+
+.cleaner-booking-freq-custom-radio input:checked+.cleaner-booking-freq-radio-btn {
+  border: 2px solid #58BBA6;
+  background-color: #F0FBF9;
+}
+
+.cleaner-booking-freq-custom-radio input:checked+.cleaner-booking-freq-radio-btn>i {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+
+/* No of Hours */
+
+.cleaner-booking-no-of-hours-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cleaner-booking-no-of-hours-container div{
+  width: 20%;
+}
+
+.cleaner-booking-no-of-hours-radio {
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.cleaner-booking-no-of-hours-btn {
+  border: 1px solid #58BBA6;
+  padding: 10px 25px;
+  border-radius: 5px;
+  text-align: center;
+  width: 90%;
+}
+
+.cleaner-booking-no-of-hours-radio input {
+  display: none;
+}
+
+.cleaner-booking-no-of-hours-radio input:checked+.cleaner-booking-no-of-hours-btn {
+  border: 2px solid #58BBA6;
+  background-color: #F0FBF9;
+}
+
+
+/* Stepper */
+
+.stepper-div-container {
+  display: flex;
+  height: 5px;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.stepper-div {
+  border: 1px solid #58BBA6;
+  width: 33%;
+}
+
+.stepper-name-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0px;
+  font-size: 0.8rem;
+  font-weight: 200;
+}
+
+.stepper-name {
+  width: 33%;
+}
+
+.stepper-fill{
+  height: 100%;
+  /* width: 0%; */
+  background-color: #58BBA6;
+  animation: colorChange 300ms linear forwards;
+}
+
+
+@keyframes colorChange {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+    background-color: #58BBA6;
+  }
+}
