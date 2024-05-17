@@ -1,0 +1,44 @@
+body {
+    background-color: #F9FFFF;
+    /* background-color: green; */
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.input-field {
+    display: block;
+    border-radius: 6px;
+    border: 1px solid gray;
+    padding: 10px;
+    width: 100%;
+}
+
+.input-field:focus {
+    /* border: 0; */
+    border: 1px solid #58BBA6;
+    outline: 1px solid #58BBA6;
+}
+
+.color-transparent {
+    color: transparent;
+}
+
+.hide-mobile{
+    display: block;
+}
+
+.margin-left-sm{
+    margin-left: 5px;
+}
+
+
+/* vertical tab  */
+@media screen and (min-width: 769px) and (max-width: 991px) {
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .hide-mobile{
+        display: none !important;
+    }
+}

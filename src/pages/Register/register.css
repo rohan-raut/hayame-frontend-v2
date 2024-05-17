@@ -1,0 +1,112 @@
+
+
+.register-logo img{
+    width: 40%;
+}
+
+.register-left-sidebar{
+    background-color: #A4E2D5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    padding: 40px 40px;
+}
+
+.register-form-card{
+    padding: 20px;
+    height: fit-content;
+    text-align: center;
+}
+
+
+.register-right-content{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.register-h2{
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+.register-form{
+    margin-top: 40px;
+}
+
+
+.register-form-btn{
+    width: 100%;
+    background-color: #58BBA6;
+    color: white;
+    padding: 10px 0;
+    border: none;
+    border-radius: 20px;
+}
+
+.register-form-btn:hover{
+    background-color: #515559;
+}
+
+.facebook-register-btn{
+    background-color: #0866FF;
+    border: 1px solid #0866FF;
+    padding: 7px 10px;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.facebook-register-btn svg{
+    margin-right: 10px;
+}
+
+.google-register-btn{
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 7px 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+
+}
+
+.google-register-btn svg{
+    margin-right: 10px;
+}
+
+.social-register-div{
+    border-bottom: 2px dashed #ccc;
+}
+
+.social-register-div::after{
+    content: "OR";
+    font-size: 1.2rem;
+    font-weight: 600;
+    transform: translateY(50%);
+    background-color: #F9FFFF;
+    padding: 0 10px;
+    color: #333;
+    margin: 0 auto;
+}
+
+
+@media screen and (max-width: 768px) {
+    .register-left-sidebar{
+        display: block;
+    }
+}
+

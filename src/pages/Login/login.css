@@ -52,3 +52,59 @@
     background-color: #515559;
 }
 
+.facebook-login-btn{
+    background-color: #0866FF;
+    border: 1px solid #0866FF;
+    padding: 7px 10px;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.facebook-login-btn svg{
+    margin-right: 10px;
+}
+
+.google-login-btn{
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 7px 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+
+}
+
+.google-login-btn svg{
+    margin-right: 10px;
+}
+
+.social-login-div{
+    border-bottom: 2px dashed #ccc;
+}
+
+.social-login-div::after{
+    content: "OR";
+    font-size: 1.2rem;
+    font-weight: 600;
+    transform: translateY(50%);
+    background-color: #F9FFFF;
+    padding: 0 10px;
+    color: #333;
+    margin: 0 auto;
+}
+
+
+@media screen and (max-width: 768px) {
+    .login-left-sidebar{
+        display: block;
+    }
+}
+

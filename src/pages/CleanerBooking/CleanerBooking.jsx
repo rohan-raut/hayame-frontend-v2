@@ -194,7 +194,6 @@ const FormPart2 = () => {
                     lng: await position.coords.longitude
                 });
 
-
             }, function (error) {
                 console.error("Error getting location:", error.message);
             });
