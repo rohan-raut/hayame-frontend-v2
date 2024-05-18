@@ -1,10 +1,17 @@
 import React, { useEffect, userEffect, useState } from 'react'
 
 const UserVerification = () => {
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState("Hello");
     const [success, setSuccess] = useState("");
 
-    useEffect(async () => {
+    useEffect(() => {
+
+        verifyUser();
+
+    }, []);
+
+
+    const verifyUser = async () => {
         let paramString = (window.location.search).split('?')[1];
         let queryString = new URLSearchParams(paramString);
         let user = ""
@@ -14,7 +21,7 @@ const UserVerification = () => {
 
         let api = "http://127.0.0.1:8000/api/verify-user/" + user;
 
-        let response = await fetch('http://127.0.0.1:8000/api/login/', {
+        let response = await fetch(api, {
             method: 'GET',
         });
 
@@ -22,8 +29,7 @@ const UserVerification = () => {
 
         setSuccess(data['success']);
         setMessage(data['response']);
-
-    }, [])
+    }
 
     return (
     <div>{message}</div>

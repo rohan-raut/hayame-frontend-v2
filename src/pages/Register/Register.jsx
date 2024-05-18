@@ -15,6 +15,7 @@ import Select from "react-select";
 
 const Register = () => {
     const [countryCode, setCountryCode] = useState("+60");
+    const [registerInputs, setRegisterInputs] = useState({});
     const options = [
         { value: "+60", label: "+60" },
         { value: "+7 840", label: "+7 840" },
@@ -254,6 +255,12 @@ const Register = () => {
         { value: "+263", label: "+263" },
     ];
 
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setRegisterInputs((values) => ({ ...values, [name]: value }));
+    };
+
 
     const onLoginStart = () => {
         alert('login start');
@@ -266,6 +273,66 @@ const Register = () => {
     const login = useGoogleLogin({
         onSuccess: tokenResponse => console.log(tokenResponse),
     });
+
+    const verifyForm = () => {
+        let fullname = registerInputs.fullname.split(' ');
+        console.log(fullname)
+        if (fullname.length <= 1) {
+            alert("Please enter your fullname");
+            return false;
+        }
+
+        let exp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        if (!registerInputs.password.match(exp)) {
+            alert("Password should contain characters between 6 to 20 which contain at least one numeric digit, one uppercase and one lowercase letter");
+            return false;
+        }
+
+        return true;
+    }
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+
+        if (verifyForm()) {
+            let fullname = registerInputs.fullname.split(" ");
+            let first_name = fullname[0];
+            let last_name = "";
+            for (let i = 1; i < fullname.length; i++) {
+                if (i !== 1) {
+                    last_name += " " + fullname[i];
+                }
+                else {
+                    last_name = fullname[i];
+                }
+            }
+
+            let response = await fetch('http://127.0.0.1:8000/api/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'email': registerInputs.email,
+                    'username': registerInputs.email,
+                    'first_name': first_name,
+                    'last_name': last_name,
+                    'phone': countryCode.value + " " + registerInputs.phone,
+                    'password': registerInputs.password,
+                    'password2': registerInputs.password,
+                })
+            })
+            let data = await response.json()
+
+            if(data['success']){
+                alert("Success");
+            }
+            else{
+                alert("Fail");
+                console.log(data);
+            }
+        }
+    }
 
     return (
         <div>
@@ -306,44 +373,44 @@ const Register = () => {
                             </div>
 
 
-                            <form className="register-form">
+                            <form onSubmit={handleRegister} className="register-form">
                                 <div className="row m-0 justify-content-between">
                                     <div class="mb-4 p-0">
-                                        <input type="text" className="input-field" placeholder="Full Name" required name="fullName" />
+                                        <input type="text" className="input-field" placeholder="Full Name" name="fullname" onChange={handleChange} required />
                                     </div>
                                     <div class="mb-4 p-0">
-                                        <input type="email" className="input-field" placeholder="Email" name="email" required />
+                                        <input type="email" className="input-field" placeholder="Email" name="email" onChange={handleChange} required />
                                     </div>
-                                    
+
                                     <div class="mb-2 p-0 col-4">
                                         <Select onChange={setCountryCode} options={options} placeholder="" required className="react-select-dropdown m-0"
-                                        theme={(theme) => ({
-                                            ...theme,
-                                            borderRadius: 6,
-                                            minHeight: 40,
-                                            colors: {
-                                              ...theme.colors,
-                                              primary25: '#A4E2D5',
-                                              primary: '#58BBA6',
-                                            },
-                                          })}
+                                            theme={(theme) => ({
+                                                ...theme,
+                                                borderRadius: 6,
+                                                minHeight: 40,
+                                                colors: {
+                                                    ...theme.colors,
+                                                    primary25: '#A4E2D5',
+                                                    primary: '#58BBA6',
+                                                },
+                                            })}
 
-                                          styles={{
-                                            control: (baseStyles, state) => ({
-                                              ...baseStyles,
-                                              borderColor: state.isFocused ? '#A4E2D5' : 'gray',
-                                              padding: '3px'
-                                            }),
-                                          }}
+                                            styles={{
+                                                control: (baseStyles, state) => ({
+                                                    ...baseStyles,
+                                                    borderColor: state.isFocused ? '#A4E2D5' : 'gray',
+                                                    padding: '3px'
+                                                }),
+                                            }}
 
-                                          />
+                                        />
                                     </div>
                                     <div class="mb-4 p-0 col-7">
-                                        <input type="number" className="input-field" placeholder="Phone" name="password" required />
+                                        <input type="number" className="input-field" placeholder="Phone" name="phone" onChange={handleChange} required />
                                     </div>
 
                                     <div class="mb-4 p-0">
-                                        <input type="password" className="input-field" placeholder="Password" name="password" required />
+                                        <input type="password" className="input-field" placeholder="Password" name="password" onChange={handleChange} required />
                                     </div>
 
                                     <div class="my-4 p-0 d-flex justify-content-end">

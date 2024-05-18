@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }) => {
             let expiry_time = new Date(decoded_token.exp).toUTCString()
             document.cookie = 'access_token=' + data.access_token + ';expires=' + expiry_time + ';path=/';
             alert(data.response);
+            console.log(data);
         }
         else{
             alert(data.response);

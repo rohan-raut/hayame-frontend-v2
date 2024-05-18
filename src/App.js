@@ -8,7 +8,9 @@ import Login from './pages/Login/Login';
 import CleanerBooking from './pages/CleanerBooking/CleanerBooking';
 import Register from './pages/Register/Register';
 import UserVerification from './pages/UserVerification/UserVerification';
-import { AuthProvider } from './context/AuthContext'
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
+import { AuthProvider } from './context/AuthContext';
 
 
 function App() {
@@ -39,6 +41,14 @@ function App() {
       element: <UserVerification />,
     },
     {
+      path: '/forgot-password',
+      element: <ForgotPassword />,
+    },
+    {
+      path: '/reset-password',
+      element: <ResetPassword />,
+    },
+    {
       path: '/book-cleaner',
       element: <CleanerBooking />,
     },
@@ -47,10 +57,7 @@ function App() {
 
 
   return (
-    // <AuthProvider>
-      <RouterProvider router={router} />
-    // </AuthProvider>
-
+    <RouterProvider router={router} />
   );
 
 }

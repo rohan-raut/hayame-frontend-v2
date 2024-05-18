@@ -10,6 +10,8 @@ nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: absolute;
+    top: 0%;
 }
 
 .navbar-links-container {
