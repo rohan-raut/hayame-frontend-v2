@@ -32,13 +32,23 @@
   justify-content: end;
 }
 
-.form-label-bold{
+.form-label-bold {
   font-weight: 600;
   padding: 0px 0px 15px 0px;
 }
 
-.form-section-row{
+.form-section-row {
   margin: 80px 0px;
+}
+
+.cleaner-booking-summary-card{
+  height: fit-content;
+  background-color: white;
+  padding: 20px 20px;
+  box-shadow: 2px 4px 10px 2px #b7d3d3;
+  position: sticky;
+  top: 10%;
+  width: 90%;
 }
 
 
@@ -57,7 +67,7 @@
   display: none;
 }
 
-.cleaner-booking-freq-custom-radio{
+.cleaner-booking-freq-custom-radio {
   width: 30%;
 }
 
@@ -153,13 +163,13 @@
 
 /* No of Hours */
 
-.cleaner-booking-no-of-hours-container{
+.cleaner-booking-no-of-hours-container {
   display: flex;
   flex-wrap: wrap;
 }
 
-.cleaner-booking-no-of-hours-container div{
-  width: 20%;
+.cleaner-booking-no-of-hours-container div {
+  margin-right: 20px;
 }
 
 .cleaner-booking-no-of-hours-radio {
@@ -173,7 +183,6 @@
   padding: 10px 25px;
   border-radius: 5px;
   text-align: center;
-  width: 90%;
 }
 
 .cleaner-booking-no-of-hours-radio input {
@@ -212,7 +221,7 @@
   width: 33%;
 }
 
-.stepper-fill{
+.stepper-fill {
   height: 100%;
   /* width: 0%; */
   background-color: #58BBA6;
@@ -228,5 +237,38 @@
   100% {
     width: 100%;
     background-color: #58BBA6;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .cleaner-booking-form-container {
+    padding: 40px 20px;
+  }
+
+  .cleaner-booking-freq-radio-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cleaner-booking-freq-custom-radio {
+    width: 60%;
+    margin-bottom: 20px;
+  }
+
+  .cleaner-booking-summary-card{
+    height: fit-content;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 2px 4px 10px 2px #b7d3d3;
+    width: 100%;
+    position: fixed;
+    top: 90%;
+    z-index: 10;
+  }
+
+  #booking-summary-active:checked~.cleaner-booking-summary-card{
+    top: 60%;
   }
 }

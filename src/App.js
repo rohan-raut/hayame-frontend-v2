@@ -11,6 +11,8 @@ import UserVerification from './pages/UserVerification/UserVerification';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import { AuthProvider } from './context/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -57,7 +59,10 @@ function App() {
 
 
   return (
-    <RouterProvider router={router} />
+    <div>
+      {/* <ToastContainer /> */}
+      <RouterProvider router={router} />
+    </div>
   );
 
 }

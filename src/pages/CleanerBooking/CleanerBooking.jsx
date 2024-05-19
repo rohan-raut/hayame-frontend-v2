@@ -4,7 +4,7 @@ import "./cleanerBooking.css";
 import DatePicker from '../../components/DatePicker/DatePicker';
 
 
-const FormPart1 = () => {
+const FormPart1 = (props) => {
     return (
         <div>
             {/* Frequency buttons */}
@@ -12,7 +12,7 @@ const FormPart1 = () => {
                 <div className="form-label-bold">How frequently would you like the cleaning service?</div>
                 <div class="cleaner-booking-freq-radio-buttons">
                     <label class="cleaner-booking-freq-custom-radio">
-                        <input type="radio" name="radio" />
+                        <input type="radio" name="frequency" onChange={props.handleChange} />
                         <span class="cleaner-booking-freq-radio-btn"><i class="las la-check">✔</i>
                             <div class="cleaner-booking-freq-inner-card">
                                 <h3 class="cleaner-booking-h3">One-Time</h3>
@@ -27,7 +27,7 @@ const FormPart1 = () => {
                         </span>
                     </label>
                     <label class="cleaner-booking-freq-custom-radio">
-                        <input type="radio" name="radio" />
+                        <input type="radio" name="frequency" />
                         <span class="cleaner-booking-freq-radio-btn"><i class="las la-check">✔</i>
                             <div class="cleaner-booking-freq-inner-card">
                                 <h3 class="cleaner-booking-h3">Weekly</h3>
@@ -42,7 +42,7 @@ const FormPart1 = () => {
                         </span>
                     </label>
                     <label class="cleaner-booking-freq-custom-radio">
-                        <input type="radio" name="radio" />
+                        <input type="radio" name="frequency" />
                         <span class="cleaner-booking-freq-radio-btn"><i class="las la-check">✔</i>
                             <div class="cleaner-booking-freq-inner-card">
                                 <h3 class="cleaner-booking-h3">Fortnightly</h3>
@@ -61,8 +61,8 @@ const FormPart1 = () => {
 
             {/* Calendar */}
             <div className="row form-section-row">
-            <div className="form-label-bold">Select the Start Date</div>
-                <div className="col-10 p-0">
+                <div className="form-label-bold">Select the Start Date</div>
+                <div className="col-12 col-sm-12 col-md-10 col-lg-10 p-0">
                     <DatePicker />
                 </div>
             </div>
@@ -73,49 +73,43 @@ const FormPart1 = () => {
                 <div className="cleaner-booking-no-of-hours-container px-0">
                     <div>
                         <label className="cleaner-booking-no-of-hours-radio">
-                            <input type="radio" name="no_of_hours" />
-                            <span className="cleaner-booking-no-of-hours-btn">1 hour</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="cleaner-booking-no-of-hours-radio">
-                            <input type="radio" name="no_of_hours" />
+                            <input type="radio" name="no_of_hours" onChange={props.handleChange} />
                             <span className="cleaner-booking-no-of-hours-btn">2 hours</span>
                         </label>
                     </div>
                     <div>
                         <label className="cleaner-booking-no-of-hours-radio">
-                            <input type="radio" name="no_of_hours" />
+                            <input type="radio" name="no_of_hours" onChange={props.handleChange} />
                             <span className="cleaner-booking-no-of-hours-btn">3 hours</span>
                         </label>
                     </div>
                     <div>
                         <label className="cleaner-booking-no-of-hours-radio">
-                            <input type="radio" name="no_of_hours" />
+                            <input type="radio" name="no_of_hours" onChange={props.handleChange} />
                             <span className="cleaner-booking-no-of-hours-btn">4 hours</span>
                         </label>
                     </div>
                     <div>
                         <label className="cleaner-booking-no-of-hours-radio">
-                            <input type="radio" name="no_of_hours" />
+                            <input type="radio" name="no_of_hours" onChange={props.handleChange} />
                             <span className="cleaner-booking-no-of-hours-btn">5 hours</span>
                         </label>
                     </div>
                     <div>
                         <label className="cleaner-booking-no-of-hours-radio">
-                            <input type="radio" name="no_of_hours" />
+                            <input type="radio" name="no_of_hours" onChange={props.handleChange} />
                             <span className="cleaner-booking-no-of-hours-btn">6 hours</span>
                         </label>
                     </div>
                     <div>
                         <label className="cleaner-booking-no-of-hours-radio">
-                            <input type="radio" name="no_of_hours" />
+                            <input type="radio" name="no_of_hours" onChange={props.handleChange} />
                             <span className="cleaner-booking-no-of-hours-btn">7 hours</span>
                         </label>
                     </div>
                     <div>
                         <label className="cleaner-booking-no-of-hours-radio">
-                            <input type="radio" name="no_of_hours" />
+                            <input type="radio" name="no_of_hours" onChange={props.handleChange} />
                             <span className="cleaner-booking-no-of-hours-btn">8 hours</span>
                         </label>
                     </div>
@@ -127,7 +121,7 @@ const FormPart1 = () => {
 }
 
 
-const FormPart2 = () => {
+const FormPart2 = (props) => {
     const [coordinates, setCoordinates] = useState({
         'lat': 37.39094933041195,
         'lng': -122.02503913145092
@@ -226,10 +220,18 @@ const FormPart2 = () => {
 
 const CleanerBooking = () => {
     const [page, setPage] = useState(0);
+    const [FormInputs, setFormInputs] = useState();
+    const [StartDate, setStartDate] = useState();
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setFormInputs((values) => ({ ...values, [name]: value }));
+    };
 
 
     const ChangeForm = () => {
-        setPage((page + 1)%3);
+        setPage((page + 1) % 3);
     }
 
 
@@ -265,8 +267,52 @@ const CleanerBooking = () => {
                         </div>
                     </div>
 
-                    <div className="col-4">
-                        <button className="btn btn-primary" onClick={ChangeForm}>Next</button>
+                    <div className="col-12 col-sm-12 col-md-4 col-lg-4 p-0 d-flex justify-content-center">
+                        <input type="checkbox" id="booking-summary-active" />
+                        <div className="row m-0 cleaner-booking-summary-card">
+                            <div className="d-flex justify-content-between align-items-center">
+                                <h4 className="p-0 m-0">Booking Summary</h4>
+                                <label for="booking-summary-active">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#5f6368"><path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" /></svg>
+                                </label>
+                            </div>
+                            <hr />
+                            <div className="d-flex justify-content-between">
+                                <div>Cleaning Frequency</div>
+                                <div>Weekly</div>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                                <div>Starting Date</div>
+                                <div>14-10-2001</div>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                                <div>Booking Time</div>
+                                <div>10:00 am</div>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                                <div>Property Type</div>
+                                <div>HBD</div>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                                <div>Hours per session</div>
+                                <div>2 hours</div>
+                            </div>
+
+                            <hr />
+
+                            <div className="d-flex justify-content-between">
+                                <div>Total</div>
+                                <div>RM 100</div>
+                            </div>
+
+                            <hr />
+
+                            <div>
+                                <button className="btn btn-primary" onClick={ChangeForm}>Next</button>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

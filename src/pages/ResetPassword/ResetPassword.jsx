@@ -3,7 +3,6 @@ import "./resetPassword.css";
 import Navbar from '../../components/Navbar/Navbar';
 
 
-
 const ResetPassword = () => {
     const [Inputs, setInputs] = useState();
 
@@ -66,27 +65,30 @@ const ResetPassword = () => {
 
 
     return (
-        <div className="row m-0 justify-content-center align-items-center reset-password-row">
+        <div>
             <Navbar />
-            <div className="col-11 col-sm-11 col-md-6 col-lg-4 reset-password-card">
-                <div className="reset-password-header">
-                    <h3 className="reset-password-h3">Reset Password</h3>
-                </div>
-                <div className="reset-password-form">
-                    <form onSubmit={handelResetPassword}>
-                        <div class="mb-4 p-0">
-                            <input type="password" class="input-field" placeholder="New Password" name="password" onChange={handleChange} required />
-                        </div>
-                        <div class="mb-4 p-0">
-                            <input type="password" class="input-field" placeholder="Confirm Password" name="confirmPassword" onChange={handleChange} required />
-                        </div>
-                        <div class="mb-4 p-0">
-                            <button className="reset-password-form-btn">Submit</button>
-                        </div>
-                    </form>
+            <div className="row m-0 justify-content-center reset-password-row">
+                <div className="col-11 col-sm-11 col-md-6 col-lg-4 reset-password-card">
+                    <div className="reset-password-header">
+                        <h3 className="reset-password-h3">Reset Password</h3>
+                    </div>
+                    <div className="reset-password-form">
+                        <form onSubmit={handelResetPassword}>
+                            <div class="mb-4 p-0">
+                                <input type="password" class="input-field" placeholder="New Password" name="password" onChange={handleChange} required />
+                            </div>
+                            <div class="mb-4 p-0">
+                                <input type="password" class="input-field" placeholder="Confirm Password" name="confirmPassword" onChange={handleChange} required />
+                            </div>
+                            <div class="mb-4 p-0">
+                                <button className="reset-password-form-btn">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
     )
 }
 
