@@ -4,6 +4,7 @@ import CustomerReviews from '../../components/CustomerReviews/CustomerReviews';
 import FAQ from '../../components/FAQ/FAQ';
 import { ResidentialCleaning, CleaningInstruments, HomeCleaning } from '../../assets';
 import "./home.css";
+import Footer from '../../components/Footer/Footer';
 
 
 const Home = () => {
@@ -68,6 +69,9 @@ const Home = () => {
 
             {/* FAQ */}
             <FAQ />
+
+            {/* Footer */}
+            <Footer />
 
         </div>
     )

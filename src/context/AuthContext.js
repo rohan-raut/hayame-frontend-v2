@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from 'react-router-dom'
+import Cookies from 'universal-cookie';
 
 const AuthContext = createContext()
 
@@ -8,11 +9,12 @@ export default AuthContext;
 
 
 export const AuthProvider = ({ children }) => {
-    let [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
-    let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwtDecode(localStorage.getItem('authTokens')) : null)
+    const cookies = new Cookies();
+    let [authTokens, setAuthTokens] = useState(() => cookies.get('authTokens') ? JSON.parse(cookies.get('authTokens')) : null)
+    let [user, setUser] = useState(() => cookies.get('authTokens') ? jwtDecode(cookies.get('authTokens')) : null)
     let [loading, setLoading] = useState(true)
 
-    const history = useNavigate()
+    const history = useNavigate();
 
     let loginUser = async (e) => {
         e.preventDefault()
@@ -31,21 +33,56 @@ export const AuthProvider = ({ children }) => {
         if(data.success == true){
             let decoded_token = jwtDecode(data.access_token);
             let expiry_time = new Date(decoded_token.exp).toUTCString()
-            document.cookie = 'access_token=' + data.access_token + ';expires=' + expiry_time + ';path=/';
-            alert(data.response);
-            console.log(data);
-        }
-        else{
-            alert(data.response);
+            cookies.set("authToken", data.access_token, {
+                expires: new Date(decoded_token.exp * 1000),
+            });
+            // document.cookie = 'access_token=' + data.access_token + ';expires=' + expiry_time + ';path=/';
+            localStorage.setItem("first_name", "Smith");
+            localStorage.setItem("last_name", "Smith");
+            localStorage.setItem("email", "Smith");
         }
 
+        return data;
     }
+
+    const googleSignIn = async(tokenResponse) => {
+        let response = await fetch('http://127.0.0.1:8000/api/google-signin/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'email': tokenResponse['data'].email
+            })
+        })
+        let data = await response.json();
+
+        if(data.success == true){
+            let decoded_token = jwtDecode(data.access_token);
+            let expiry_time = new Date(decoded_token.exp).toUTCString()
+            cookies.set("authToken", data.access_token, {
+                expires: new Date(decoded_token.exp * 1000),
+            });
+            // document.cookie = 'access_token=' + data.access_token + ';expires=' + expiry_time + ';path=/';
+            localStorage.setItem("first_name", "Smith");
+            localStorage.setItem("last_name", "Smith");
+            localStorage.setItem("email", "Smith");
+        }
+
+        return data;
+    }
+
+
+
 
 
     let logoutUser = () => {
         setAuthTokens(null)
         setUser(null)
-        localStorage.removeItem('authTokens')
+        localStorage.removeItem("first_name");
+        localStorage.removeItem("last_name");
+        localStorage.removeItem("email");
+        cookies.remove("authToken");
         history.push('/login')
     }
 
@@ -55,6 +92,7 @@ export const AuthProvider = ({ children }) => {
         authTokens: authTokens,
         loginUser: loginUser,
         logoutUser: logoutUser,
+        googleSignIn: googleSignIn,
     }
 
 

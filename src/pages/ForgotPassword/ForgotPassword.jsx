@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./forgotPassword.css";
 import Navbar from '../../components/Navbar/Navbar';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 const ForgotPassword = () => {
     const [Inputs, setInputs] = useState();
@@ -26,7 +27,17 @@ const ForgotPassword = () => {
         })
         let data = await response.json()
 
-        alert(data.response);
+        toast.success(data['response'], {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     }
 
 

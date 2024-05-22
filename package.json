@@ -19,7 +19,9 @@
     "react-slick": "^0.30.2",
     "react-social-login-buttons": "^4.1.0",
     "react-toastify": "^8.0.0",
+    "reactjs-popup": "^2.0.6",
     "reactjs-social-login": "^2.6.3",
+    "universal-cookie": "^7.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

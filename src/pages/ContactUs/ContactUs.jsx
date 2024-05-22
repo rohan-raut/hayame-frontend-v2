@@ -3,9 +3,49 @@ import './contactUs.css';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 
 const ContactUs = () => {
+    const [contactInputs, setContactInputs] = useState();
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setContactInputs((values) => ({ ...values, [name]: value }));
+    };
+
+    const handleContactForm = async(e) => {
+        e.preventDefault();
+
+        let response = await fetch('http://127.0.0.1:8000/api/send-query/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'first_name': contactInputs.first_name,
+                'last_name': contactInputs.last_name,
+                'email': contactInputs.email,
+                'subject': contactInputs.subject,
+                'message': contactInputs.message
+            })
+        })
+        let data = await response.json();
+
+        toast.success(data['response'], {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
+
+    }
 
 
     return (
@@ -28,31 +68,31 @@ const ContactUs = () => {
                     </div>
                     <div className="col-8 contact-us-form-container">
                         <h2 className="contact-us-h2">Send us a message</h2>
-                        <form>
+                        <form onChange={handleContactForm}>
                             <div className="row m-0">
                                 <div class="mb-4 col-6">
                                     <label for="exampleInputEmail1" class="form-label">First Name</label>
-                                    <input type="email" className="input-field" required />
+                                    <input type="text" className="input-field" onChange={handleChange} required />
                                 </div>
                                 <div class="mb-4 col-6">
                                     <label for="exampleInputEmail1" class="form-label">Last Name</label>
-                                    <input type="email" className="input-field" required />
+                                    <input type="text" className="input-field" onChange={handleChange} required />
                                 </div>
                                 <div class="mb-4 col-6">
                                     <label for="exampleInputEmail1" class="form-label">Email Address</label>
-                                    <input type="email" className="input-field" required />
+                                    <input type="email" className="input-field" onChange={handleChange} required />
                                 </div>
                                 <div class="mb-4 col-6">
                                     <label for="exampleInputEmail1" class="form-label">Phone</label>
-                                    <input type="email" className="input-field" required />
+                                    <input type="number" className="input-field" onChange={handleChange} required />
                                 </div>
                                 <div class="mb-4 col-12">
                                     <label for="exampleInputEmail1" class="form-label">Subject</label>
-                                    <input type="email" className="input-field" required />
+                                    <input type="text" className="input-field" onChange={handleChange} required />
                                 </div>
                                 <div class="mb-4 col-12">
                                     <label for="exampleInputEmail1" class="form-label">Message</label>
-                                    <textarea type="email" className="input-field" rows="3" required ></textarea>
+                                    <textarea type="text" className="input-field" onChange={handleChange} rows="3" required ></textarea>
                                 </div>
                                 <div class="my-4 d-flex justify-content-end">
                                     <button className="contact-us-form-btn">Submit</button>

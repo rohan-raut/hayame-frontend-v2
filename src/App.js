@@ -36,7 +36,7 @@ function App() {
     },
     {
       path: '/register',
-      element: <Register />,
+      element: <AuthProvider><Register /></AuthProvider>,
     },
     {
       path: '/user-verification',
@@ -60,7 +60,7 @@ function App() {
 
   return (
     <div>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <RouterProvider router={router} />
     </div>
   );

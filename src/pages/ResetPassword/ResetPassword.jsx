@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./resetPassword.css";
 import Navbar from '../../components/Navbar/Navbar';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 
 const ResetPassword = () => {
@@ -16,13 +17,33 @@ const ResetPassword = () => {
     const verifyForm = () => {
 
         if (Inputs.password === Inputs.confirmPassword) {
-            alert("Password and Confirm Password does not match")
+            toast.error("Password and Confirm Password does not match", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             return false;
         }
 
         let exp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
         if (!Inputs.password.match(exp)) {
-            alert("Password should contain characters between 6 to 20 which contain at least one numeric digit, one uppercase and one lowercase letter");
+            toast.error("Password should contain characters between 6 to 20 which contain at least one numeric digit, one uppercase and one lowercase letter", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             return false;
         }
 
@@ -55,10 +76,30 @@ const ResetPassword = () => {
             })
             let data = await response.json()
 
-            alert(data.response);
+            toast.success(data['response'], {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         }
         else {
-            alert("Password and Confirm Password does not match")
+            toast.error("Password and Confirm Password does not match", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         }
 
     }
