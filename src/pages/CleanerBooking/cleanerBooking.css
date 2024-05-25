@@ -1,3 +1,4 @@
+
 #map {
   height: 50vh;
 }
@@ -16,7 +17,7 @@
 .cleaner-booking-current-location-btn {
   background-color: #58BBA6;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
 }
@@ -38,7 +39,7 @@
 }
 
 .form-section-row {
-  margin: 80px 0px;
+  margin: 60px 0px;
 }
 
 .cleaner-booking-summary-card{
@@ -48,7 +49,35 @@
   box-shadow: 2px 4px 10px 2px #b7d3d3;
   position: sticky;
   top: 10%;
-  width: 90%;
+  width: 80%;
+}
+
+.cleaner-booking-h4{
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding: 10px 0px;
+  margin: 0;
+}
+
+.cleaner-booking-hr{
+  margin: 15px 0px;
+}
+
+#booking-summary-active{
+  display: none;
+}
+
+.cleaner-booking-form-btn{
+  width: 100%;
+  background-color: #58BBA6;
+  color: white;
+  padding: 10px 0;
+  border: none;
+  border-radius: 10px;
+}
+
+.cleaner-booking-form-btn:hover{
+  background-color: #515559;
 }
 
 
@@ -166,10 +195,7 @@
 .cleaner-booking-no-of-hours-container {
   display: flex;
   flex-wrap: wrap;
-}
-
-.cleaner-booking-no-of-hours-container div {
-  margin-right: 20px;
+  gap: 20px;
 }
 
 .cleaner-booking-no-of-hours-radio {
@@ -228,6 +254,11 @@
   animation: colorChange 300ms linear forwards;
 }
 
+/* {tab border} */
+.tab-border{
+  border-bottom: 2px solid orangered;
+}
+
 
 @keyframes colorChange {
   0% {
@@ -237,6 +268,31 @@
   100% {
     width: 100%;
     background-color: #58BBA6;
+  }
+}
+
+
+
+@media screen and (min-width: 769px) and (max-width: 991px) {
+  .cleaner-booking-summary-card{
+    height: fit-content;
+    background-color: white;
+    padding: 15px 20px 100% 20px;
+    box-shadow: 2px 4px 10px 2px #b7d3d3;
+    width: 100%;
+    position: fixed;
+    top: 88%;
+    z-index: 10;
+
+    transition: 0.5s ease-in-out;
+  }
+
+  #booking-summary-active:checked~.cleaner-booking-summary-card{
+    top: 0%;
+  }
+
+  #booking-summary-active:checked~.cleaner-booking-down-arrow{
+    transform: rotate(45deg);
   }
 }
 
@@ -260,15 +316,34 @@
   .cleaner-booking-summary-card{
     height: fit-content;
     background-color: white;
-    padding: 10px 20px;
+    padding: 15px 20px 100% 20px;
     box-shadow: 2px 4px 10px 2px #b7d3d3;
     width: 100%;
     position: fixed;
-    top: 90%;
+    top: 80%;
     z-index: 10;
+
+    transition: 0.5s ease-in-out;
   }
 
   #booking-summary-active:checked~.cleaner-booking-summary-card{
-    top: 60%;
+    top: 0%;
   }
+
+  #booking-summary-active:checked~.cleaner-booking-summary-card>div>label{
+    transform: rotate(180deg);
+  }
+
+  
+
+  .cleaner-booking-form-btn{
+    padding: 7px 0;
+  }
+
+  .cleaner-booking-h4{
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  
 }

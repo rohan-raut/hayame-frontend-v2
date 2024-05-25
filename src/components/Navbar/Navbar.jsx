@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './navbar.css';
+import AuthContext from '../../context/AuthContext';
+import { Logo } from '../../assets';
 
 
 const Navbar = () => {
+    let { authTokens, user } = useContext(AuthContext);
 
     return (
         <nav>
@@ -20,7 +23,10 @@ const Navbar = () => {
                 <a href="about.html">About</a>
                 <a href="products.html">Products</a>
                 <a href="blog.html">Blog</a>
-                <a href="login.html">Login</a>
+                {(authTokens !== null) ? (
+                    <a href="login.html">Logout</a>
+                ) : (<a href="login.html">Login</a>)}
+
 
             </div>
         </nav>

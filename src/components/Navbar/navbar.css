@@ -21,16 +21,39 @@ nav {
     align-items: center;
 }
 
-nav a {
+nav a,
+.nav-dropdown {
     height: 100%;
     padding: 0 20px;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: var(--text-color);
+    cursor: pointer;
 }
 
-nav a:hover {
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+nav a:hover,
+.nav-dropdown:hover {
     background-color: var(--accent-color);
 }
 
@@ -74,6 +97,7 @@ nav svg {
         padding: 20px 30px;
         justify-content: flex-start;
     }
+
 
     .navbar-open-sidebar-button,
     .navbar-close-sidebar-button {

@@ -10,15 +10,15 @@ export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
     const cookies = new Cookies();
-    let [authTokens, setAuthTokens] = useState(() => cookies.get('authTokens') ? JSON.parse(cookies.get('authTokens')) : null)
-    let [user, setUser] = useState(() => cookies.get('authTokens') ? jwtDecode(cookies.get('authTokens')) : null)
+    let [authTokens, setAuthTokens] = useState(() => cookies.get('authToken') ? (cookies.get('authToken')) : null)
+    let [user, setUser] = useState(() => cookies.get('authToken') ? jwtDecode(cookies.get('authToken')) : null)
     let [loading, setLoading] = useState(true)
 
     const history = useNavigate();
 
     let loginUser = async (e) => {
         e.preventDefault()
-        let response = await fetch('http://127.0.0.1:8000/api/login/', {
+        let response = await fetch('https://djangotest.hayame.my/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
             cookies.set("authToken", data.access_token, {
                 expires: new Date(decoded_token.exp * 1000),
             });
+            setAuthTokens(data.access_token);
             // document.cookie = 'access_token=' + data.access_token + ';expires=' + expiry_time + ';path=/';
             localStorage.setItem("first_name", "Smith");
             localStorage.setItem("last_name", "Smith");
@@ -46,7 +47,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const googleSignIn = async(tokenResponse) => {
-        let response = await fetch('http://127.0.0.1:8000/api/google-signin/', {
+        let response = await fetch('https://djangotest.hayame.my/api/google-signin/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

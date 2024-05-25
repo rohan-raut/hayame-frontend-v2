@@ -1,0 +1,14 @@
+.select-form{
+    cursor: pointer;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.select-form:hover{
+    background-color: #F0FBF9;
+}
+
+.selected-form{
+    background-color: #F0FBF9;
+    border-bottom: 2px solid #58BBA6;
+}

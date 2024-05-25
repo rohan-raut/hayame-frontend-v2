@@ -20,7 +20,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home />,
+      element: <AuthProvider><Home /></AuthProvider>,
     },
     {
       path: '/faq',
@@ -52,7 +52,7 @@ function App() {
     },
     {
       path: '/book-cleaner',
-      element: <CleanerBooking />,
+      element: <AuthProvider><CleanerBooking /></AuthProvider>,
     },
 
   ])

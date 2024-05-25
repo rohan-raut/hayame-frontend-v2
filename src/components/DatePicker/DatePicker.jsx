@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./datePicker.css";
 
-const DatePicker = () => {
+const DatePicker = ( {FormInputs, setFormInputs}) => {
     const [date, setDate] = useState(new Date());
     const [currMonth, setCurrMonth] = useState(date.getMonth());
     const [currYear, setCurrYear] = useState(date.getFullYear());
@@ -24,6 +24,9 @@ const DatePicker = () => {
         if (e.target.classList.contains('inactive')) {
             return;
         }
+
+        let userSelectedDate = currYear + "-" + (currMonth + 1) + "-" + e.target.textContent;
+        setFormInputs((values) => ({ ...values, ['selectedDate']: userSelectedDate }));
 
         let liElements = e.target.parentNode.childNodes;
 
