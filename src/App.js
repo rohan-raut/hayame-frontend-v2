@@ -28,7 +28,7 @@ function App() {
     },
     {
       path: '/contact-us',
-      element: <ContactUs />,
+      element: <AuthProvider><ContactUs /></AuthProvider>,
     },
     {
       path: '/login',

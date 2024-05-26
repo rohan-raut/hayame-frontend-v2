@@ -467,6 +467,13 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
         { value: "Online", label: "Online" },
         { value: "Cash", label: "Cash" },
     ];
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setFormInputs((values) => ({ ...values, [name]: value }));
+    };
+
     return (
         <div>
             {(authTokens === null) ? <UserLoginSignUp /> : ""}
@@ -475,35 +482,15 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
                 <form>
                     <div className="row m-0">
                         <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                            <label class="form-label">
-                                Apply Voucher
-                            </label>
-                            <Select
-                                options={VoucherOptions}
-                                onChange={(e) => {
-                                    setFormInputs((values) => ({ ...values, ['voucher']: e.value }));
-                                }}
-                                required
-
-                                theme={(theme) => ({
-                                    ...theme,
-                                    borderRadius: 6,
-                                    minHeight: 40,
-                                    colors: {
-                                        ...theme.colors,
-                                        primary25: '#A4E2D5',
-                                        primary: '#58BBA6',
-                                    },
-                                })}
-
-                                styles={{
-                                    control: (baseStyles, state) => ({
-                                        ...baseStyles,
-                                        borderColor: state.isFocused ? '#A4E2D5' : 'gray',
-                                        padding: '4px'
-                                    }),
-                                }}
-                            />
+                            <div class="mb-4">
+                                <label class="form-label">Apply Voucher</label>
+                                <input
+                                    type="text"
+                                    className="input-field"
+                                    name="voucher"
+                                    onChange={handleChange}
+                                />
+                            </div>
                         </div>
                         <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
                             <label class="form-label">
@@ -554,6 +541,7 @@ const CleanerBooking = () => {
         postCode: "",
         propertyType: "",
         voucher: "",
+        voucherDiscount: 0,
         paymentMethod: "",
         skill: "Cleaner",
         totalCost: "",
@@ -592,7 +580,7 @@ const CleanerBooking = () => {
     }
 
     const getAllPostCodes = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/get-all-postcodes/', {
+        let response = await fetch('http://djangotest.hayame.my/api/get-all-postcodes/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -600,35 +588,38 @@ const CleanerBooking = () => {
         })
         let data = await response.json();
         setAvailablePostCode(data);
+        console.log(data);
     }
 
-    const getCostOfBooking = async() => {
+    const getCostOfBooking = async () => {
         if (FormInputs.frequency !== "" && FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
-            let response = await fetch('http://127.0.01:8000/api/get-cleaner-booking_cost/', {
+            let response = await fetch('http://djangotest.hayame.my/api/get-cleaner-booking_cost/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     'frequency': FormInputs.frequency,
-                    'selected_date': FormInputs.selectedDate,
+                    'start_date': FormInputs.selectedDate,
                     'no_of_hours': FormInputs.no_of_hours,
                     'postcode': FormInputs.postCode,
-                    'skill': FormInputs.skill
+                    'skill': FormInputs.skill,
+                    'voucher': FormInputs.voucher,
                 })
             })
             let data = await response.json();
             setFormInputs((values) => ({ ...values, ['totalCost']: data['total_cost'] }));
+            setFormInputs((values) => ({ ...values, ['voucherDiscount']: data['discount'] }));
         }
     }
 
     useEffect(() => {
         getAllPostCodes();
-    })
+    }, [])
 
     useEffect(() => {
         getCostOfBooking();
-    }, [FormInputs])
+    }, [FormInputs.frequency, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher])
 
     const validateForm1 = () => {
         if (FormInputs.frequency === "") {
@@ -694,6 +685,32 @@ const CleanerBooking = () => {
         return true;
     }
 
+    const bookCleaner = async () => {
+        let response = await fetch('http://djangotest.hayame.my/api/book-cleaner/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' : 'Bearer ' + authTokens,
+            },
+            body: JSON.stringify({
+                'frequency': FormInputs.frequency,
+                'start_date': FormInputs.selectedDate,
+                'no_of_hours': FormInputs.no_of_hours,
+                'start_time': FormInputs.startTime,
+                'address': FormInputs.address,
+                'postcode': FormInputs.postCode,
+                'property_type': FormInputs.propertyType,
+                'voucher': FormInputs.voucher,
+                'payment_method': FormInputs.paymentMethod
+            })
+        })
+        let data = await response.json();
+        console.log(data);
+        if(data['success']){
+            notify(data['response'], "success");
+        }
+    }
+
     const ChangeForm = () => {
 
         if (page === 0) {
@@ -709,6 +726,7 @@ const CleanerBooking = () => {
         else {
             if (validateForm3()) {
                 // call api to save booking
+                bookCleaner();
                 // redirect to booking history
             }
         }
@@ -803,16 +821,23 @@ const CleanerBooking = () => {
                                 <div>{(FormInputs.propertyType === "") ? "-" : FormInputs.propertyType}</div>
                             </div>
 
-                            <hr className="cleaner-booking-hr" />
+                            {FormInputs.voucherDiscount !== 0 ? (
+                                <div>
+                                    <hr className="cleaner-booking-hr" />
 
-                            <div className="d-flex justify-content-between py-1">
-                                <div>Applied Voucher</div>
-                                <div>HAY956</div>
-                            </div>
-                            <div className="d-flex justify-content-between py-1">
-                                <div>Voucher Discount</div>
-                                <div>17 %</div>
-                            </div>
+                                    <div className="d-flex justify-content-between py-1">
+                                        <div>Applied Voucher</div>
+                                        <div>HAY956</div>
+                                    </div>
+                                    <div className="d-flex justify-content-between py-1">
+                                        <div>Voucher Discount</div>
+                                        <div>17 %</div>
+                                    </div>
+                                </div>
+                            ) : (
+                                ""
+                            )}
+
 
                             <hr className="cleaner-booking-hr" />
 

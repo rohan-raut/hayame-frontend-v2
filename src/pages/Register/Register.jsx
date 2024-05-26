@@ -335,7 +335,7 @@ const Register = () => {
                 }
             }
 
-            let response = await fetch('https://djangotest.hayame.my/api/register/', {
+            let response = await fetch('http://djangotest.hayame.my/api/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -416,7 +416,7 @@ const Register = () => {
     return (
         <div>
             <div className="row m-0">
-                <div className="col-12 col-sm-12 col-md-4 col-lg-4 register-left-sidebar hide-mobile">
+                <div className="col-12 col-sm-12 col-md-4 col-lg-4 register-left-sidebar">
                     <div className="register-logo">
                         <img src={Logo} alt="" />
                     </div>

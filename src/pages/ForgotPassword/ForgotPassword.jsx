@@ -16,7 +16,7 @@ const ForgotPassword = () => {
     const handelForgotPassword = async (e) => {
         e.preventDefault();
 
-        let response = await fetch('https://djangotest.hayame.my/api/forgot-password/', {
+        let response = await fetch('http://djangotest.hayame.my/api/forgot-password/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

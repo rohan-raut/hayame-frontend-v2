@@ -99,7 +99,7 @@ const Login = () => {
     return (
         <div>
             <div className="row m-0">
-                <div className="col-12 col-sm-12 col-md-4 col-lg-4 login-left-sidebar hide-mobile">
+                <div className="col-12 col-sm-12 col-md-4 col-lg-4 login-left-sidebar">
                     <div className="login-logo">
                         <img src={Logo} alt="" />
                     </div>

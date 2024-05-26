@@ -114,7 +114,7 @@
 
 @media screen and (max-width: 768px) {
     .register-left-sidebar{
-        display: block;
+        display: none;
     }
 }
 

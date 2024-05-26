@@ -2,30 +2,53 @@ import React, { useContext, useEffect, useState } from 'react';
 import './navbar.css';
 import AuthContext from '../../context/AuthContext';
 import { Logo } from '../../assets';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
-    let { authTokens, user } = useContext(AuthContext);
+    const { authTokens, user } = useContext(AuthContext);
 
     return (
         <nav>
+            <div>
+                <Link class="navbar-home-link" to="/">
+                    <img src={Logo} alt="" />
+                </Link>
+            </div>
+
             <input type="checkbox" id="navbar-sidebar-active" />
+            <label id="navbar-overlay" for="navbar-sidebar-active"></label>
             <label for="navbar-sidebar-active" class="navbar-open-sidebar-button">
                 <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
             </label>
-            <label id="navbar-overlay" for="navbar-sidebar-active"></label>
+
+
             <div class="navbar-links-container">
                 <label for="navbar-sidebar-active" class="navbar-close-sidebar-button">
                     <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                 </label>
 
-                <a class="navbar-home-link" href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="products.html">Products</a>
-                <a href="blog.html">Blog</a>
-                {(authTokens !== null) ? (
-                    <a href="login.html">Logout</a>
-                ) : (<a href="login.html">Login</a>)}
+                <ul className="navbar-ul">
+                    <li><Link to="about.html" className="navbar-link">About Us</Link></li>
+                    <li><Link to="/contact-us" className="navbar-link">Contact Us</Link></li>
+                    <li><Link to="/book-cleaner" className="navbar-link">Book Cleaner</Link></li>
+                    {(authTokens !== null) ? (
+                        <li className="navbar-dropdown-1">
+                            <span className="navbar-link">
+                                Rohan Raut <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                            </span>
+                            <div className="navbar-dropdown">
+                                <ul>
+                                    <li>Booking History</li>
+                                    <li>Profile</li>
+                                    <li>Logout</li>
+                                </ul>
+                            </div>
+                        </li>
+                    ) : (
+                        <Link to="/login" className="navbar-link">Login</Link>
+                    )}
+                </ul>
 
 
             </div>

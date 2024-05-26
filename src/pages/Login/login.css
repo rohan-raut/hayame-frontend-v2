@@ -103,7 +103,7 @@
 
 @media screen and (max-width: 768px) {
     .login-left-sidebar{
-        display: block;
+        display: none;
     }
 }
 
