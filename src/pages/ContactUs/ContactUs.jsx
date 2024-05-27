@@ -18,7 +18,7 @@ const ContactUs = () => {
     const handleContactForm = async(e) => {
         e.preventDefault();
 
-        let response = await fetch('http://djangotest.hayame.my/api/send-query/', {
+        let response = await fetch('https://djangotest.hayame.my/api/send-query/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

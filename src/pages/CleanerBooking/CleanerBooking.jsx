@@ -580,7 +580,7 @@ const CleanerBooking = () => {
     }
 
     const getAllPostCodes = async () => {
-        let response = await fetch('http://djangotest.hayame.my/api/get-all-postcodes/', {
+        let response = await fetch('https://djangotest.hayame.my/api/get-all-postcodes/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -593,7 +593,7 @@ const CleanerBooking = () => {
 
     const getCostOfBooking = async () => {
         if (FormInputs.frequency !== "" && FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
-            let response = await fetch('http://djangotest.hayame.my/api/get-cleaner-booking_cost/', {
+            let response = await fetch('https://djangotest.hayame.my/api/get-cleaner-booking_cost/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -686,7 +686,7 @@ const CleanerBooking = () => {
     }
 
     const bookCleaner = async () => {
-        let response = await fetch('http://djangotest.hayame.my/api/book-cleaner/', {
+        let response = await fetch('https://djangotest.hayame.my/api/book-cleaner/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

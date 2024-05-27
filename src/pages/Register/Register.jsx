@@ -335,7 +335,7 @@ const Register = () => {
                 }
             }
 
-            let response = await fetch('http://djangotest.hayame.my/api/register/', {
+            let response = await fetch('https://djangotest.hayame.my/api/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
