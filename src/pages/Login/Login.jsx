@@ -114,7 +114,7 @@ const Login = () => {
                     <div className="row m-0 login-right-content">
                         <div className="col-12 col-sm-12 col-md-12 col-lg-6 login-form-card">
                             <h2 className="login-h2">Sign In</h2>
-                            <p>New here? Create an Account</p>
+                            <p>New here? <Link to='/register' className="hayame-link">Create an Account</Link></p>
                             <div className="row m-0 social-login-div">
                                 <div className="col-6 my-2">
 
@@ -152,7 +152,7 @@ const Login = () => {
                                         <input type="password" className="input-field" placeholder="Password" name="password" required />
                                     </div>
                                     <div class="mb-2 p-0 text-end">
-                                        Forgot Password?
+                                        <Link to='/forgot-password' className="hayame-link">Forgot Password?</Link>
                                     </div>
                                     <div class="my-4 p-0 d-flex justify-content-end">
                                         <button className="login-form-btn">Submit</button>

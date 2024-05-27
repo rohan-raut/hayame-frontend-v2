@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
-    const { authTokens, user } = useContext(AuthContext);
+    const { authTokens, user, logoutUser } = useContext(AuthContext);
 
     return (
         <nav>
@@ -41,12 +41,12 @@ const Navbar = () => {
                                 <ul>
                                     <li>Booking History</li>
                                     <li>Profile</li>
-                                    <li>Logout</li>
+                                    <li onClick={logoutUser} className="cursor-pointer">Logout</li>
                                 </ul>
                             </div>
                         </li>
                     ) : (
-                        <Link to="/login" className="navbar-link">Login</Link>
+                        <li><Link to="/login" className="navbar-link">Login</Link></li>
                     )}
                 </ul>
 

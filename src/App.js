@@ -24,7 +24,7 @@ function App() {
     },
     {
       path: '/faq',
-      element: <FAQPage />,
+      element: <AuthProvider><FAQPage /></AuthProvider>,
     },
     {
       path: '/contact-us',
@@ -40,15 +40,15 @@ function App() {
     },
     {
       path: '/user-verification',
-      element: <UserVerification />,
+      element: <AuthProvider><UserVerification /></AuthProvider>,
     },
     {
       path: '/forgot-password',
-      element: <ForgotPassword />,
+      element: <AuthProvider><ForgotPassword /></AuthProvider>,
     },
     {
       path: '/reset-password',
-      element: <ResetPassword />,
+      element: <AuthProvider><ResetPassword /></AuthProvider>,
     },
     {
       path: '/book-cleaner',

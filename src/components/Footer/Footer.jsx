@@ -60,11 +60,11 @@ const Footer = () => {
                 <div>
                     <div className="footer-title">Quick Links</div>
                     <ul className="footer-ul">
-                        <li><Link to='' className="footer-links">Home</Link></li>
-                        <li><Link to='' className="footer-links">About Us</Link></li>
-                        <li><Link to='' className="footer-links">Contact Us</Link></li>
-                        <li><Link to='' className="footer-links">FAQs</Link></li>
-                        <li><Link to='' className="footer-links">Book Cleaner</Link></li>
+                        <li><Link to='/' className="footer-links">Home</Link></li>
+                        <li><Link to='/' className="footer-links">About Us</Link></li>
+                        <li><Link to='/contact-us' className="footer-links">Contact Us</Link></li>
+                        <li><Link to='/faqs' className="footer-links">FAQs</Link></li>
+                        <li><Link to='/book-cleaner' className="footer-links">Book Cleaner</Link></li>
                     </ul>
                 </div>
             </div>

@@ -46,6 +46,11 @@ body {
     cursor: pointer;
 }
 
+.hayame-link{
+    text-decoration: none;
+    color: #0a9891;
+}
+
 
 /* vertical tab  */
 @media screen and (min-width: 769px) and (max-width: 991px) {

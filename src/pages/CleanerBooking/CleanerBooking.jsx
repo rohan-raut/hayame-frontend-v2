@@ -287,6 +287,33 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
         { value: "Shophouse Home", label: "Shophouse Home" },
     ];
 
+
+    const reverseGeocode = (latitude, longitude) => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                let api = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=AIzaSyDECJ4Zx4x_Iz5iRSTCvewjuDcaCNmz6l8";
+
+                fetch(api, {
+                    method: "GET",
+                })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json["results"][0]["formatted_address"]);
+                        setFormInputs(values => ({ ...values, ["address"]: json["results"][0]["formatted_address"] }));
+                        document.getElementById('address-field').value = json["results"][0]["formatted_address"];
+                    });
+
+            }, function (error) {
+                console.error("Error getting location:", error.message);
+            });
+        }
+        else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+
     useEffect(() => {
         async function initMap() {
             // Request needed libraries.
@@ -302,7 +329,6 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                 disableDefaultUI: true,
             });
             const infoWindow = new InfoWindow();
-            console.log(coordinates);
             const draggableMarker = new AdvancedMarkerElement({
                 map,
                 position: { lat: coordinates.lat, lng: coordinates.lng },
@@ -312,11 +338,13 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
 
             draggableMarker.addListener("dragend", (event) => {
                 const position = draggableMarker.position;
+                reverseGeocode(position.lat, position.lng);
 
                 infoWindow.close();
                 // infoWindow.setContent(`Pin dropped at: ${position.lat}, ${position.lng}`);
                 // infoWindow.open(draggableMarker.map, draggableMarker);
             });
+
         }
 
         initMap();
@@ -336,8 +364,6 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
 
         autocomplete.addListener("place_changed", function () {
             var near_place = autocomplete.getPlace();
-            // set the value of input here
-            console.log(near_place);
             setCoordinates({
                 lat: near_place['geometry']['location'].lat(),
                 lng: near_place['geometry']['location'].lng()
@@ -350,8 +376,6 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(
                 async function (position) {
-                    var latitude = position.coords.latitude;
-                    var longitude = position.coords.longitude;
 
                     setCoordinates({
                         lat: await position.coords.latitude,
@@ -381,6 +405,7 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                             type="text"
                             className="input-field"
                             id="address-field"
+                            defaultValue={FormInputs.address}
                             onChange={handleJobLocation}
                         />
                     </div>
@@ -690,7 +715,7 @@ const CleanerBooking = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization' : 'Bearer ' + authTokens,
+                'Authorization': 'Bearer ' + authTokens,
             },
             body: JSON.stringify({
                 'frequency': FormInputs.frequency,
@@ -706,7 +731,7 @@ const CleanerBooking = () => {
         })
         let data = await response.json();
         console.log(data);
-        if(data['success']){
+        if (data['success']) {
             notify(data['response'], "success");
         }
     }

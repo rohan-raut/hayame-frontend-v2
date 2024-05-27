@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     let [user, setUser] = useState(() => cookies.get('authToken') ? jwtDecode(cookies.get('authToken')) : null)
     let [loading, setLoading] = useState(true)
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     let loginUser = async (e) => {
         e.preventDefault()
@@ -37,10 +37,6 @@ export const AuthProvider = ({ children }) => {
                 expires: new Date(decoded_token.exp * 1000),
             });
             setAuthTokens(data.access_token);
-            // document.cookie = 'access_token=' + data.access_token + ';expires=' + expiry_time + ';path=/';
-            localStorage.setItem("first_name", "Smith");
-            localStorage.setItem("last_name", "Smith");
-            localStorage.setItem("email", "Smith");
         }
 
         return data;
@@ -64,27 +60,18 @@ export const AuthProvider = ({ children }) => {
             cookies.set("authToken", data.access_token, {
                 expires: new Date(decoded_token.exp * 1000),
             });
-            // document.cookie = 'access_token=' + data.access_token + ';expires=' + expiry_time + ';path=/';
-            localStorage.setItem("first_name", "Smith");
-            localStorage.setItem("last_name", "Smith");
-            localStorage.setItem("email", "Smith");
+            setAuthTokens(data.access_token);
         }
 
         return data;
     }
 
 
-
-
-
     let logoutUser = () => {
         setAuthTokens(null)
         setUser(null)
-        localStorage.removeItem("first_name");
-        localStorage.removeItem("last_name");
-        localStorage.removeItem("email");
         cookies.remove("authToken");
-        history.push('/login')
+        navigate('/login')
     }
 
 
