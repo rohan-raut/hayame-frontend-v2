@@ -11,7 +11,7 @@ export default AuthContext;
 export const AuthProvider = ({ children }) => {
     const cookies = new Cookies();
     let [authTokens, setAuthTokens] = useState(() => cookies.get('authToken') ? (cookies.get('authToken')) : null)
-    let [user, setUser] = useState(() => cookies.get('authToken') ? jwtDecode(cookies.get('authToken')) : null)
+    let [user, setUser] = useState(() => cookies.get('userData') ? cookies.get('userData') : null)
     let [loading, setLoading] = useState(true)
 
     const navigate = useNavigate();
@@ -36,6 +36,9 @@ export const AuthProvider = ({ children }) => {
             cookies.set("authToken", data.access_token, {
                 expires: new Date(decoded_token.exp * 1000),
             });
+            cookies.set("userData", JSON.stringify(data), {
+                expires: new Date(decoded_token.exp * 1000),
+            });
             setAuthTokens(data.access_token);
             setUser(data);
         }
@@ -44,13 +47,26 @@ export const AuthProvider = ({ children }) => {
     }
 
     const googleSignIn = async(tokenResponse) => {
+        let email = tokenResponse['data'].email;
+        let first_name = tokenResponse['data'].given_name;
+        let last_name = tokenResponse['data'].family_name;
+
+        if(first_name === undefined){
+            first_name = "user";
+        }
+        if(last_name === undefined){
+            last_name = "name";
+        }
+
         let response = await fetch('https://djangotest.hayame.my/api/google-signin/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'email': tokenResponse['data'].email
+                'email': email,
+                'first_name': first_name,
+                'last_name': last_name,
             })
         })
         let data = await response.json();
@@ -61,9 +77,11 @@ export const AuthProvider = ({ children }) => {
             cookies.set("authToken", data.access_token, {
                 expires: new Date(decoded_token.exp * 1000),
             });
+            cookies.set("userData", JSON.stringify(data), {
+                expires: new Date(decoded_token.exp * 1000),
+            });
             setAuthTokens(data.access_token);
             setUser(data);
-            console.log(data);
         }
 
         return data;
@@ -74,6 +92,7 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens(null)
         setUser(null)
         cookies.remove("authToken");
+        cookies.remove("userData");
         navigate('/login')
     }
 

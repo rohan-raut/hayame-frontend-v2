@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import './register.css';
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar';
 import { Logo } from '../../assets';
 import ShortCustomerReviews from '../../components/ShortCustomerReviews/ShortCustomerReviews';
@@ -261,7 +261,7 @@ const Register = () => {
 
     let { googleSignIn } = useContext(AuthContext)
 
-
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -396,6 +396,8 @@ const Register = () => {
                 theme: "light",
                 transition: Bounce,
             });
+
+            navigate('/');
         }
         else {
             toast.error(data['response'], {
@@ -431,7 +433,7 @@ const Register = () => {
                     <div className="row m-0 register-right-content">
                         <div className="col-12 col-sm-12 col-md-12 col-lg-6 register-form-card">
                             <h2 className="register-h2">Sign Up</h2>
-                            <p>Already have an account? Login</p>
+                            <p>Already have an account? <Link to='/login' className="hayame-link">Login</Link></p>
                             <div className="row m-0 social-register-div">
                                 <div className="col-6 my-2">
                                     <LoginSocialGoogle
