@@ -10,6 +10,8 @@ import Register from './pages/Register/Register';
 import UserVerification from './pages/UserVerification/UserVerification';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
+import BookingHistory from './pages/BookingHistory/BookingHistory';
+import CheckBookings from './pages/CheckBookings/CheckBookings';
 import { AuthProvider } from './context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -53,6 +55,14 @@ function App() {
     {
       path: '/book-cleaner',
       element: <AuthProvider><CleanerBooking /></AuthProvider>,
+    },
+    {
+      path: '/booking-history',
+      element: <AuthProvider><BookingHistory /></AuthProvider>,
+    },
+    {
+      path: '/check-bookings',
+      element: <AuthProvider><CheckBookings /></AuthProvider>,
     },
 
   ])

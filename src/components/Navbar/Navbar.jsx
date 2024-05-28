@@ -39,7 +39,8 @@ const Navbar = () => {
                             </span>
                             <div className="navbar-dropdown">
                                 <ul>
-                                    <li>Booking History</li>
+                                    <li><Link to='/booking-history' className="navbar-link p-0">Booking History</Link></li>
+                                    {(user['user_role'] === 'Admin' || user['user_role'] === 'Manager') ? <li><Link to='/check-bookings' className="navbar-link p-0">Check Bookings</Link></li> : ""}
                                     <li>Profile</li>
                                     <li onClick={logoutUser} className="cursor-pointer">Logout</li>
                                 </ul>

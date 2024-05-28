@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }) => {
                 expires: new Date(decoded_token.exp * 1000),
             });
             setAuthTokens(data.access_token);
+            setUser(data);
         }
 
         return data;
@@ -61,6 +62,8 @@ export const AuthProvider = ({ children }) => {
                 expires: new Date(decoded_token.exp * 1000),
             });
             setAuthTokens(data.access_token);
+            setUser(data);
+            console.log(data);
         }
 
         return data;

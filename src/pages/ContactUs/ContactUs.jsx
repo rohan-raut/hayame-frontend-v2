@@ -54,7 +54,7 @@ const ContactUs = () => {
 
             <div className="container my-5 contact-us-container">
                 <div className="row m-0">
-                    <div className="col-4 contact-us-contact-info">
+                    <div className="col-12 col-sm-12 col-md-4 col-lg-4 contact-us-contact-info">
                         <h2 className="contact-us-h2">Contact Information</h2>
                         <div>Hayame Solutions SDN BHD, A-6-4, Block A, Megan Phoenix, Jalan 2/142A, Off Jalan Cheras, WP Kuala Lumpur</div>
                         <div>
@@ -66,23 +66,23 @@ const ContactUs = () => {
                             <span className="px-2">+60 12-4343-470</span>
                         </div>
                     </div>
-                    <div className="col-8 contact-us-form-container">
+                    <div className="col-12 col-sm-12 col-md-8 col-lg-8 contact-us-form-container">
                         <h2 className="contact-us-h2">Send us a message</h2>
                         <form onChange={handleContactForm}>
                             <div className="row m-0">
-                                <div class="mb-4 col-6">
+                                <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
                                     <label for="exampleInputEmail1" class="form-label">First Name</label>
                                     <input type="text" className="input-field" onChange={handleChange} required />
                                 </div>
-                                <div class="mb-4 col-6">
+                                <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
                                     <label for="exampleInputEmail1" class="form-label">Last Name</label>
                                     <input type="text" className="input-field" onChange={handleChange} required />
                                 </div>
-                                <div class="mb-4 col-6">
+                                <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
                                     <label for="exampleInputEmail1" class="form-label">Email Address</label>
                                     <input type="email" className="input-field" onChange={handleChange} required />
                                 </div>
-                                <div class="mb-4 col-6">
+                                <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
                                     <label for="exampleInputEmail1" class="form-label">Phone</label>
                                     <input type="number" className="input-field" onChange={handleChange} required />
                                 </div>
