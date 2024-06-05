@@ -5,6 +5,7 @@ import FAQ from '../../components/FAQ/FAQ';
 import { ResidentialCleaning, CleaningInstruments, HomeCleaning } from '../../assets';
 import "./home.css";
 import Footer from '../../components/Footer/Footer';
+import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 
 
 const Home = () => {
@@ -70,8 +71,13 @@ const Home = () => {
             {/* FAQ */}
             <FAQ />
 
+            
+            <SocialMediaIcons />
+
             {/* Footer */}
             <Footer />
+
+
 
         </div>
     )

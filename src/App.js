@@ -5,7 +5,8 @@ import Home from './pages/Home/Home';
 import FAQPage from './pages/FAQ/FAQPage';
 import ContactUs from './pages/ContactUs/ContactUs';
 import Login from './pages/Login/Login';
-import CleanerBooking from './pages/CleanerBooking/CleanerBooking';
+import BookingForm from './pages/BookingForms/BookingForm';
+import CleanerBooking from './pages/BookingForms/CleanerBooking/CleanerBooking';
 import Register from './pages/Register/Register';
 import UserVerification from './pages/UserVerification/UserVerification';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
@@ -51,6 +52,10 @@ function App() {
     {
       path: '/reset-password',
       element: <AuthProvider><ResetPassword /></AuthProvider>,
+    },
+    {
+      path: '/book',
+      element: <AuthProvider><BookingForm /></AuthProvider>,
     },
     {
       path: '/book-cleaner',

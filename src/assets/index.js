@@ -5,6 +5,7 @@ import Logo from "./logo.png";
 import Facebook from "./facebook.svg";
 import Instagram from "./instagram.svg";
 import Whatsapp from "./whatsapp.svg";
+import WhatsappDarkGreen from "./whatsapp-dark-green.svg"
 
 export {
     ResidentialCleaning,
@@ -14,4 +15,5 @@ export {
     Facebook,
     Instagram,
     Whatsapp,
+    WhatsappDarkGreen
 }

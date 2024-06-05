@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../../components/Navbar/Navbar";
 import "./cleanerBooking.css";
-import DatePicker from "../../components/DatePicker/DatePicker";
+import DatePicker from "../../../components/DatePicker/DatePicker";
 import Select from "react-select";
-import UserLoginSignUp from "../../components/UserLoginSignUp/UserLoginSignUp";
-import AuthContext from '../../context/AuthContext';
-import Footer from "../../components/Footer/Footer";
+import UserLoginSignUp from "../../../components/UserLoginSignUp/UserLoginSignUp";
+import AuthContext from '../../../context/AuthContext';
+import Footer from "../../../components/Footer/Footer";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const FormPart1 = ({ FormInputs, setFormInputs }) => {
@@ -69,6 +70,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                             name="frequency"
                             value="one-time"
                             onChange={handleChange}
+                            defaultChecked={FormInputs.frequency === "one-time"}
                         />
                         <span class="cleaner-booking-freq-radio-btn">
                             <i class="las la-check">✔</i>
@@ -92,7 +94,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                     <label
                         class="cleaner-booking-freq-custom-radio"
                     >
-                        <input type="radio" name="frequency" value="weekly" onChange={handleChange} />
+                        <input type="radio" name="frequency" value="weekly" onChange={handleChange} defaultChecked={FormInputs.frequency === "weekly"} />
                         <span class="cleaner-booking-freq-radio-btn">
                             <i class="las la-check">✔</i>
                             <div class="cleaner-booking-freq-inner-card">
@@ -115,7 +117,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                     <label
                         class="cleaner-booking-freq-custom-radio"
                     >
-                        <input type="radio" name="frequency" value="fortnightly" onChange={handleChange} />
+                        <input type="radio" name="frequency" value="fortnightly" onChange={handleChange} defaultChecked={FormInputs.frequency === "fortnightly"} />
                         <span class="cleaner-booking-freq-radio-btn">
                             <i class="las la-check">✔</i>
                             <div class="cleaner-booking-freq-inner-card">
@@ -159,6 +161,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                                 name="no_of_hours"
                                 value="2"
                                 onChange={handleChange}
+                                defaultChecked={FormInputs.no_of_hours === "2"}
                             />
                             <span className="cleaner-booking-no-of-hours-btn">2 hours</span>
                         </label>
@@ -170,6 +173,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                                 name="no_of_hours"
                                 value="3"
                                 onChange={handleChange}
+                                defaultChecked={FormInputs.no_of_hours === "3"}
                             />
                             <span className="cleaner-booking-no-of-hours-btn">3 hours</span>
                         </label>
@@ -181,6 +185,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                                 name="no_of_hours"
                                 value="4"
                                 onChange={handleChange}
+                                defaultChecked={FormInputs.no_of_hours === "4"}
                             />
                             <span className="cleaner-booking-no-of-hours-btn">4 hours</span>
                         </label>
@@ -192,6 +197,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                                 name="no_of_hours"
                                 value="5"
                                 onChange={handleChange}
+                                defaultChecked={FormInputs.no_of_hours === "5"}
                             />
                             <span className="cleaner-booking-no-of-hours-btn">5 hours</span>
                         </label>
@@ -203,6 +209,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                                 name="no_of_hours"
                                 value="6"
                                 onChange={handleChange}
+                                defaultChecked={FormInputs.no_of_hours === "6"}
                             />
                             <span className="cleaner-booking-no-of-hours-btn">6 hours</span>
                         </label>
@@ -214,6 +221,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                                 name="no_of_hours"
                                 value="7"
                                 onChange={handleChange}
+                                defaultChecked={FormInputs.no_of_hours === "7"}
                             />
                             <span className="cleaner-booking-no-of-hours-btn">7 hours</span>
                         </label>
@@ -225,6 +233,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                                 name="no_of_hours"
                                 value="8"
                                 onChange={handleChange}
+                                defaultChecked={FormInputs.no_of_hours === "8"}
                             />
                             <span className="cleaner-booking-no-of-hours-btn">8 hours</span>
                         </label>
@@ -240,8 +249,10 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                     <Select
                         onChange={(e) => {
                             setFormInputs((values) => ({ ...values, ['startTime']: e.value }));
+                            setFormInputs((values) => ({ ...values, ['startTimeLabel']: e.label }));
                         }}
                         options={options}
+                        defaultValue={{ label: FormInputs.startTimeLabel, value: FormInputs.startTime }}
                         required
                         theme={(theme) => ({
                             ...theme,
@@ -282,7 +293,6 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
 
     const options = [
         { value: "Condominium", label: "Condominium" },
-        { value: "HDB", label: "HDB" },
         { value: "Landed Property", label: "Landed Property" },
         { value: "Shophouse Home", label: "Shophouse Home" },
     ];
@@ -381,6 +391,8 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                         lat: await position.coords.latitude,
                         lng: await position.coords.longitude,
                     });
+
+                    reverseGeocode(position.coords.latitude, position.coords.longitude);
                 },
                 function (error) {
                     console.error("Error getting location:", error.message);
@@ -435,6 +447,7 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                                     className="input-field"
                                     name="postCode"
                                     onChange={handleChange}
+                                    defaultValue={FormInputs.postCode}
                                 />
                             </div>
                         </div>
@@ -448,7 +461,9 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                                         options={options}
                                         onChange={(e) => {
                                             setFormInputs((values) => ({ ...values, ['propertyType']: e.value }));
+                                            setFormInputs((values) => ({ ...values, ['propertyTypeLabel']: e.label }));
                                         }}
+                                        defaultValue={{ label: FormInputs.propertyTypeLabel, value: FormInputs.propertyType }}
                                         required
 
                                         theme={(theme) => ({
@@ -499,6 +514,10 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
         setFormInputs((values) => ({ ...values, [name]: value }));
     };
 
+    useEffect(() => {
+        console.log(user);
+    }, [user])
+
     return (
         <div>
             {(authTokens === null) ? <UserLoginSignUp /> : ""}
@@ -514,6 +533,7 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
                                     className="input-field"
                                     name="voucher"
                                     onChange={handleChange}
+                                    defaultValue={FormInputs.voucher}
                                 />
                             </div>
                         </div>
@@ -525,7 +545,9 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
                                 options={PaymentOptions}
                                 onChange={(e) => {
                                     setFormInputs((values) => ({ ...values, ['paymentMethod']: e.value }));
+                                    setFormInputs((values) => ({ ...values, ['paymentMethodLabel']: e.label }));
                                 }}
+                                defaultValue={{ label: FormInputs.paymentMethodLabel, value: FormInputs.paymentMethod }}
                                 required
 
                                 theme={(theme) => ({
@@ -548,6 +570,22 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
                                 }}
                             />
                         </div>
+
+                        {(user && user['phone'] === null) ? (
+                            <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
+                                <div class="mb-4">
+                                    <label class="form-label">Phone</label>
+                                    <input
+                                        type="text"
+                                        className="input-field"
+                                        name="phone"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
+                        ) : ("")}
+
+
                     </div>
                 </form>
             </div>
@@ -556,24 +594,30 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
 };
 
 const CleanerBooking = () => {
+    let { authTokens, user } = useContext(AuthContext);
     const [page, setPage] = useState(0);
     const [FormInputs, setFormInputs] = useState({
         frequency: "",
         selectedDate: "",
         no_of_hours: "",
         startTime: "",
+        startTimeLabel: "",
         address: "",
         postCode: "",
         propertyType: "",
+        propertyTypeLabel: "",
         voucher: "",
         voucherDiscount: 0,
         paymentMethod: "",
+        paymentMethodLabel: "",
         skill: "Cleaner",
         totalCost: "",
+        phone: "",
     });
     const [availablePostCode, setAvailablePostCode] = useState();
 
-    let { authTokens, user } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const notify = (message, type) => {
         if (type === "success") {
@@ -640,6 +684,13 @@ const CleanerBooking = () => {
 
     useEffect(() => {
         getAllPostCodes();
+        console.log(location.state);
+        if (location.state === null) {
+            navigate('/book');
+        }
+        else {
+            setFormInputs((values) => ({ ...values, ['postCode']: location.state.postcode }));
+        }
     }, [])
 
     useEffect(() => {
@@ -711,7 +762,7 @@ const CleanerBooking = () => {
     }
 
     const bookCleaner = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/book-cleaner/', {
+        let response = await fetch('http://127.0.0.1:8000/api/book-cleaner/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -726,7 +777,8 @@ const CleanerBooking = () => {
                 'postcode': FormInputs.postCode,
                 'property_type': FormInputs.propertyType,
                 'voucher': FormInputs.voucher,
-                'payment_method': FormInputs.paymentMethod
+                'payment_method': FormInputs.paymentMethod,
+                'phone': FormInputs.phone,
             })
         })
         let data = await response.json();
@@ -758,6 +810,15 @@ const CleanerBooking = () => {
 
     };
 
+    const prevPage = () => {
+        if (page > 0) {
+            setPage(page - 1);
+        }
+        else{
+            navigate('/book');
+        }
+    }
+
     return (
         <div>
             <Navbar />
@@ -765,6 +826,9 @@ const CleanerBooking = () => {
             <div className="container my-5">
                 <div className="row m-0">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-8 cleaner-booking-form-container">
+                        <div className="mb-4 back-button-div" onClick={prevPage}>
+                            <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" fill="#58BBA6" /></svg>
+                        </div>
                         <div className="row m-0 mb-5">
                             <div className="stepper-div-container">
                                 <div className="stepper-div">
@@ -793,6 +857,11 @@ const CleanerBooking = () => {
                                 <FormPart3 FormInputs={FormInputs} setFormInputs={setFormInputs} />
                             )}
                         </div>
+                        <div className="row m-0 justify-content-end">
+                            <button className="cleaner-booking-form-btn" onClick={ChangeForm}>
+                                {page <= 1 ? "Next" : "Pay Now"}
+                            </button>
+                        </div>
                     </div>
 
                     <div className="col-12 col-sm-12 col-md-12 col-lg-4 p-0 d-flex justify-content-center">
@@ -811,12 +880,6 @@ const CleanerBooking = () => {
                                         <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
                                     </svg>
                                 </label>
-                            </div>
-
-                            <div className="hide-desktop my-2">
-                                <button className="cleaner-booking-form-btn" onClick={ChangeForm}>
-                                    {page <= 1 ? "Next" : "Pay Now"}
-                                </button>
                             </div>
 
                             <hr className="cleaner-booking-hr" />
@@ -871,13 +934,6 @@ const CleanerBooking = () => {
                                 <div>{(FormInputs.totalCost === "") ? "-" : "RM " + FormInputs.totalCost}</div>
                             </div>
 
-                            <hr className="cleaner-booking-hr" />
-
-                            <div className="hide-mobile">
-                                <button className="cleaner-booking-form-btn" onClick={ChangeForm}>
-                                    {page <= 1 ? "Next" : "Pay Now"}
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>

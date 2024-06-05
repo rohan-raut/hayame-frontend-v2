@@ -19,13 +19,13 @@ const Footer = () => {
                     <span className="px-2">+60 12-4343-470</span>
                 </div>
                 <div className="py-3">
-                    <a className="footer-social-icons" href="">
+                    <a className="footer-social-icons" href="https://www.instagram.com/hayamesolution" target="_blank">
                         <img src={Instagram} alt="" />
                     </a>
-                    <a className="footer-social-icons" href="">
+                    <a className="footer-social-icons" href="https://www.facebook.com/hayamedotmy" target="_blank">
                         <img src={Facebook} alt="" />
                     </a>
-                    <a className="footer-social-icons" href="">
+                    <a className="footer-social-icons" href="https://wa.me/60124343470" target="_blank">
                         <img src={Whatsapp} alt="" />
                     </a>
                 </div>
@@ -64,7 +64,7 @@ const Footer = () => {
                         <li><Link to='/' className="footer-links">About Us</Link></li>
                         <li><Link to='/contact-us' className="footer-links">Contact Us</Link></li>
                         <li><Link to='/faqs' className="footer-links">FAQs</Link></li>
-                        <li><Link to='/book-cleaner' className="footer-links">Book Cleaner</Link></li>
+                        <li><Link to='/book' className="footer-links">Make Booking</Link></li>
                     </ul>
                 </div>
             </div>

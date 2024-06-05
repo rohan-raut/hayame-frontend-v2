@@ -31,11 +31,11 @@ const Navbar = () => {
                 <ul className="navbar-ul">
                     <li><Link to="about.html" className="navbar-link">About Us</Link></li>
                     <li><Link to="/contact-us" className="navbar-link">Contact Us</Link></li>
-                    <li><Link to="/book-cleaner" className="navbar-link">Book Cleaner</Link></li>
+                    <li><Link to="/book" className="navbar-link">Make Booking</Link></li>
                     {(authTokens !== null) ? (
                         <li className="navbar-dropdown-1">
                             <span className="navbar-link">
-                                Rohan Raut <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                                {user['first_name'] + " " + user['last_name']} <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-360 280-560h400L480-360Z"/></svg>
                             </span>
                             <div className="navbar-dropdown">
                                 <ul>
