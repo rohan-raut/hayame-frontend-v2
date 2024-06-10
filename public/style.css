@@ -1,5 +1,5 @@
 body {
-    background-color: #F9FFFF;
+    background-color: #F9FFFF !important;
     /* background-color: green; */
     font-family: 'Poppins', sans-serif !important;
 }

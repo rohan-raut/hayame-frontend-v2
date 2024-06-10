@@ -1,0 +1,28 @@
+.profile-form-card {
+    border: 2px solid #58BBA6;
+    padding: 40px 20px;
+    border-radius: 20px;
+}
+
+.profile-h1 {
+    width: fit-content;
+    padding: 0px 10px;
+    margin: 0;
+    position: relative;
+    top: 5%;
+    left: 20px;
+    background-color: #F9FFFF;
+}
+
+.profile-form-btn {
+    width: 150px;
+    background-color: #58BBA6;
+    color: white;
+    padding: 10px 0;
+    border: none;
+    border-radius: 10px;
+}
+
+.profile-form-btn:hover {
+    background-color: #515559;
+}

@@ -6,6 +6,7 @@ import './bookingForm.css';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import CleanerBooking from './CleanerBooking/CleanerBooking';
 import { useNavigate } from 'react-router-dom';
+import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 
 const BookingForm = () => {
     const [service, setService] = useState();
@@ -91,7 +92,7 @@ const BookingForm = () => {
 
             <div className="container my-5">
                 <div className="row m-0">
-                    <div className="col-12 col-sm-12 col-md-12 col-lg-8 cleaner-booking-form-container">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-8 booking-form-container">
 
                         <h2 className="booking-form-h2">Instructions</h2>
 
@@ -147,7 +148,7 @@ const BookingForm = () => {
                                 </div>
                             </div>
                             <div className="row mx-0 justify-content-end my-2">
-                                <button className="cleaner-booking-form-btn" type="submit">
+                                <button className="booking-form-btn" type="submit">
                                     Next
                                 </button>
                             </div>
@@ -158,6 +159,7 @@ const BookingForm = () => {
             </div>
 
             <Footer />
+            <SocialMediaIcons />
 
         </div>
     );

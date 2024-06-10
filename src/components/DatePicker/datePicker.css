@@ -1,5 +1,5 @@
 .calendar-wrapper {
-    /* width: 450px; */
+    width: fit-content;
     background: #fff;
     border-radius: 10px;
     /* box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); */
@@ -10,7 +10,7 @@
 .calendar-wrapper .calendar-header {
     display: flex;
     align-items: center;
-    padding: 25px 30px 10px;
+    padding: 7px 30px 7px;
     justify-content: space-between;
     background-color: #58BBA6;
 }
@@ -20,14 +20,14 @@
 }
 
 .calendar-header .icons span {
-    height: 38px;
-    width: 38px;
-    margin: 0 1px;
+    height: 35px;
+    width: 35px;
+    /* margin: 0 1px; */
     cursor: pointer;
     color: black;
     text-align: center;
     line-height: 38px;
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     user-select: none;
     border-radius: 50%;
 }
@@ -41,12 +41,12 @@
 }
 
 .calendar-header .current-date {
-    font-size: 1.45rem;
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .calendar-section {
-    padding: 20px;
+    padding: 15px;
 }
 
 .calendar-section ul {
@@ -64,7 +64,7 @@
 .calendar-section li {
     color: #333;
     width: calc(100% / 7);
-    font-size: 1.07rem;
+    font-size: 0.9rem;
 }
 
 .calendar-section .weeks li {
@@ -76,7 +76,7 @@
     z-index: 1;
     cursor: pointer;
     position: relative;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .days li.inactive {

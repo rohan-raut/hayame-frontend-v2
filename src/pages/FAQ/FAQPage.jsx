@@ -3,6 +3,7 @@ import './faqPage.css';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar';
+import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 
 
 const FAQPage = () => {
@@ -142,6 +143,7 @@ const FAQPage = () => {
                     </div>
                 </div>
             </div>
+            <SocialMediaIcons />
         </div>
 
     )

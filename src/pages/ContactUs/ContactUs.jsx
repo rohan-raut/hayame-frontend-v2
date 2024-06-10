@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 
 
 const ContactUs = () => {
@@ -102,6 +103,8 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
+
+            <SocialMediaIcons />
         </div>
 
     )

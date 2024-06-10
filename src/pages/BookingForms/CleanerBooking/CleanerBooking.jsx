@@ -8,590 +8,11 @@ import AuthContext from '../../../context/AuthContext';
 import Footer from "../../../components/Footer/Footer";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import { useLocation, useNavigate } from "react-router-dom";
+import SocialMediaIcons from "../../../components/SocialMediaIcons/SocialMediaIcons";
+import FormPart1 from "./FormPart1";
+import FormPart2 from "./FormPart2";
+import FormPart3 from "./FormPart3";
 
-
-const FormPart1 = ({ FormInputs, setFormInputs }) => {
-    const date = new Date();
-    // const formatter = new
-    const options = [
-        { value: "07:00", label: "07:00" },
-        { value: "07:30", label: "07:30" },
-        { value: "08:00", label: "08:00" },
-        { value: "08:30", label: "08:30" },
-        { value: "09:00", label: "09:00" },
-        { value: "09:30", label: "09:30" },
-        { value: "10:00", label: "10:00" },
-        { value: "10:30", label: "10:30" },
-        { value: "11:00", label: "11:00" },
-        { value: "11:30", label: "11:30" },
-        { value: "12:00", label: "12:00" },
-        { value: "12:30", label: "12:30" },
-        { value: "13:00", label: "13:00" },
-        { value: "13:30", label: "13:30" },
-        { value: "14:00", label: "14:00" },
-        { value: "14:30", label: "14:30" },
-        { value: "15:00", label: "15:00" },
-        { value: "15:30", label: "15:30" },
-        { value: "16:00", label: "16:00" },
-        { value: "16:30", label: "16:30" },
-        { value: "17:00", label: "17:00" },
-        { value: "17:30", label: "17:30" },
-        { value: "18:00", label: "18:00" },
-        { value: "18:30", label: "18:30" },
-        { value: "19:00", label: "19:00" },
-        { value: "19:30", label: "19:30" },
-        { value: "20:00", label: "20:00" },
-        { value: "20:30", label: "20:30" },
-        { value: "21:00", label: "21:00" },
-        { value: "21:30", label: "21:30" },
-        { value: "22:00", label: "22:00" },
-    ];
-
-
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setFormInputs((values) => ({ ...values, [name]: value }));
-    };
-
-    return (
-        <div>
-            {/* Frequency buttons */}
-            <div className="row form-section-row">
-                <div className="form-label-bold">
-                    How frequently would you like the cleaning service?
-                </div>
-                <div class="cleaner-booking-freq-radio-buttons">
-                    <label
-                        class="cleaner-booking-freq-custom-radio"
-                    >
-                        <input
-                            type="radio"
-                            name="frequency"
-                            value="one-time"
-                            onChange={handleChange}
-                            defaultChecked={FormInputs.frequency === "one-time"}
-                        />
-                        <span class="cleaner-booking-freq-radio-btn">
-                            <i class="las la-check">✔</i>
-                            <div class="cleaner-booking-freq-inner-card">
-                                <h3 class="cleaner-booking-h3">One-Time</h3>
-                                <div className="cleaner-booking-freq-price-discount color-transparent">
-                                    Save 0%
-                                </div>
-                                <div className="cleaner-booking-freq-price">
-                                    RM <span classname="cleaner-booking-highlight-text">30</span>{" "}
-                                    /hr
-                                </div>
-                                <div className="cleaner-booking-freq-list">
-                                    <div>✓ Basic Cleaning</div>
-                                    <div></div>
-                                </div>
-                                <div className="cleaner-booking-freq-btn">Select</div>
-                            </div>
-                        </span>
-                    </label>
-                    <label
-                        class="cleaner-booking-freq-custom-radio"
-                    >
-                        <input type="radio" name="frequency" value="weekly" onChange={handleChange} defaultChecked={FormInputs.frequency === "weekly"} />
-                        <span class="cleaner-booking-freq-radio-btn">
-                            <i class="las la-check">✔</i>
-                            <div class="cleaner-booking-freq-inner-card">
-                                <h3 class="cleaner-booking-h3">Weekly</h3>
-                                <div className="cleaner-booking-freq-price-discount">
-                                    Save 17%
-                                </div>
-                                <div className="cleaner-booking-freq-price">
-                                    RM <span classname="cleaner-booking-highlight-text">25</span>{" "}
-                                    /hr
-                                </div>
-                                <div className="cleaner-booking-freq-list">
-                                    <div>✓ Save time to book</div>
-                                    <div>✓ Same cleaner</div>
-                                </div>
-                                <div className="cleaner-booking-freq-btn">Select</div>
-                            </div>
-                        </span>
-                    </label>
-                    <label
-                        class="cleaner-booking-freq-custom-radio"
-                    >
-                        <input type="radio" name="frequency" value="fortnightly" onChange={handleChange} defaultChecked={FormInputs.frequency === "fortnightly"} />
-                        <span class="cleaner-booking-freq-radio-btn">
-                            <i class="las la-check">✔</i>
-                            <div class="cleaner-booking-freq-inner-card">
-                                <h3 class="cleaner-booking-h3">Fortnightly</h3>
-                                <div className="cleaner-booking-freq-price-discount">
-                                    Save 20%
-                                </div>
-                                <div className="cleaner-booking-freq-price">
-                                    RM <span classname="cleaner-booking-highlight-text">20</span>{" "}
-                                    /hr
-                                </div>
-                                <div className="cleaner-booking-freq-list">
-                                    <div>✓ Save time to book</div>
-                                    <div>✓ Same cleaner</div>
-                                </div>
-                                <div className="cleaner-booking-freq-btn">Select</div>
-                            </div>
-                        </span>
-                    </label>
-                </div>
-            </div>
-
-            {/* Calendar */}
-            <div className="row form-section-row">
-                <div className="form-label-bold">Select the Start Date</div>
-                <div className="col-12 col-sm-12 col-md-10 col-lg-10 p-0">
-                    <DatePicker FormInputs={FormInputs} setFormInputs={setFormInputs} />
-                </div>
-            </div>
-
-            {/* No. of Hours */}
-            <div className="row form-section-row">
-                <div className="form-label-bold">
-                    How many hours would you like the service?
-                </div>
-                <div className="cleaner-booking-no-of-hours-container px-0">
-                    <div>
-                        <label className="cleaner-booking-no-of-hours-radio">
-                            <input
-                                type="radio"
-                                name="no_of_hours"
-                                value="2"
-                                onChange={handleChange}
-                                defaultChecked={FormInputs.no_of_hours === "2"}
-                            />
-                            <span className="cleaner-booking-no-of-hours-btn">2 hours</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="cleaner-booking-no-of-hours-radio">
-                            <input
-                                type="radio"
-                                name="no_of_hours"
-                                value="3"
-                                onChange={handleChange}
-                                defaultChecked={FormInputs.no_of_hours === "3"}
-                            />
-                            <span className="cleaner-booking-no-of-hours-btn">3 hours</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="cleaner-booking-no-of-hours-radio">
-                            <input
-                                type="radio"
-                                name="no_of_hours"
-                                value="4"
-                                onChange={handleChange}
-                                defaultChecked={FormInputs.no_of_hours === "4"}
-                            />
-                            <span className="cleaner-booking-no-of-hours-btn">4 hours</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="cleaner-booking-no-of-hours-radio">
-                            <input
-                                type="radio"
-                                name="no_of_hours"
-                                value="5"
-                                onChange={handleChange}
-                                defaultChecked={FormInputs.no_of_hours === "5"}
-                            />
-                            <span className="cleaner-booking-no-of-hours-btn">5 hours</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="cleaner-booking-no-of-hours-radio">
-                            <input
-                                type="radio"
-                                name="no_of_hours"
-                                value="6"
-                                onChange={handleChange}
-                                defaultChecked={FormInputs.no_of_hours === "6"}
-                            />
-                            <span className="cleaner-booking-no-of-hours-btn">6 hours</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="cleaner-booking-no-of-hours-radio">
-                            <input
-                                type="radio"
-                                name="no_of_hours"
-                                value="7"
-                                onChange={handleChange}
-                                defaultChecked={FormInputs.no_of_hours === "7"}
-                            />
-                            <span className="cleaner-booking-no-of-hours-btn">7 hours</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="cleaner-booking-no-of-hours-radio">
-                            <input
-                                type="radio"
-                                name="no_of_hours"
-                                value="8"
-                                onChange={handleChange}
-                                defaultChecked={FormInputs.no_of_hours === "8"}
-                            />
-                            <span className="cleaner-booking-no-of-hours-btn">8 hours</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            {/* {Start time section} */}
-
-            <div className="row form-section-row">
-                <div className="form-label-bold">Enter your start time here</div>
-                <div className="col-12 col-sm-12 col-md-6 col-lg-6 m-0 p-0">
-                    <Select
-                        onChange={(e) => {
-                            setFormInputs((values) => ({ ...values, ['startTime']: e.value }));
-                            setFormInputs((values) => ({ ...values, ['startTimeLabel']: e.label }));
-                        }}
-                        options={options}
-                        defaultValue={{ label: FormInputs.startTimeLabel, value: FormInputs.startTime }}
-                        required
-                        theme={(theme) => ({
-                            ...theme,
-                            borderRadius: 6,
-                            minHeight: 40,
-                            colors: {
-                                ...theme.colors,
-                                primary25: '#A4E2D5',
-                                primary: '#58BBA6',
-                            },
-                        })}
-
-                        styles={{
-                            control: (baseStyles, state) => ({
-                                ...baseStyles,
-                                borderColor: state.isFocused ? '#A4E2D5' : 'gray',
-                                padding: '3px'
-                            }),
-                        }}
-                    />
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const FormPart2 = ({ FormInputs, setFormInputs }) => {
-    const [coordinates, setCoordinates] = useState({
-        lat: 37.39094933041195,
-        lng: -122.02503913145092,
-    });
-
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setFormInputs((values) => ({ ...values, [name]: value }));
-    };
-
-    const options = [
-        { value: "Condominium", label: "Condominium" },
-        { value: "Landed Property", label: "Landed Property" },
-        { value: "Shophouse Home", label: "Shophouse Home" },
-    ];
-
-
-    const reverseGeocode = (latitude, longitude) => {
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-
-                let api = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=AIzaSyDECJ4Zx4x_Iz5iRSTCvewjuDcaCNmz6l8";
-
-                fetch(api, {
-                    method: "GET",
-                })
-                    .then((response) => response.json())
-                    .then((json) => {
-                        console.log(json["results"][0]["formatted_address"]);
-                        setFormInputs(values => ({ ...values, ["address"]: json["results"][0]["formatted_address"] }));
-                        document.getElementById('address-field').value = json["results"][0]["formatted_address"];
-                    });
-
-            }, function (error) {
-                console.error("Error getting location:", error.message);
-            });
-        }
-        else {
-            console.log("Geolocation is not supported by this browser.");
-        }
-    }
-
-
-    useEffect(() => {
-        async function initMap() {
-            // Request needed libraries.
-            const google = window.google;
-            const { Map, InfoWindow } = await google.maps.importLibrary("maps");
-            const { AdvancedMarkerElement } = await google.maps.importLibrary(
-                "marker"
-            );
-            const map = new Map(document.getElementById("map"), {
-                center: { lat: coordinates.lat, lng: coordinates.lng },
-                zoom: 17,
-                mapId: "4504f8b37365c3d0",
-                disableDefaultUI: true,
-            });
-            const infoWindow = new InfoWindow();
-            const draggableMarker = new AdvancedMarkerElement({
-                map,
-                position: { lat: coordinates.lat, lng: coordinates.lng },
-                gmpDraggable: true,
-                title: "Drag to your location",
-            });
-
-            draggableMarker.addListener("dragend", (event) => {
-                const position = draggableMarker.position;
-                reverseGeocode(position.lat, position.lng);
-
-                infoWindow.close();
-                // infoWindow.setContent(`Pin dropped at: ${position.lat}, ${position.lng}`);
-                // infoWindow.open(draggableMarker.map, draggableMarker);
-            });
-
-        }
-
-        initMap();
-    }, [coordinates]);
-
-    const handleJobLocation = (e) => {
-        var id = "address-field";
-        const google = window.google;
-
-        var autocomplete;
-        autocomplete = new google.maps.places.Autocomplete(
-            document.getElementById(id),
-            {
-                types: ["geocode", "establishment"],
-            }
-        );
-
-        autocomplete.addListener("place_changed", function () {
-            var near_place = autocomplete.getPlace();
-            setCoordinates({
-                lat: near_place['geometry']['location'].lat(),
-                lng: near_place['geometry']['location'].lng()
-            })
-            setFormInputs((values) => ({ ...values, ["address"]: near_place["formatted_address"] }));
-        });
-    };
-
-    const getCurrentLocation = async () => {
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                async function (position) {
-
-                    setCoordinates({
-                        lat: await position.coords.latitude,
-                        lng: await position.coords.longitude,
-                    });
-
-                    reverseGeocode(position.coords.latitude, position.coords.longitude);
-                },
-                function (error) {
-                    console.error("Error getting location:", error.message);
-                }
-            );
-        } else {
-            console.log("Geolocation is not supported by this browser.");
-        }
-    };
-
-    return (
-        <div>
-            <form>
-                <div className="row m-0">
-                    <div className="form-label-bold">Select your location</div>
-                    <div id="map" className="mb-4"></div>
-                    <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-8">
-                        <label for="exampleInputEmail1" class="form-label">
-                            Address
-                        </label>
-                        <input
-                            type="text"
-                            className="input-field"
-                            id="address-field"
-                            defaultValue={FormInputs.address}
-                            onChange={handleJobLocation}
-                        />
-                    </div>
-                    <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-4 cleaner-booking-current-location-div">
-                        <button
-                            type="button"
-                            onClick={getCurrentLocation}
-                            className="cleaner-booking-current-location-btn"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                height="24"
-                                viewBox="0 -960 960 960"
-                                width="24"
-                            >
-                                <path d="M440-42v-80q-125-14-214.5-103.5T122-440H42v-80h80q14-125 103.5-214.5T440-838v-80h80v80q125 14 214.5 103.5T838-520h80v80h-80q-14 125-103.5 214.5T520-122v80h-80Zm40-158q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-120q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T560-480q0-33-23.5-56.5T480-560q-33 0-56.5 23.5T400-480q0 33 23.5 56.5T480-400Zm0-80Z" />
-                            </svg>{" "}
-                            Get Current Location
-                        </button>
-                    </div>
-                    <div className="row mx-0 my-4 justify-content-between">
-                        <div className="col-12 col-sm-12 col-md-5 col-lg-5 p-0">
-                            <div class="mb-4">
-                                <label class="form-label">Post code</label>
-                                <input
-                                    type="text"
-                                    className="input-field"
-                                    name="postCode"
-                                    onChange={handleChange}
-                                    defaultValue={FormInputs.postCode}
-                                />
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-12 col-md-5 col-lg-5 p-0">
-                            <div class="mb-4">
-                                <label class="form-label" style={{ width: "max-content" }}>
-                                    Type of Property
-                                </label>
-                                <div>
-                                    <Select
-                                        options={options}
-                                        onChange={(e) => {
-                                            setFormInputs((values) => ({ ...values, ['propertyType']: e.value }));
-                                            setFormInputs((values) => ({ ...values, ['propertyTypeLabel']: e.label }));
-                                        }}
-                                        defaultValue={{ label: FormInputs.propertyTypeLabel, value: FormInputs.propertyType }}
-                                        required
-
-                                        theme={(theme) => ({
-                                            ...theme,
-                                            borderRadius: 6,
-                                            minHeight: 40,
-                                            colors: {
-                                                ...theme.colors,
-                                                primary25: '#A4E2D5',
-                                                primary: '#58BBA6',
-                                            },
-                                        })}
-
-                                        styles={{
-                                            control: (baseStyles, state) => ({
-                                                ...baseStyles,
-                                                borderColor: state.isFocused ? '#A4E2D5' : 'gray',
-                                                padding: '4px'
-                                            }),
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    );
-};
-
-const FormPart3 = ({ FormInputs, setFormInputs }) => {
-    let { authTokens, user } = useContext(AuthContext);
-
-    const VoucherOptions = [
-        { value: "HAY564", label: "HAY564" },
-        { value: "HAY147", label: "HAY147" },
-    ];
-
-    const PaymentOptions = [
-        { value: "Online", label: "Online" },
-        { value: "Cash", label: "Cash" },
-    ];
-
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setFormInputs((values) => ({ ...values, [name]: value }));
-    };
-
-    useEffect(() => {
-        console.log(user);
-    }, [user])
-
-    return (
-        <div>
-            {(authTokens === null) ? <UserLoginSignUp /> : ""}
-
-            <div>
-                <form>
-                    <div className="row m-0">
-                        <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                            <div class="mb-4">
-                                <label class="form-label">Apply Voucher</label>
-                                <input
-                                    type="text"
-                                    className="input-field"
-                                    name="voucher"
-                                    onChange={handleChange}
-                                    defaultValue={FormInputs.voucher}
-                                />
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                            <label class="form-label">
-                                Payment Method
-                            </label>
-                            <Select
-                                options={PaymentOptions}
-                                onChange={(e) => {
-                                    setFormInputs((values) => ({ ...values, ['paymentMethod']: e.value }));
-                                    setFormInputs((values) => ({ ...values, ['paymentMethodLabel']: e.label }));
-                                }}
-                                defaultValue={{ label: FormInputs.paymentMethodLabel, value: FormInputs.paymentMethod }}
-                                required
-
-                                theme={(theme) => ({
-                                    ...theme,
-                                    borderRadius: 6,
-                                    minHeight: 40,
-                                    colors: {
-                                        ...theme.colors,
-                                        primary25: '#A4E2D5',
-                                        primary: '#58BBA6',
-                                    },
-                                })}
-
-                                styles={{
-                                    control: (baseStyles, state) => ({
-                                        ...baseStyles,
-                                        borderColor: state.isFocused ? '#A4E2D5' : 'gray',
-                                        padding: '4px'
-                                    }),
-                                }}
-                            />
-                        </div>
-
-                        {(user && user['phone'] === null) ? (
-                            <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                                <div class="mb-4">
-                                    <label class="form-label">Phone</label>
-                                    <input
-                                        type="text"
-                                        className="input-field"
-                                        name="phone"
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </div>
-                        ) : ("")}
-
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
-};
 
 const CleanerBooking = () => {
     let { authTokens, user } = useContext(AuthContext);
@@ -825,7 +246,7 @@ const CleanerBooking = () => {
 
             <div className="container my-5">
                 <div className="row m-0">
-                    <div className="col-12 col-sm-12 col-md-12 col-lg-8 cleaner-booking-form-container">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-8 booking-form-container">
                         <div className="mb-4 back-button-div" onClick={prevPage}>
                             <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" fill="#58BBA6" /></svg>
                         </div>
@@ -858,7 +279,7 @@ const CleanerBooking = () => {
                             )}
                         </div>
                         <div className="row m-0 justify-content-end">
-                            <button className="cleaner-booking-form-btn" onClick={ChangeForm}>
+                            <button className="booking-form-btn" onClick={ChangeForm}>
                                 {page <= 1 ? "Next" : "Pay Now"}
                             </button>
                         </div>
@@ -866,9 +287,9 @@ const CleanerBooking = () => {
 
                     <div className="col-12 col-sm-12 col-md-12 col-lg-4 p-0 d-flex justify-content-center">
                         <input type="checkbox" id="booking-summary-active" />
-                        <div className="row m-0 cleaner-booking-summary-card">
+                        <div className="row m-0 booking-summary-card">
                             <div className="d-flex justify-content-between align-items-center">
-                                <h4 className="cleaner-booking-h4">Booking Summary</h4>
+                                <h4 className="booking-h4">Booking Summary</h4>
                                 <label for="booking-summary-active">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -882,7 +303,7 @@ const CleanerBooking = () => {
                                 </label>
                             </div>
 
-                            <hr className="cleaner-booking-hr" />
+                            <hr className="booking-hr" />
 
                             <div className="d-flex justify-content-between py-1">
                                 <div>Cleaning Frequency</div>
@@ -911,7 +332,7 @@ const CleanerBooking = () => {
 
                             {FormInputs.voucherDiscount !== 0 ? (
                                 <div>
-                                    <hr className="cleaner-booking-hr" />
+                                    <hr className="booking-hr" />
 
                                     <div className="d-flex justify-content-between py-1">
                                         <div>Applied Voucher</div>
@@ -927,7 +348,7 @@ const CleanerBooking = () => {
                             )}
 
 
-                            <hr className="cleaner-booking-hr" />
+                            <hr className="booking-hr" />
 
                             <div className="d-flex justify-content-between">
                                 <div>Total</div>
@@ -940,6 +361,7 @@ const CleanerBooking = () => {
             </div>
 
             <Footer />
+            <SocialMediaIcons />
 
         </div>
     );

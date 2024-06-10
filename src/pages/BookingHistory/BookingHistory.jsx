@@ -3,6 +3,7 @@ import { Space, Table, Tag } from 'antd';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import AuthContext from '../../context/AuthContext';
+import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 
 
 const BookingHistory = () => {
@@ -63,7 +64,7 @@ const BookingHistory = () => {
     ];
 
     const getTableData = async() => {
-        let response = await fetch('https://djangotest.hayame.my/api/booking-history/', {
+        let response = await fetch('http://127.0.0.1:8000/api/booking-history/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,6 +91,7 @@ const BookingHistory = () => {
                 </div>
             </div>
 
+            <SocialMediaIcons />
         </div>
     )
 }

@@ -104,7 +104,7 @@ const DatePicker = ( {FormInputs, setFormInputs}) => {
     return (
         <div class="calendar-wrapper">
             <div className="calendar-header">
-                <p class="current-date">{currentDate}</p>
+                <p class="current-date p-0 m-0">{currentDate}</p>
                 <div class="icons">
                     <span id="prev" class="material-symbols-rounded" onClick={changeMonth}>chevron_left</span>
                     <span id="next" class="material-symbols-rounded" onClick={changeMonth}>chevron_right</span>

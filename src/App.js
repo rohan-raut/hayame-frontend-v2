@@ -13,6 +13,7 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
 import CheckBookings from './pages/CheckBookings/CheckBookings';
+import Profile from './pages/Profile/Profile';
 import { AuthProvider } from './context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -69,7 +70,10 @@ function App() {
       path: '/check-bookings',
       element: <AuthProvider><CheckBookings /></AuthProvider>,
     },
-
+    {
+      path: '/profile',
+      element: <AuthProvider><Profile /></AuthProvider>,
+    },
   ])
 
 

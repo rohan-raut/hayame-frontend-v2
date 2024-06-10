@@ -35,13 +35,13 @@ const Navbar = () => {
                     {(authTokens !== null) ? (
                         <li className="navbar-dropdown-1">
                             <span className="navbar-link">
-                                {user['first_name'] + " " + user['last_name']} <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                                {user['first_name'] + " " + user['last_name']} <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-360 280-560h400L480-360Z" /></svg>
                             </span>
                             <div className="navbar-dropdown">
                                 <ul>
                                     <li><Link to='/booking-history' className="navbar-link p-0">Booking History</Link></li>
                                     {(user['user_role'] === 'Admin' || user['user_role'] === 'Manager') ? <li><Link to='/check-bookings' className="navbar-link p-0">Check Bookings</Link></li> : ""}
-                                    <li>Profile</li>
+                                    <li><Link to='/profile' className="navbar-link p-0">Profile</Link></li>
                                     <li onClick={logoutUser} className="cursor-pointer">Logout</li>
                                 </ul>
                             </div>
