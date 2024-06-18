@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import Navbar from "../../../components/Navbar/Navbar";
-import "./cleanerBooking.css";
+import "./taskErrandsBooking.css";
 import DatePicker from "../../../components/DatePicker/DatePicker";
 import Select from "react-select";
 import UserLoginSignUp from "../../../components/UserLoginSignUp/UserLoginSignUp";
@@ -12,10 +12,9 @@ import SocialMediaIcons from "../../../components/SocialMediaIcons/SocialMediaIc
 import FormPart1 from "./FormPart1";
 import FormPart2 from "./FormPart2";
 import FormPart3 from "./FormPart3";
-import formatDate from "../../../utils/FormatDate";
 
 
-const CleanerBooking = () => {
+const TaskErrandsBooking = () => {
     let { authTokens, user } = useContext(AuthContext);
     const [page, setPage] = useState(0);
     const [FormInputs, setFormInputs] = useState({
@@ -24,7 +23,6 @@ const CleanerBooking = () => {
         no_of_hours: "",
         startTime: "",
         startTimeLabel: "",
-        workerCount: 0,
         address: "",
         postCode: "",
         propertyType: "",
@@ -33,9 +31,7 @@ const CleanerBooking = () => {
         voucherDiscount: 0,
         paymentMethod: "",
         paymentMethodLabel: "",
-        skill: "Cleaner",
-        addon: "",
-        addonHours: 0,
+        skill: "Task Errands",
         totalCost: "",
         phone: "",
     });
@@ -99,9 +95,6 @@ const CleanerBooking = () => {
                     'postcode': FormInputs.postCode,
                     'skill': FormInputs.skill,
                     'voucher': FormInputs.voucher,
-                    'addon': FormInputs.addon,
-                    'addon_service_hours': FormInputs.addonHours,
-                    'worker_count': FormInputs.workerCount
                 })
             })
             let data = await response.json();
@@ -123,7 +116,7 @@ const CleanerBooking = () => {
 
     useEffect(() => {
         getCostOfBooking();
-    }, [FormInputs.frequency, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher, FormInputs.addon, FormInputs.addonHours, FormInputs.workerCount])
+    }, [FormInputs.frequency, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher])
 
     const validateForm1 = () => {
         if (FormInputs.frequency === "") {
@@ -140,14 +133,6 @@ const CleanerBooking = () => {
         }
         if (FormInputs.startTime === "") {
             notify("Please select the start time", "error");
-            return false;
-        }
-        if (FormInputs.workerCount === 0) {
-            notify("Please enter number of cleaners required", "error");
-            return false;
-        }
-        if(FormInputs.frequency === "one-time" && parseInt(FormInputs.workerCount) === 1 && parseInt(FormInputs.no_of_hours) < 4){
-            notify("Minimum 4 hrs. booking required for One-time", "error");
             return false;
         }
 
@@ -197,7 +182,7 @@ const CleanerBooking = () => {
         return true;
     }
 
-    const bookCleaner = async () => {
+    const bookTaskErrands = async () => {
         let response = await fetch('https://djangotest.hayame.my/api/book-cleaner/', {
             method: 'POST',
             headers: {
@@ -215,9 +200,6 @@ const CleanerBooking = () => {
                 'voucher': FormInputs.voucher,
                 'payment_method': FormInputs.paymentMethod,
                 'phone': FormInputs.phone,
-                'addon': FormInputs.addon,
-                'addon_service_hours': FormInputs.addonHours,
-                'worker_count': FormInputs.workerCount,
             })
         })
         let data = await response.json();
@@ -242,7 +224,7 @@ const CleanerBooking = () => {
         else {
             if (validateForm3()) {
                 // call api to save booking
-                bookCleaner();
+                bookTaskErrands();
                 // redirect to booking history
             }
         }
@@ -329,19 +311,15 @@ const CleanerBooking = () => {
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Starting Date</div>
-                                <div>{(FormInputs.selectedDate === "") ? "-" : formatDate(FormInputs.selectedDate)}</div>
+                                <div>{(FormInputs.selectedDate === "") ? "-" : FormInputs.selectedDate}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Start Time</div>
-                                <div>{(FormInputs.startTimeLabel === "") ? "-" : FormInputs.startTimeLabel}</div>
+                                <div>{(FormInputs.startTime === "") ? "-" : FormInputs.startTime}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Hours per session</div>
-                                <div>{(FormInputs.no_of_hours === "") ? "-" : FormInputs.no_of_hours + FormInputs.addonHours + " hours"}</div>
-                            </div>
-                            <div className="d-flex justify-content-between py-1">
-                                <div>Cleaner Count</div>
-                                <div>{(FormInputs.workerCount === 0) ? "-" : FormInputs.workerCount}</div>
+                                <div>{(FormInputs.no_of_hours === "") ? "-" : FormInputs.no_of_hours + " hours"}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>No. of sessions</div>
@@ -358,11 +336,11 @@ const CleanerBooking = () => {
 
                                     <div className="d-flex justify-content-between py-1">
                                         <div>Applied Voucher</div>
-                                        <div>{FormInputs.voucher}</div>
+                                        <div>HAY956</div>
                                     </div>
                                     <div className="d-flex justify-content-between py-1">
                                         <div>Voucher Discount</div>
-                                        <div>RM {FormInputs.voucherDiscount}</div>
+                                        <div>17 %</div>
                                     </div>
                                 </div>
                             ) : (
@@ -389,4 +367,4 @@ const CleanerBooking = () => {
     );
 };
 
-export default CleanerBooking;
+export default TaskErrandsBooking;

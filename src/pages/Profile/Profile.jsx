@@ -21,7 +21,7 @@ const Profile = () => {
     };
 
     const getUserDetails = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/get-user-details/', {
+        let response = await fetch('https://djangotest.hayame.my/api/get-user-details/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const Profile = () => {
 
         if(FormInput.password !== ""){
             if(verifyPassword()){
-                let response = await fetch('http://127.0.0.1:8000/api/change-password/', {
+                let response = await fetch('https://djangotest.hayame.my/api/change-password/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const Profile = () => {
             }
         }
 
-        let response = await fetch('http://127.0.0.1:8000/api/update/user-details/', {
+        let response = await fetch('https://djangotest.hayame.my/api/update/user-details/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

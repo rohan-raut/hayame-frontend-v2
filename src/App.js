@@ -7,6 +7,11 @@ import ContactUs from './pages/ContactUs/ContactUs';
 import Login from './pages/Login/Login';
 import BookingForm from './pages/BookingForms/BookingForm';
 import CleanerBooking from './pages/BookingForms/CleanerBooking/CleanerBooking';
+import GeneralWorkerBooking from './pages/BookingForms/GeneralWorkerBooking/GeneralWorkerBooking';
+import GardenerBooking from './pages/BookingForms/GardenerBooking/GardenerBooking';
+import MoverPackerBooking from './pages/BookingForms/MoverPackerBooking/MoverPackerBooking';
+import ElderlyCareBooking from './pages/BookingForms/ElderlyCareBooking/ElderlyCareBooking';
+import TaskErrandsBooking from './pages/BookingForms/TaskErrandsBooking/TaskErrandsBooking';
 import Register from './pages/Register/Register';
 import UserVerification from './pages/UserVerification/UserVerification';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
@@ -61,6 +66,26 @@ function App() {
     {
       path: '/book-cleaner',
       element: <AuthProvider><CleanerBooking /></AuthProvider>,
+    },
+    {
+      path: '/book-general-worker',
+      element: <AuthProvider><GeneralWorkerBooking /></AuthProvider>,
+    },
+    {
+      path: '/book-gardener',
+      element: <AuthProvider><GardenerBooking /></AuthProvider>,
+    },
+    {
+      path: '/book-mover-packer',
+      element: <AuthProvider><MoverPackerBooking /></AuthProvider>,
+    },
+    {
+      path: '/book-elderly-care',
+      element: <AuthProvider><ElderlyCareBooking /></AuthProvider>,
+    },
+    {
+      path: '/book-task-errands',
+      element: <AuthProvider><TaskErrandsBooking /></AuthProvider>,
     },
     {
       path: '/booking-history',

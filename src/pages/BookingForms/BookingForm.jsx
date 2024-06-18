@@ -15,6 +15,11 @@ const BookingForm = () => {
 
     const ServiceOptions = [
         { value: "Cleaner", label: "Cleaner" },
+        { value: "General Worker", label: "General Worker" },
+        { value: "Gardener", label: "Gardener" },
+        { value: "Mover-Packer", label: "Mover-Packer"},
+        { value: "Elderly-Care", label: "Elderly-Care"},
+        { value: "Task-Errands", label: "Task-Errands"},
     ];
 
     const navigate = useNavigate();
@@ -79,8 +84,22 @@ const BookingForm = () => {
 
         if (validateForm()) {
             if (service === "Cleaner") {
-                console.log("clean")
                 navigate('/book-cleaner', { state: { postcode: postcode } });
+            }
+            else if (service === "General Worker") {
+                navigate('/book-general-worker', { state: { postcode: postcode } });
+            }
+            else if (service === "Gardener") {
+                navigate('/book-gardener', { state: { postcode: postcode } });
+            }
+            else if (service === "Mover-Packer") {
+                navigate('/book-mover-packer', { state: { postcode: postcode } });
+            }
+            else if (service === "Elderly-Care") {
+                navigate('/book-elderly-care', { state: { postcode: postcode } });
+            }
+            else if (service === "Task-Errands") {
+                navigate('/book-task-errands', { state: { postcode: postcode } });
             }
         }
 

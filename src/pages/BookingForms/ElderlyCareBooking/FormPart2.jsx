@@ -16,7 +16,7 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
     const options = [
         { value: "Condominium", label: "Condominium" },
         { value: "Landed Property", label: "Landed Property" },
-        { value: "Shophouse", label: "Shophouse" }
+        { value: "Shophouse Home", label: "Shophouse Home" },
     ];
 
 
@@ -44,13 +44,6 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
             console.log("Geolocation is not supported by this browser.");
         }
     }
-
-    useEffect(() => {
-        if(FormInputs.no_of_hours !== ""){
-            let element = document.getElementById('book-cleaner-select-location-section');
-            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }, []);
 
 
     useEffect(() => {
@@ -136,7 +129,7 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
     return (
         <div>
             <form>
-                <div className="row m-0" id="book-cleaner-select-location-section">
+                <div className="row m-0">
                     <div className="form-label-bold">Select your location</div>
                     <div id="map" className="mb-4"></div>
                     <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-8">

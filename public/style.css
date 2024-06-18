@@ -12,7 +12,13 @@ body {
     width: 100%;
 }
 
-.input-field:focus {
+.input-field-flexible {
+    border-radius: 6px;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+.input-field:focus, .input-field-flexible:focus {
     /* border: 0; */
     border: 1px solid #58BBA6;
     outline: 1px solid #58BBA6;

@@ -97,7 +97,17 @@
     border-radius: 10px;
 }
 
-.booking-form-btn:hover {
+.booking-form-secondnary-btn {
+    width: fit-content;
+    background-color: #58BBA6;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+
+.booking-form-btn:hover, .booking-form-secondnary-btn:hover {
     background-color: #515559;
 }
 
