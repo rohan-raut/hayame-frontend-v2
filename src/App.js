@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import { createBrowserRouter, RouterProvider, BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
+import AboutUs from './pages/AboutUs/AboutUs';
 import FAQPage from './pages/FAQ/FAQPage';
 import ContactUs from './pages/ContactUs/ContactUs';
 import Login from './pages/Login/Login';
@@ -31,6 +32,10 @@ function App() {
     {
       path: '/',
       element: <AuthProvider><Home /></AuthProvider>,
+    },
+    {
+      path: '/about-us',
+      element: <AuthProvider><AboutUs /></AuthProvider>,
     },
     {
       path: '/faq',

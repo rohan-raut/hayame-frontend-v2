@@ -29,7 +29,7 @@ const Navbar = () => {
                 </label>
 
                 <ul className="navbar-ul">
-                    <li><Link to="about.html" className="navbar-link">About Us</Link></li>
+                    <li><Link to="/about-us" className="navbar-link">About Us</Link></li>
                     <li><Link to="/contact-us" className="navbar-link">Contact Us</Link></li>
                     <li><Link to="/book" className="navbar-link">Make Booking</Link></li>
                     {(authTokens !== null) ? (
