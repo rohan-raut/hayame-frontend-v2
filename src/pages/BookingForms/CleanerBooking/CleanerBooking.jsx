@@ -337,7 +337,7 @@ const CleanerBooking = () => {
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Hours per session</div>
-                                <div>{(FormInputs.no_of_hours === "") ? "-" : FormInputs.no_of_hours + FormInputs.addonHours + " hours"}</div>
+                                <div>{(FormInputs.no_of_hours === "") ? "-" : parseFloat(FormInputs.no_of_hours) + parseFloat(FormInputs.addonHours) + " hours"}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Cleaner Count</div>

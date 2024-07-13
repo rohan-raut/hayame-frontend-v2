@@ -5,44 +5,25 @@ import Select from "react-select";
 const FormPart1 = ({ FormInputs, setFormInputs }) => {
     const date = new Date();
     // const formatter = new
-    const options = [
-        { value: "07:00", label: "07:00" },
-        { value: "07:30", label: "07:30" },
-        { value: "08:00", label: "08:00" },
-        { value: "08:30", label: "08:30" },
-        { value: "09:00", label: "09:00" },
-        { value: "09:30", label: "09:30" },
-        { value: "10:00", label: "10:00" },
-        { value: "10:30", label: "10:30" },
-        { value: "11:00", label: "11:00" },
-        { value: "11:30", label: "11:30" },
-        { value: "12:00", label: "12:00" },
-        { value: "12:30", label: "12:30" },
-        { value: "13:00", label: "13:00" },
-        { value: "13:30", label: "13:30" },
-        { value: "14:00", label: "14:00" },
-        { value: "14:30", label: "14:30" },
-        { value: "15:00", label: "15:00" },
-        { value: "15:30", label: "15:30" },
-        { value: "16:00", label: "16:00" },
-        { value: "16:30", label: "16:30" },
-        { value: "17:00", label: "17:00" },
-        { value: "17:30", label: "17:30" },
-        { value: "18:00", label: "18:00" },
-        { value: "18:30", label: "18:30" },
-        { value: "19:00", label: "19:00" },
-        { value: "19:30", label: "19:30" },
-        { value: "20:00", label: "20:00" },
-        { value: "20:30", label: "20:30" },
-        { value: "21:00", label: "21:00" },
-        { value: "21:30", label: "21:30" },
-        { value: "22:00", label: "22:00" },
-    ];
+    const [startTimeOptions, setStartTimeOptions] = useState();
+
+    const [oneTimePrice, setOneTimePrice] = useState({
+        'discount_perc': 0,
+        'amount': 0
+    });
+    const [weeklyPrice, setWeeklyPrice] = useState({
+        'discount_perc': 0,
+        'amount': 0
+    });
+    const [fortnightlyPrice, setFortnightlyPrice] = useState({
+        'discount_perc': 0,
+        'amount': 0
+    });
 
     const squareFeetOptions = [
-        {value: '1000 sq. feet', label: '1000 sq. feet'},
-        {value: '1500 sq. feet', label: '1500 sq. feet'},
-        {value: '2000 sq. feet', label: '2000 sq. feet'}
+        { 'label': '500 sq. feets', value: 500 },
+        { 'label': '1000 sq. feets', value: 1000 },
+        { 'label': '1500 sq. feets', value: 1500 },
     ]
 
 
@@ -52,12 +33,98 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
         setFormInputs((values) => ({ ...values, [name]: value }));
     };
 
+
+    const getPricesByFreq = async () => {
+        let response = await fetch('https://djangotest.hayame.my/api/get-frequency-discount-by-skill/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'skill': 'Gardener',
+                'post_code': FormInputs.postCode
+            })
+        })
+        let data = await response.json()
+        for (let i = 0; i < data.length; i++) {
+            let priceDetails = {
+                'amount': data[i]['worker_cost_normal_day'],
+                'discount_perc': data[i]['discount_perc'] * 100
+            }
+
+            console.log(priceDetails);
+
+            if (data[i]['frequency'] === 'one-time') {
+                setOneTimePrice(priceDetails);
+            }
+            else if (data[i]['frequency'] === 'weekly') {
+                setWeeklyPrice(priceDetails);
+            }
+            else if (data[i]['frequency'] === 'fortnightly') {
+                setFortnightlyPrice(priceDetails);
+            }
+        }
+    }
+
+
+    useEffect(() => {
+        if (FormInputs.postCode !== '') {
+            getPricesByFreq();
+        }
+    }, [FormInputs.postCode])
+
+    useEffect(() => {
+        if (FormInputs.frequency !== "") {
+            let element = document.getElementById('book-gardener-date-section');
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, [FormInputs.frequency]);
+
+    useEffect(() => {
+        if (FormInputs.selectedDate !== "") {
+            let element = document.getElementById('book-gardener-worker-count-section');
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, [FormInputs.selectedDate]);
+
+    useEffect(() => {
+        if (FormInputs.no_of_hours !== "") {
+            let element = document.getElementById('book-gardener-start-time-section');
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, [FormInputs.no_of_hours]);
+
+
+    const getAvailableSlots = async () => {
+        if (FormInputs.postCode !== '' && FormInputs.selectedDate !== '' && FormInputs.workerCount != 0 && FormInputs.no_of_hours != "") {
+            let response = await fetch('https://djangotest.hayame.my/api/get-available-slots/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'post_code': FormInputs.postCode,
+                    'skill': FormInputs.skill,
+                    'start_date': FormInputs.selectedDate,
+                    'no_of_hours': FormInputs.no_of_hours,
+                    'worker_count': FormInputs.workerCount
+                })
+            })
+            let data = await response.json()
+            setStartTimeOptions(data);
+        }
+    }
+
+    useEffect(() => {
+        getAvailableSlots();
+    }, [FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.workerCount])
+
     return (
         <div>
             {/* Frequency buttons */}
             <div className="row form-section-row">
                 <div className="form-label-bold">
-                    How frequently would you like the cleaning service?
+                    How frequently would you like the gardening service?
                 </div>
                 <div class="booking-freq-radio-buttons">
                     <label
@@ -75,14 +142,14 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                             <div class="booking-freq-inner-card">
                                 <h3 class="booking-h3">One-Time</h3>
                                 <div className="booking-freq-price-discount color-transparent">
-                                    Save 0%
+                                    Save {oneTimePrice.discount_perc}%
                                 </div>
                                 <div className="booking-freq-price">
-                                    RM <span classname="booking-highlight-text">30</span>{" "}
+                                    RM <span classname="booking-highlight-text">{oneTimePrice.amount}</span>{" "}
                                     /hr
                                 </div>
                                 <div className="booking-freq-list">
-                                    <div>✓ Basic Cleaning</div>
+                                    <div>✓ Basic Gardening</div>
                                     <div></div>
                                 </div>
                                 <div className="booking-freq-btn">Select</div>
@@ -98,15 +165,15 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                             <div class="booking-freq-inner-card">
                                 <h3 class="booking-h3">Weekly</h3>
                                 <div className="booking-freq-price-discount">
-                                    Save 17%
+                                    Save {weeklyPrice.discount_perc}%
                                 </div>
                                 <div className="booking-freq-price">
-                                    RM <span classname="booking-highlight-text">25</span>{" "}
+                                    RM <span classname="booking-highlight-text">{weeklyPrice.amount}</span>{" "}
                                     /hr
                                 </div>
                                 <div className="booking-freq-list">
                                     <div>✓ Save time to book</div>
-                                    <div>✓ Same cleaner</div>
+                                    <div>✓ Same Gardener</div>
                                 </div>
                                 <div className="booking-freq-btn">Select</div>
                             </div>
@@ -121,15 +188,15 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                             <div class="booking-freq-inner-card">
                                 <h3 class="booking-h3">Fortnightly</h3>
                                 <div className="booking-freq-price-discount">
-                                    Save 20%
+                                    Save {fortnightlyPrice.discount_perc}%
                                 </div>
                                 <div className="booking-freq-price">
-                                    RM <span classname="booking-highlight-text">20</span>{" "}
+                                    RM <span classname="booking-highlight-text">{fortnightlyPrice.amount}</span>{" "}
                                     /hr
                                 </div>
                                 <div className="booking-freq-list">
                                     <div>✓ Save time to book</div>
-                                    <div>✓ Same cleaner</div>
+                                    <div>✓ Same Gardener</div>
                                 </div>
                                 <div className="booking-freq-btn">Select</div>
                             </div>
@@ -138,17 +205,26 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                 </div>
             </div>
 
-            {/* Square feet option */}
-            <div className="row form-section-row">
-                <div className="form-label-bold">Select garden size</div>
-                <div className="col-12 col-sm-12 col-md-6 col-lg-6 m-0 p-0">
+            {/* Calendar */}
+            <div className="row form-section-row" id="book-gardener-date-section">
+                <div className="form-label-bold">Select the Start Date</div>
+                <div className="col-12 col-sm-12 col-md-10 col-lg-10 p-0">
+                    <DatePicker FormInputs={FormInputs} setFormInputs={setFormInputs} />
+                </div>
+            </div>
+
+            <div className="row form-section-row" id="book-gardener-date-section">
+                <div className="form-label-bold">Select the garden size</div>
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6 p-0">
                     <Select
+                        options={squareFeetOptions}
                         onChange={(e) => {
                             setFormInputs((values) => ({ ...values, ['squareFeet']: e.value }));
+                            setFormInputs((values) => ({ ...values, ['squareFeetLabel']: e.label }));
                         }}
-                        options={squareFeetOptions}
-                        defaultValue={{ label: FormInputs.squareFeet, value: FormInputs.squareFeet }}
+                        defaultValue={{ label: FormInputs.squareFeetLabel, value: FormInputs.squareFeet }}
                         required
+
                         theme={(theme) => ({
                             ...theme,
                             borderRadius: 6,
@@ -164,18 +240,17 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                             control: (baseStyles, state) => ({
                                 ...baseStyles,
                                 borderColor: state.isFocused ? '#A4E2D5' : 'gray',
-                                padding: '3px'
+                                padding: '4px'
                             }),
                         }}
                     />
                 </div>
             </div>
 
-            {/* Calendar */}
-            <div className="row form-section-row">
-                <div className="form-label-bold">Select the Start Date</div>
-                <div className="col-12 col-sm-12 col-md-10 col-lg-10 p-0">
-                    <DatePicker FormInputs={FormInputs} setFormInputs={setFormInputs} />
+            <div className="row form-section-row" id="book-gardener-worker-count-section">
+                <div className="form-label-bold">Number of Gardeners</div>
+                <div className="col-6 p-0">
+                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} required />
                 </div>
             </div>
 
@@ -274,7 +349,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
 
             {/* {Start time section} */}
 
-            <div className="row form-section-row">
+            <div className="row form-section-row" id="book-gardener-start-time-section">
                 <div className="form-label-bold">Enter your start time here</div>
                 <div className="col-12 col-sm-12 col-md-6 col-lg-6 m-0 p-0">
                     <Select
@@ -282,7 +357,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                             setFormInputs((values) => ({ ...values, ['startTime']: e.value }));
                             setFormInputs((values) => ({ ...values, ['startTimeLabel']: e.label }));
                         }}
-                        options={options}
+                        options={startTimeOptions}
                         defaultValue={{ label: FormInputs.startTimeLabel, value: FormInputs.startTime }}
                         required
                         theme={(theme) => ({

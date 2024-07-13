@@ -12,6 +12,7 @@ import SocialMediaIcons from "../../../components/SocialMediaIcons/SocialMediaIc
 import FormPart1 from "./FormPart1";
 import FormPart2 from "./FormPart2";
 import FormPart3 from "./FormPart3";
+import formatDate from "../../../utils/FormatDate";
 
 
 const GardenerBooking = () => {
@@ -23,16 +24,20 @@ const GardenerBooking = () => {
         no_of_hours: "",
         startTime: "",
         startTimeLabel: "",
+        workerCount: 0,
+        squareFeet: 0,
+        squareFeetLabel: "",
         address: "",
         postCode: "",
         propertyType: "",
         propertyTypeLabel: "",
-        squareFeet: "",
         voucher: "",
         voucherDiscount: 0,
         paymentMethod: "",
         paymentMethodLabel: "",
         skill: "Gardener",
+        addon: "",
+        addonHours: 0,
         totalCost: "",
         phone: "",
     });
@@ -84,7 +89,7 @@ const GardenerBooking = () => {
 
     const getCostOfBooking = async () => {
         if (FormInputs.frequency !== "" && FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
-            let response = await fetch('https://djangotest.hayame.my/api/get-cleaner-booking_cost/', {
+            let response = await fetch('https://djangotest.hayame.my/api/get-gardener-booking_cost/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -96,6 +101,9 @@ const GardenerBooking = () => {
                     'postcode': FormInputs.postCode,
                     'skill': FormInputs.skill,
                     'voucher': FormInputs.voucher,
+                    'addon': FormInputs.addon,
+                    'addon_service_hours': FormInputs.addonHours,
+                    'worker_count': FormInputs.workerCount
                 })
             })
             let data = await response.json();
@@ -117,7 +125,7 @@ const GardenerBooking = () => {
 
     useEffect(() => {
         getCostOfBooking();
-    }, [FormInputs.frequency, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher])
+    }, [FormInputs.frequency, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher, FormInputs.addon, FormInputs.addonHours, FormInputs.workerCount])
 
     const validateForm1 = () => {
         if (FormInputs.frequency === "") {
@@ -134,6 +142,18 @@ const GardenerBooking = () => {
         }
         if (FormInputs.startTime === "") {
             notify("Please select the start time", "error");
+            return false;
+        }
+        if (FormInputs.workerCount === 0) {
+            notify("Please enter number of gardeners required", "error");
+            return false;
+        }
+        if (FormInputs.squareFeet === 0) {
+            notify("Please select the garden size", "error");
+            return false;
+        }
+        if(FormInputs.frequency === "one-time" && parseInt(FormInputs.workerCount) === 1 && parseInt(FormInputs.no_of_hours) < 4){
+            notify("Minimum 4 hrs. booking required for One-time", "error");
             return false;
         }
 
@@ -184,7 +204,7 @@ const GardenerBooking = () => {
     }
 
     const bookGardener = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/book-cleaner/', {
+        let response = await fetch('https://djangotest.hayame.my/api/book-gardener/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -201,6 +221,10 @@ const GardenerBooking = () => {
                 'voucher': FormInputs.voucher,
                 'payment_method': FormInputs.paymentMethod,
                 'phone': FormInputs.phone,
+                'addon': FormInputs.addon,
+                'addon_service_hours': FormInputs.addonHours,
+                'worker_count': FormInputs.workerCount,
+                'square_feet': FormInputs.squareFeet
             })
         })
         let data = await response.json();
@@ -307,20 +331,24 @@ const GardenerBooking = () => {
                             <hr className="booking-hr" />
 
                             <div className="d-flex justify-content-between py-1">
-                                <div>Cleaning Frequency</div>
+                                <div>Gardening Frequency</div>
                                 <div>{(FormInputs.frequency === "") ? "-" : (FormInputs.frequency === "one-time") ? "One-Time" : (FormInputs.frequency === "weekly") ? "Weekly" : "Fortnightly"}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Starting Date</div>
-                                <div>{(FormInputs.selectedDate === "") ? "-" : FormInputs.selectedDate}</div>
+                                <div>{(FormInputs.selectedDate === "") ? "-" : formatDate(FormInputs.selectedDate)}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Start Time</div>
-                                <div>{(FormInputs.startTime === "") ? "-" : FormInputs.startTime}</div>
+                                <div>{(FormInputs.startTimeLabel === "") ? "-" : FormInputs.startTimeLabel}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Hours per session</div>
-                                <div>{(FormInputs.no_of_hours === "") ? "-" : FormInputs.no_of_hours + " hours"}</div>
+                                <div>{(FormInputs.no_of_hours === "") ? "-" : parseFloat(FormInputs.no_of_hours) + parseFloat(FormInputs.addonHours) + " hours"}</div>
+                            </div>
+                            <div className="d-flex justify-content-between py-1">
+                                <div>Gardener Count</div>
+                                <div>{(FormInputs.workerCount === 0) ? "-" : FormInputs.workerCount}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>No. of sessions</div>
@@ -337,11 +365,11 @@ const GardenerBooking = () => {
 
                                     <div className="d-flex justify-content-between py-1">
                                         <div>Applied Voucher</div>
-                                        <div>HAY956</div>
+                                        <div>{FormInputs.voucher}</div>
                                     </div>
                                     <div className="d-flex justify-content-between py-1">
                                         <div>Voucher Discount</div>
-                                        <div>17 %</div>
+                                        <div>RM {FormInputs.voucherDiscount}</div>
                                     </div>
                                 </div>
                             ) : (

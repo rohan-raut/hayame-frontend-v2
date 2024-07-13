@@ -39,7 +39,7 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
 
             <div>
                 <form>
-                    <div className="row form-section-row">
+                    {/* <div className="row form-section-row">
                         <div className="form-label-bold">Addon Services</div>
                         <div className="col-12 col-sm-12 col-md-3 col-lg-3 m-0 p-0">
                             <label className="booking-no-of-hours-radio">
@@ -68,7 +68,7 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
                             <input type="text" className="input-field-flexible" value={FormInputs.addonHours} readOnly />
                             <button type="button" className="mx-1 booking-form-secondnary-btn" onClick={addHalfHour}>+</button>
                         </div>) : ""}
-                    </div>
+                    </div> */}
 
 
                     <div className="row form-section-row justify-content-between">

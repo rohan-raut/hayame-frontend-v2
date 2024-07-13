@@ -19,6 +19,7 @@ import ResetPassword from './pages/ResetPassword/ResetPassword';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
 import CheckBookings from './pages/CheckBookings/CheckBookings';
 import Profile from './pages/Profile/Profile';
+import BookingDetails from './pages/BookingDetails/BookingDetails';
 import { AuthProvider } from './context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -98,6 +99,10 @@ function App() {
     {
       path: '/profile',
       element: <AuthProvider><Profile /></AuthProvider>,
+    },
+    {
+      path: '/booking-details',
+      element: <AuthProvider><BookingDetails /></AuthProvider>,
     },
   ])
 

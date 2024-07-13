@@ -1,0 +1,11 @@
+.booking-details-h1{
+    font-size: 1.7rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.booking-details-card{
+    padding: 30px;
+    background-color: white;
+    box-shadow: 2px 4px 10px 2px #b7d3d3;
+}

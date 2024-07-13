@@ -40,7 +40,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             })
         })
         let data = await response.json()
-        for(let i=0; i<data.length; i++){
+        for (let i = 0; i < data.length; i++) {
             let priceDetails = {
                 'amount': data[i]['worker_cost_normal_day'],
                 'discount_perc': data[i]['discount_perc'] * 100
@@ -48,13 +48,13 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
 
             console.log(priceDetails);
 
-            if(data[i]['frequency'] === 'one-time'){
+            if (data[i]['frequency'] === 'one-time') {
                 setOneTimePrice(priceDetails);
             }
-            else if(data[i]['frequency'] === 'weekly'){
+            else if (data[i]['frequency'] === 'weekly') {
                 setWeeklyPrice(priceDetails);
             }
-            else if(data[i]['frequency'] === 'fortnightly'){
+            else if (data[i]['frequency'] === 'fortnightly') {
                 setFortnightlyPrice(priceDetails);
             }
         }
@@ -62,54 +62,56 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
 
 
     useEffect(() => {
-        if(FormInputs.postCode !== ''){
+        if (FormInputs.postCode !== '') {
             getPricesByFreq();
         }
     }, [FormInputs.postCode])
 
     useEffect(() => {
-        if(FormInputs.frequency !== ""){
+        if (FormInputs.frequency !== "") {
             let element = document.getElementById('book-cleaner-date-section');
             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }, [FormInputs.frequency]);
 
     useEffect(() => {
-        if(FormInputs.selectedDate !== ""){
+        if (FormInputs.selectedDate !== "") {
             let element = document.getElementById('book-cleaner-worker-count-section');
             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }, [FormInputs.selectedDate]);
 
     useEffect(() => {
-        if(FormInputs.no_of_hours !== ""){
+        if (FormInputs.no_of_hours !== "") {
             let element = document.getElementById('book-cleaner-start-time-section');
             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }, [FormInputs.no_of_hours]);
 
 
-    const getAvailableSlots = async() => {
-        let response = await fetch('https://djangotest.hayame.my/api/get-available-slots/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'post_code': FormInputs.postCode,
-                'skill': FormInputs.skill,
-                'start_date': FormInputs.selectedDate,
-                'no_of_hours': FormInputs.no_of_hours,
-                'worker_count': FormInputs.workerCount
+    const getAvailableSlots = async () => {
+        if (FormInputs.postCode !== '' && FormInputs.selectedDate !== '' && FormInputs.workerCount != 0 && FormInputs.no_of_hours != "") {
+            let response = await fetch('https://djangotest.hayame.my/api/get-available-slots/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'post_code': FormInputs.postCode,
+                    'skill': FormInputs.skill,
+                    'start_date': FormInputs.selectedDate,
+                    'no_of_hours': FormInputs.no_of_hours,
+                    'worker_count': FormInputs.workerCount
+                })
             })
-        })
-        let data = await response.json()
-        setStartTimeOptions(data);
+            let data = await response.json()
+            setStartTimeOptions(data);
+        }
     }
 
     useEffect(() => {
         getAvailableSlots();
-    }, [FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.workerCount])
+    }, [FormInputs.postCode, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.workerCount])
 
     return (
         <div>

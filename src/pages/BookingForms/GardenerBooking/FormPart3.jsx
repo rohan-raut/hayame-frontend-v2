@@ -7,11 +7,6 @@ import AuthContext from '../../../context/AuthContext';
 const FormPart3 = ({ FormInputs, setFormInputs }) => {
     let { authTokens, user } = useContext(AuthContext);
 
-    const VoucherOptions = [
-        { value: "HAY564", label: "HAY564" },
-        { value: "HAY147", label: "HAY147" },
-    ];
-
     const PaymentOptions = [
         { value: "Online", label: "Online" },
         { value: "Cash", label: "Cash" },
@@ -23,9 +18,20 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
         setFormInputs((values) => ({ ...values, [name]: value }));
     };
 
-    useEffect(() => {
-        console.log(user);
-    }, [user])
+    const subtractHalfHour = () => {
+        let hours = FormInputs.addonHours - 0.5;
+        if(hours === 0){
+            hours = 0.5;
+        }
+        setFormInputs((values) => ({ ...values, ['addonHours']: hours }));
+    }
+
+    const addHalfHour = () => {
+        let hours = FormInputs.addonHours + 0.5;
+        setFormInputs((values) => ({ ...values, ['addonHours']: hours }));
+        console.log(FormInputs);
+    }
+
 
     return (
         <div>
@@ -33,23 +39,51 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
 
             <div>
                 <form>
-                    <div className="row m-0">
-                        <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                            <div class="mb-4">
-                                <label class="form-label">Apply Voucher</label>
+                    {/* <div className="row form-section-row">
+                        <div className="form-label-bold">Addon Services</div>
+                        <div className="col-12 col-sm-12 col-md-3 col-lg-3 m-0 p-0">
+                            <label className="booking-no-of-hours-radio">
                                 <input
-                                    type="text"
-                                    className="input-field"
-                                    name="voucher"
-                                    onChange={handleChange}
-                                    defaultValue={FormInputs.voucher}
+                                    type="checkbox"
+                                    name="addon"
+                                    value="Laundry"
+                                    onChange={(e) => {
+                                        if(FormInputs.addon === ""){
+                                            setFormInputs((values) => ({ ...values, ['addon']: 'Laundry' }));
+                                            setFormInputs((values) => ({ ...values, ['addonHours']: 0.5 }));
+                                        }
+                                        else{
+                                            setFormInputs((values) => ({ ...values, ['addon']: '' }));
+                                            setFormInputs((values) => ({ ...values, ['addonHours']: 0 }));
+                                        }
+                                    }}
+                                    defaultChecked={FormInputs.addon !== ""}
                                 />
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                            <label class="form-label">
-                                Payment Method
+                                <span className="booking-no-of-hours-btn">Laundry</span>
                             </label>
+                        </div>
+                        {(FormInputs.addon !== "") ? (
+                        <div className="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <button type="button" className="mx-1 booking-form-secondnary-btn" onClick={subtractHalfHour}>-</button>
+                            <input type="text" className="input-field-flexible" value={FormInputs.addonHours} readOnly />
+                            <button type="button" className="mx-1 booking-form-secondnary-btn" onClick={addHalfHour}>+</button>
+                        </div>) : ""}
+                    </div> */}
+
+
+                    <div className="row form-section-row justify-content-between">
+                        <div className="col-12 col-sm-12 col-md-6 col-lg-6 m-0 p-0">
+                            <div className="form-label-bold">Apply Voucher</div>
+                            <input
+                                type="text"
+                                className="input-field"
+                                name="voucher"
+                                onChange={handleChange}
+                                defaultValue={FormInputs.voucher}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-12 col-md-5 col-lg-5 m-0 p-0">
+                            <div className="form-label-bold">Payment Method</div>
                             <Select
                                 options={PaymentOptions}
                                 onChange={(e) => {
@@ -79,23 +113,23 @@ const FormPart3 = ({ FormInputs, setFormInputs }) => {
                                 }}
                             />
                         </div>
+                    </div>
 
+
+                    <div className="row form-section-row justify-content-between">
                         {(user && user['phone'] === null) ? (
-                            <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                                <div class="mb-4">
-                                    <label class="form-label">Phone</label>
-                                    <input
-                                        type="text"
-                                        className="input-field"
-                                        name="phone"
-                                        onChange={handleChange}
-                                    />
-                                </div>
+                            <div className="col-12 col-sm-12 col-md-5 col-lg-5 m-0 p-0">
+                                <div className="form-label-bold">Phone</div>
+                                <input
+                                    type="text"
+                                    className="input-field"
+                                    name="phone"
+                                    onChange={handleChange}
+                                />
                             </div>
                         ) : ("")}
-
-
                     </div>
+
                 </form>
             </div>
         </div>

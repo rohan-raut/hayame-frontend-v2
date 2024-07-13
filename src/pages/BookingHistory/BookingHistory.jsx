@@ -4,6 +4,9 @@ import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import AuthContext from '../../context/AuthContext';
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
+import DataTable from 'react-data-table-component';
+import { useNavigate } from 'react-router-dom';
+import formatDate from "../../utils/FormatDate";
 
 
 const BookingHistory = () => {
@@ -11,57 +14,49 @@ const BookingHistory = () => {
 
     let { authTokens } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+
     const columns = [
         {
-            title: 'Booking ID',
-            dataIndex: 'id',
-            key: 'id',
-            render: (text) => <a>{text}</a>,
-            width: '10%'
+            name: 'Booking ID',
+            selector: row => row.booking_id,
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
-            width: '20%'
+            name: 'Address',
+            selector: row => row.address,
+            grow: 3,
         },
         {
-            title: 'Property Type',
-            dataIndex: 'property_type',
-            key: 'property_type',
-            width: '10%'
+            name: 'Service',
+            selector: row => row.skill,
         },
         {
-            title: 'Frequency',
-            dataIndex: 'frequency',
-            key: 'frequency',
-            width: '10%'
+            name: 'Frequency',
+            selector: row => row.frequency,
         },
         {
-            title: 'Start Date',
-            dataIndex: 'start_date',
-            key: 'start_date',
-            width: '10%'
+            name: 'Start Date',
+            selector: row => formatDate(row.start_date),
         },
         {
-            title: 'Start Time',
-            dataIndex: 'start_time',
-            key: 'start_time',
-            width: '10%'
+            name: 'Start Time',
+            selector: row => row.start_time,
         },
         {
-            title: 'Hours',
-            dataIndex: 'no_of_hours',
-            key: 'no_of_hours',
-            width: '10%'
+            name: 'Hours',
+            selector: row => row.no_of_hours,
         },
         {
-            title: 'Total Cost',
-            dataIndex: 'total_cost',
-            key: 'total_cost',
-            width: '10%'
+            name: 'Total Cost',
+            selector: row => row.total_cost,
+        },
+        {
+            name: 'Actions',
+            button: true,
+            cell: (row) => <button onClick={() => navigate('/booking-details', { state: { skill: row.skill, bookingId: row.id } })}>Details</button>
         }
     ];
+
 
     const getTableData = async() => {
         let response = await fetch('https://djangotest.hayame.my/api/booking-history/', {
@@ -87,7 +82,7 @@ const BookingHistory = () => {
             <Navbar />
             <div className="row mx-0 my-5 justify-content-center">
                 <div className="col-11 col-sm-11 col-md-11 col-lg-10">
-                    <Table columns={columns} dataSource={tableData} scroll={{x: 1000,}} />
+                    <DataTable columns={columns} data={tableData} />
                 </div>
             </div>
 
