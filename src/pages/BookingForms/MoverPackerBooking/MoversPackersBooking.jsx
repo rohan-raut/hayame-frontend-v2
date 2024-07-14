@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import Navbar from "../../../components/Navbar/Navbar";
-import "./moverPackerBooking.css";
+import "./moversPackersBooking.css";
 import DatePicker from "../../../components/DatePicker/DatePicker";
 import Select from "react-select";
 import UserLoginSignUp from "../../../components/UserLoginSignUp/UserLoginSignUp";
@@ -12,17 +12,18 @@ import SocialMediaIcons from "../../../components/SocialMediaIcons/SocialMediaIc
 import FormPart1 from "./FormPart1";
 import FormPart2 from "./FormPart2";
 import FormPart3 from "./FormPart3";
+import formatDate from "../../../utils/FormatDate";
 
 
-const MoverPackerBooking = () => {
+const MoversPackersBooking = () => {
     let { authTokens, user } = useContext(AuthContext);
     const [page, setPage] = useState(0);
     const [FormInputs, setFormInputs] = useState({
-        frequency: "",
         selectedDate: "",
         no_of_hours: "",
         startTime: "",
         startTimeLabel: "",
+        workerCount: 0,
         address: "",
         postCode: "",
         propertyType: "",
@@ -31,9 +32,14 @@ const MoverPackerBooking = () => {
         voucherDiscount: 0,
         paymentMethod: "",
         paymentMethodLabel: "",
-        skill: "Mover-Packer",
+        skill: "Movers Packers",
+        addon: "",
+        addonHours: 0,
         totalCost: "",
         phone: "",
+        hasLift: "",
+        floors: "",
+        noOfBoxes: "",
     });
     const [availablePostCode, setAvailablePostCode] = useState();
 
@@ -82,19 +88,21 @@ const MoverPackerBooking = () => {
     }
 
     const getCostOfBooking = async () => {
-        if (FormInputs.frequency !== "" && FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
-            let response = await fetch('https://djangotest.hayame.my/api/get-cleaner-booking_cost/', {
+        if (FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
+            let response = await fetch('http://127.0.0.1:8000/api/get-movers-packers-booking_cost/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'frequency': FormInputs.frequency,
                     'start_date': FormInputs.selectedDate,
                     'no_of_hours': FormInputs.no_of_hours,
                     'postcode': FormInputs.postCode,
                     'skill': FormInputs.skill,
                     'voucher': FormInputs.voucher,
+                    'addon': FormInputs.addon,
+                    'addon_service_hours': FormInputs.addonHours,
+                    'worker_count': FormInputs.workerCount
                 })
             })
             let data = await response.json();
@@ -116,13 +124,9 @@ const MoverPackerBooking = () => {
 
     useEffect(() => {
         getCostOfBooking();
-    }, [FormInputs.frequency, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher])
+    }, [FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher, FormInputs.addon, FormInputs.addonHours, FormInputs.workerCount])
 
     const validateForm1 = () => {
-        if (FormInputs.frequency === "") {
-            notify("Please select the frequency", "error");
-            return false;
-        }
         if (FormInputs.selectedDate === "") {
             notify("Please select the start date", "error");
             return false;
@@ -133,6 +137,10 @@ const MoverPackerBooking = () => {
         }
         if (FormInputs.startTime === "") {
             notify("Please select the start time", "error");
+            return false;
+        }
+        if (FormInputs.workerCount === 0) {
+            notify("Please enter number of workers required", "error");
             return false;
         }
 
@@ -182,15 +190,14 @@ const MoverPackerBooking = () => {
         return true;
     }
 
-    const bookMoverPacker = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/book-cleaner/', {
+    const bookMoversPackers = async () => {
+        let response = await fetch('http://127.0.0.1:8000/api/book-movers-packers/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + authTokens,
             },
             body: JSON.stringify({
-                'frequency': FormInputs.frequency,
                 'start_date': FormInputs.selectedDate,
                 'no_of_hours': FormInputs.no_of_hours,
                 'start_time': FormInputs.startTime,
@@ -200,6 +207,12 @@ const MoverPackerBooking = () => {
                 'voucher': FormInputs.voucher,
                 'payment_method': FormInputs.paymentMethod,
                 'phone': FormInputs.phone,
+                'addon': FormInputs.addon,
+                'addon_service_hours': FormInputs.addonHours,
+                'worker_count': FormInputs.workerCount,
+                'has_lift': FormInputs.hasLift,
+                'floors': FormInputs.floors,
+                'no_of_boxes_to_pack': FormInputs.noOfBoxes,
             })
         })
         let data = await response.json();
@@ -224,7 +237,7 @@ const MoverPackerBooking = () => {
         else {
             if (validateForm3()) {
                 // call api to save booking
-                bookMoverPacker();
+                bookMoversPackers();
                 // redirect to booking history
             }
         }
@@ -306,24 +319,20 @@ const MoverPackerBooking = () => {
                             <hr className="booking-hr" />
 
                             <div className="d-flex justify-content-between py-1">
-                                <div>Cleaning Frequency</div>
-                                <div>{(FormInputs.frequency === "") ? "-" : (FormInputs.frequency === "one-time") ? "One-Time" : (FormInputs.frequency === "weekly") ? "Weekly" : "Fortnightly"}</div>
-                            </div>
-                            <div className="d-flex justify-content-between py-1">
                                 <div>Starting Date</div>
-                                <div>{(FormInputs.selectedDate === "") ? "-" : FormInputs.selectedDate}</div>
+                                <div>{(FormInputs.selectedDate === "") ? "-" : formatDate(FormInputs.selectedDate)}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Start Time</div>
-                                <div>{(FormInputs.startTime === "") ? "-" : FormInputs.startTime}</div>
+                                <div>{(FormInputs.startTimeLabel === "") ? "-" : FormInputs.startTimeLabel}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Hours per session</div>
-                                <div>{(FormInputs.no_of_hours === "") ? "-" : FormInputs.no_of_hours + " hours"}</div>
+                                <div>{(FormInputs.no_of_hours === "") ? "-" : parseFloat(FormInputs.no_of_hours) + parseFloat(FormInputs.addonHours) + " hours"}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
-                                <div>No. of sessions</div>
-                                <div>{(FormInputs.frequency === "") ? "-" : (FormInputs.frequency === "one-time") ? "1" : "4"}</div>
+                                <div>Workers Count</div>
+                                <div>{(FormInputs.workerCount === 0) ? "-" : FormInputs.workerCount}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Property Type</div>
@@ -336,11 +345,11 @@ const MoverPackerBooking = () => {
 
                                     <div className="d-flex justify-content-between py-1">
                                         <div>Applied Voucher</div>
-                                        <div>HAY956</div>
+                                        <div>{FormInputs.voucher}</div>
                                     </div>
                                     <div className="d-flex justify-content-between py-1">
                                         <div>Voucher Discount</div>
-                                        <div>17 %</div>
+                                        <div>RM {FormInputs.voucherDiscount}</div>
                                     </div>
                                 </div>
                             ) : (
@@ -367,4 +376,4 @@ const MoverPackerBooking = () => {
     );
 };
 
-export default MoverPackerBooking;
+export default MoversPackersBooking;

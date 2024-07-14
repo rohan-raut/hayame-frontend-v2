@@ -5,40 +5,7 @@ import Select from "react-select";
 const FormPart1 = ({ FormInputs, setFormInputs }) => {
     const date = new Date();
     // const formatter = new
-    const options = [
-        { value: "07:00", label: "07:00" },
-        { value: "07:30", label: "07:30" },
-        { value: "08:00", label: "08:00" },
-        { value: "08:30", label: "08:30" },
-        { value: "09:00", label: "09:00" },
-        { value: "09:30", label: "09:30" },
-        { value: "10:00", label: "10:00" },
-        { value: "10:30", label: "10:30" },
-        { value: "11:00", label: "11:00" },
-        { value: "11:30", label: "11:30" },
-        { value: "12:00", label: "12:00" },
-        { value: "12:30", label: "12:30" },
-        { value: "13:00", label: "13:00" },
-        { value: "13:30", label: "13:30" },
-        { value: "14:00", label: "14:00" },
-        { value: "14:30", label: "14:30" },
-        { value: "15:00", label: "15:00" },
-        { value: "15:30", label: "15:30" },
-        { value: "16:00", label: "16:00" },
-        { value: "16:30", label: "16:30" },
-        { value: "17:00", label: "17:00" },
-        { value: "17:30", label: "17:30" },
-        { value: "18:00", label: "18:00" },
-        { value: "18:30", label: "18:30" },
-        { value: "19:00", label: "19:00" },
-        { value: "19:30", label: "19:30" },
-        { value: "20:00", label: "20:00" },
-        { value: "20:30", label: "20:30" },
-        { value: "21:00", label: "21:00" },
-        { value: "21:30", label: "21:30" },
-        { value: "22:00", label: "22:00" },
-    ];
-
+    const [startTimeOptions, setStartTimeOptions] = useState();
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -46,20 +13,69 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
         setFormInputs((values) => ({ ...values, [name]: value }));
     };
 
+
+    useEffect(() => {
+        if (FormInputs.selectedDate !== "") {
+            let element = document.getElementById('book-movers-packers-worker-count-section');
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, [FormInputs.selectedDate]);
+
+    useEffect(() => {
+        if (FormInputs.no_of_hours !== "") {
+            let element = document.getElementById('book-movers-packers-start-time-section');
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, [FormInputs.no_of_hours]);
+
+
+    const getAvailableSlots = async () => {
+        if (FormInputs.postCode !== '' && FormInputs.selectedDate !== '' && FormInputs.workerCount != 0 && FormInputs.no_of_hours != "") {
+            let response = await fetch('https://djangotest.hayame.my/api/get-available-slots/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'post_code': FormInputs.postCode,
+                    'skill': FormInputs.skill,
+                    'start_date': FormInputs.selectedDate,
+                    'no_of_hours': FormInputs.no_of_hours,
+                    'worker_count': FormInputs.workerCount
+                })
+            })
+            let data = await response.json()
+            setStartTimeOptions(data);
+        }
+    }
+
+    useEffect(() => {
+        getAvailableSlots();
+    }, [FormInputs.postCode, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.workerCount])
+
     return (
         <div>
+
+            {/* No of Boxes to Pack */}
             <div className="row form-section-row">
-                <div className="form-label-bold">Estimated number of boxes to pack</div>
+                <div className="form-label-bold">Estimate number of boxes to pack</div>
                 <div className="col-6 p-0">
-                    <input type="number" className="input-field" name="no_of_boxes" onChange={handleChange} required />
+                    <input type="number" className="input-field" name="noOfBoxes" onChange={handleChange} required />
                 </div>
             </div>
 
             {/* Calendar */}
-            <div className="row form-section-row">
+            <div className="row form-section-row" id="book-movers-packers-date-section">
                 <div className="form-label-bold">Select the Start Date</div>
                 <div className="col-12 col-sm-12 col-md-10 col-lg-10 p-0">
                     <DatePicker FormInputs={FormInputs} setFormInputs={setFormInputs} />
+                </div>
+            </div>
+
+            <div className="row form-section-row" id="book-movers-packers-worker-count-section">
+                <div className="form-label-bold">Number of Workers</div>
+                <div className="col-6 p-0">
+                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} required />
                 </div>
             </div>
 
@@ -156,9 +172,48 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                 </div>
             </div>
 
-            {/* {Start time section} */}
-
             <div className="row form-section-row">
+                <div className="form-label-bold">
+                    Does the apartment have lift?
+                </div>
+                <div className="booking-no-of-hours-container px-0">
+                    <div>
+                        <label className="booking-no-of-hours-radio">
+                            <input
+                                type="radio"
+                                name="hasLift"
+                                value="True"
+                                onChange={handleChange}
+                                defaultChecked={FormInputs.hasLift === "True"}
+                            />
+                            <span className="booking-no-of-hours-btn">Yes</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label className="booking-no-of-hours-radio">
+                            <input
+                                type="radio"
+                                name="hasLift"
+                                value="False"
+                                onChange={handleChange}
+                                defaultChecked={FormInputs.hasLift === "False"}
+                            />
+                            <span className="booking-no-of-hours-btn">No</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            {/* No of Floors */}
+            <div className="row form-section-row">
+                <div className="form-label-bold">Number of your Floor</div>
+                <div className="col-6 p-0">
+                    <input type="number" className="input-field" name="floors" onChange={handleChange} required />
+                </div>
+            </div>
+
+            {/* {Start time section} */}
+            <div className="row form-section-row" id="book-movers-packers-start-time-section">
                 <div className="form-label-bold">Enter your start time here</div>
                 <div className="col-12 col-sm-12 col-md-6 col-lg-6 m-0 p-0">
                     <Select
@@ -166,7 +221,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                             setFormInputs((values) => ({ ...values, ['startTime']: e.value }));
                             setFormInputs((values) => ({ ...values, ['startTimeLabel']: e.label }));
                         }}
-                        options={options}
+                        options={startTimeOptions}
                         defaultValue={{ label: FormInputs.startTimeLabel, value: FormInputs.startTime }}
                         required
                         theme={(theme) => ({

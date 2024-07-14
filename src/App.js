@@ -10,7 +10,7 @@ import BookingForm from './pages/BookingForms/BookingForm';
 import CleanerBooking from './pages/BookingForms/CleanerBooking/CleanerBooking';
 import GeneralWorkerBooking from './pages/BookingForms/GeneralWorkerBooking/GeneralWorkerBooking';
 import GardenerBooking from './pages/BookingForms/GardenerBooking/GardenerBooking';
-import MoverPackerBooking from './pages/BookingForms/MoverPackerBooking/MoverPackerBooking';
+import MoversPackersBooking from './pages/BookingForms/MoverPackerBooking/MoversPackersBooking';
 import ElderlyCareBooking from './pages/BookingForms/ElderlyCareBooking/ElderlyCareBooking';
 import TaskErrandsBooking from './pages/BookingForms/TaskErrandsBooking/TaskErrandsBooking';
 import Register from './pages/Register/Register';
@@ -83,7 +83,7 @@ function App() {
     },
     {
       path: '/book-mover-packer',
-      element: <AuthProvider><MoverPackerBooking /></AuthProvider>,
+      element: <AuthProvider><MoversPackersBooking /></AuthProvider>,
     },
     {
       path: '/book-elderly-care',

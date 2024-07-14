@@ -19,7 +19,6 @@ const TaskErrandsBooking = () => {
     let { authTokens, user } = useContext(AuthContext);
     const [page, setPage] = useState(0);
     const [FormInputs, setFormInputs] = useState({
-        frequency: "",
         selectedDate: "",
         no_of_hours: "",
         startTime: "",
@@ -87,14 +86,13 @@ const TaskErrandsBooking = () => {
     }
 
     const getCostOfBooking = async () => {
-        if (FormInputs.frequency !== "" && FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
-            let response = await fetch('https://djangotest.hayame.my/api/get-task-errands-booking_cost/', {
+        if (FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
+            let response = await fetch('http://127.0.0.1:8000/api/get-task-errands-booking_cost/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'frequency': FormInputs.frequency,
                     'start_date': FormInputs.selectedDate,
                     'no_of_hours': FormInputs.no_of_hours,
                     'postcode': FormInputs.postCode,
@@ -124,13 +122,9 @@ const TaskErrandsBooking = () => {
 
     useEffect(() => {
         getCostOfBooking();
-    }, [FormInputs.frequency, FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher, FormInputs.addon, FormInputs.addonHours, FormInputs.workerCount])
+    }, [FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher, FormInputs.addon, FormInputs.addonHours, FormInputs.workerCount])
 
     const validateForm1 = () => {
-        if (FormInputs.frequency === "") {
-            notify("Please select the frequency", "error");
-            return false;
-        }
         if (FormInputs.selectedDate === "") {
             notify("Please select the start date", "error");
             return false;
@@ -145,10 +139,6 @@ const TaskErrandsBooking = () => {
         }
         if (FormInputs.workerCount === 0) {
             notify("Please enter number of workers required", "error");
-            return false;
-        }
-        if(FormInputs.frequency === "one-time" && parseInt(FormInputs.workerCount) === 1 && parseInt(FormInputs.no_of_hours) < 4){
-            notify("Minimum 4 hrs. booking required for One-time", "error");
             return false;
         }
 
@@ -199,14 +189,13 @@ const TaskErrandsBooking = () => {
     }
 
     const bookTaskErrands = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/book-task-errands/', {
+        let response = await fetch('http://127.0.0.1:8000/api/book-task-errands/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + authTokens,
             },
             body: JSON.stringify({
-                'frequency': FormInputs.frequency,
                 'start_date': FormInputs.selectedDate,
                 'no_of_hours': FormInputs.no_of_hours,
                 'start_time': FormInputs.startTime,
@@ -326,10 +315,6 @@ const TaskErrandsBooking = () => {
                             <hr className="booking-hr" />
 
                             <div className="d-flex justify-content-between py-1">
-                                <div>Frequency</div>
-                                <div>{(FormInputs.frequency === "") ? "-" : (FormInputs.frequency === "one-time") ? "One-Time" : (FormInputs.frequency === "weekly") ? "Weekly" : "Fortnightly"}</div>
-                            </div>
-                            <div className="d-flex justify-content-between py-1">
                                 <div>Starting Date</div>
                                 <div>{(FormInputs.selectedDate === "") ? "-" : formatDate(FormInputs.selectedDate)}</div>
                             </div>
@@ -344,10 +329,6 @@ const TaskErrandsBooking = () => {
                             <div className="d-flex justify-content-between py-1">
                                 <div>Worker Count</div>
                                 <div>{(FormInputs.workerCount === 0) ? "-" : FormInputs.workerCount}</div>
-                            </div>
-                            <div className="d-flex justify-content-between py-1">
-                                <div>No. of sessions</div>
-                                <div>{(FormInputs.frequency === "") ? "-" : (FormInputs.frequency === "one-time") ? "1" : "4"}</div>
                             </div>
                             <div className="d-flex justify-content-between py-1">
                                 <div>Property Type</div>
