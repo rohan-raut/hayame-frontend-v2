@@ -5,6 +5,7 @@ import AuthContext from '../../context/AuthContext';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
+import InvoiceGenerator from '../../utils/InvoiceGenerator';
 
 const BookingDetails = () => {
     let { authTokens, user } = useContext(AuthContext);
@@ -42,6 +43,10 @@ const BookingDetails = () => {
     }, [skill, bookingId])
 
 
+    const generateInvoice = () => {
+        InvoiceGenerator(bookingDetails);
+    }
+
     return (
         <div>
             <Navbar />
@@ -55,8 +60,8 @@ const BookingDetails = () => {
                     </div>
 
                     <div className="d-flex justify-content-between py-1">
-                        <div className="text-bold">Address</div>
-                        {bookingDetails !== null && <div>{bookingDetails.address}</div>}
+                        <div className="text-bold booking-details-padding-right">Address</div>
+                        {bookingDetails !== null && <div className="text-end">{bookingDetails.address}</div>}
                     </div>
 
                     <div className="d-flex justify-content-between py-1">
@@ -69,15 +74,34 @@ const BookingDetails = () => {
                         {bookingDetails !== null && <div>{bookingDetails.property_type}</div>}
                     </div>
 
+                    {(bookingDetails !== null && (bookingDetails.skill === "Movers Packers")) ? 
+                    <div className="d-flex justify-content-between py-1">
+                        <div className="text-bold">Contains Lift</div>
+                        {bookingDetails !== null && <div>{bookingDetails.has_lift}</div>}
+                    </div> : "" }
+
+                    {(bookingDetails !== null && (bookingDetails.skill === "Movers Packers")) ? 
+                    <div className="d-flex justify-content-between py-1">
+                        <div className="text-bold">No. of floors</div>
+                        {bookingDetails !== null && <div>{bookingDetails.floors}</div>}
+                    </div> : "" }
+
+                    {(bookingDetails !== null && (bookingDetails.skill === "Movers Packers")) ? 
+                    <div className="d-flex justify-content-between py-1">
+                        <div className="text-bold">Estimated no. of boxes to pack</div>
+                        {bookingDetails !== null && <div>{bookingDetails.no_of_boxes_to_pack}</div>}
+                    </div> : "" }
+
                     <div className="d-flex justify-content-between py-1">
                         <div className="text-bold">Service Type</div>
                         {bookingDetails !== null && <div>{bookingDetails.skill}</div>}
                     </div>
 
+                    {(bookingDetails !== null && (bookingDetails.skill === "Task Errands")) ? 
                     <div className="d-flex justify-content-between py-1">
-                        <div className="text-bold">Frequency</div>
-                        {bookingDetails !== null && <div>{bookingDetails.frequency}</div>}
-                    </div>
+                        <div className="text-bold">Task Task</div>
+                        {bookingDetails !== null && <div>{bookingDetails.task_type}</div>}
+                    </div> : "" }
 
                     <div className="d-flex justify-content-between py-1">
                         <div className="text-bold">Start Date</div>
@@ -99,17 +123,35 @@ const BookingDetails = () => {
                         {bookingDetails !== null && <div>{bookingDetails.worker_count}</div>}
                     </div>
 
+                    {(bookingDetails !== null && (bookingDetails.skill === "Elderly Care")) ? 
                     <div className="d-flex justify-content-between py-1">
                         <div className="text-bold">Worker Gender</div>
                         {bookingDetails !== null && <div>{bookingDetails.worker_gender}</div>}
+                    </div> : "" }
+
+                    {(bookingDetails !== null && (bookingDetails.skill === "Gardener")) ? 
+                    <div className="d-flex justify-content-between py-1">
+                        <div className="text-bold">Garden Size</div>
+                        {bookingDetails !== null && <div>{bookingDetails.square_feet + " sq. feets"}</div>}
+                    </div> : "" }
+
+                    <div className="d-flex justify-content-between py-1">
+                        <div className="text-bold">Booking Status</div>
+                        {bookingDetails !== null && <div>{bookingDetails.booking_status}</div>}
                     </div>
 
                     <div className="d-flex justify-content-between py-1">
                         <div className="text-bold">Total Cost</div>
-                        {bookingDetails !== null && <div>{bookingDetails.total_cost}</div>}
+                        {bookingDetails !== null && <div>{"RM " + bookingDetails.total_cost}</div>}
+                    </div>
+
+                    <div>
+                        <button className="btn btn-sm btn-primary my-3" onClick={generateInvoice}>Download Invoice</button>
                     </div>
                 </div>
             </div>
+
+
 
             <SocialMediaIcons />
             <Footer />

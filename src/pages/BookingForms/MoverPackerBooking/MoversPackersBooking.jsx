@@ -89,7 +89,7 @@ const MoversPackersBooking = () => {
 
     const getCostOfBooking = async () => {
         if (FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
-            let response = await fetch('http://127.0.0.1:8000/api/get-movers-packers-booking_cost/', {
+            let response = await fetch('https://djangotest.hayame.my/api/get-movers-packers-booking_cost/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -191,7 +191,7 @@ const MoversPackersBooking = () => {
     }
 
     const bookMoversPackers = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/book-movers-packers/', {
+        let response = await fetch('https://djangotest.hayame.my/api/book-movers-packers/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

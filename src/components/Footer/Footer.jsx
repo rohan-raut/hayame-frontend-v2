@@ -47,13 +47,12 @@ const Footer = () => {
                 <div>
                     <div className="footer-title">Top Services</div>
                     <ul className="footer-ul">
-                        <li>Home Cleaning</li>
-                        <li>Office Cleaning</li>
-                        <li>Window Cleaning</li>
-                        <li>Carpet Cleaning</li>
-                        <li>Laundry Service</li>
-                        <li>Furniture Sanitizing</li>
-                        <li>Moving Services</li>
+                        <li>Cleaning Service</li>
+                        <li>Gardening Service</li>
+                        <li>Elderly Care</li>
+                        <li>General Worker</li>
+                        <li>Movers & Packers</li>
+                        <li>Task & Errands</li>
                     </ul>
                 </div>
 
