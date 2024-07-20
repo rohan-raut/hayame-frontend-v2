@@ -12,6 +12,7 @@
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "jwt-decode": "^4.0.0",
+    "md5": "^2.3.0",
     "react": "^18.2.0",
     "react-app-rewired": "^2.2.1",
     "react-data-table-component": "^7.6.2",

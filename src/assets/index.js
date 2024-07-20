@@ -14,6 +14,17 @@ import MoverPackerService from "./mover-packer-service.jpg";
 import TaskErrandsService from "./task-errands-service.jpg";
 import ProfessionalService from "./professional-service.jpg";
 
+import CleaningIcon from "./cleaning-icon.svg";
+import GardenerIcon from "./gardening-farming-icon.svg";
+import GeneralWorkerIcon from "./general-worker-icon.svg";
+import ElderlyCareIcon from "./eldercare-icon.svg";
+import MoversPackersIcon from "./movers-packers-icon.svg";
+import TaskErrandsIcon from "./task-errands-icon.svg";
+
+import MissionIcon from "./mission-icon.svg";
+import ValuesIcon from "./values-icon.svg";
+import VisionIcon from "./vision-icon.svg";
+
 export {
     ResidentialCleaning,
     CleaningInstruments,
@@ -30,4 +41,13 @@ export {
     MoverPackerService,
     TaskErrandsService,
     ProfessionalService,
+    CleaningIcon,
+    GardenerIcon,
+    GeneralWorkerIcon,
+    ElderlyCareIcon,
+    MoversPackersIcon,
+    TaskErrandsIcon,
+    MissionIcon,
+    ValuesIcon,
+    VisionIcon,
 }

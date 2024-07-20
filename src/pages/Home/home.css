@@ -1,9 +1,39 @@
+
+.home-header-section{
+    position: relative;
+}
+
 .home-main-image{
-    background-image: url("../../assets/floor-cleaning-supplies.jpg");
+    background-image: url("../../assets/hayame_services.jpg");
     height: 60vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    filter: brightness(40%) blur(1px) opacity(88%);
+    z-index: 0;
+}
+
+.home-service-form{
+    position: absolute;
+    left: 20%;
+    top: 15%;
+    width: 50%;
+    z-index: 20;
+}
+
+.home-h1{
+    color: white;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.home-tagline{
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .home-services-row{
@@ -13,6 +43,7 @@
     padding: 20px 0;
     margin-top: -80px;
     border-radius: 20px;
+    z-index: 10;
 }
 
 .home-services-container{
@@ -20,15 +51,16 @@
 }
 
 
-.home-services-icon svg{
-    height: 88px;
-    width: 88px;
+.home-services-icon img{
+    height: 92px;
+    width: 92px;
     padding: 28px;
     border-radius: 100%;
     background-color: #F0FBF9;
     overflow: visible !important;
     fill: #58bba6;
     margin: 10px auto;
+    z-index: 10;
 }
 
 .home-services-icon{
@@ -36,16 +68,110 @@
     font-size: 1.1rem;
 }
 
+.home-mvv-section{
+    padding: 40px 0 120px 0;
+}
+
+.home-mvv-card{
+    box-shadow: 0px 10px 15px 0px #b7d3d3;
+    width: 80%;
+}
+
+.home-mvv-header{
+    display: flex;
+    background-color: #A4E2D5;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.home-mvv-details{
+    padding: 20px 30px;
+}
+
+.home-mvv-header img{
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+.home-mvv-header h2{
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+
 
 /* vertical tab  */
 @media screen and (min-width: 769px) and (max-width: 991px) {
+
+    .home-main-image{
+        height: 40vh;
+    }
+
+    .home-service-form{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 20;
+        padding-left: 5%;
+    }
+
+    .home-h1{
+        color: white;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+    
+    .home-tagline{
+        color: white;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
     .home-services-row{
         width: 95vw;
+    }
+
+    .home-mvv-card{
+        width: 99%;
     }
 }
 
 
 @media screen and (max-width: 768px) {
+
+    .home-main-image{
+        height: 65vh;
+    }
+
+    .home-service-form{
+        position: absolute;
+        left: 0%;
+        top: 5%;
+        width: 100%;
+        z-index: 20;
+        padding-left: 5%;
+    }
+
+    .home-h1{
+        color: white;
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+    
+    .home-tagline{
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
     .home-services-row{
         width: 95vw;
     }
@@ -55,7 +181,7 @@
     }
 
 
-    .home-services-icon svg{
+    .home-services-icon img{
         border-radius: 30%;
     }
 }

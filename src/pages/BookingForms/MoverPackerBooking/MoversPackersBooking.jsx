@@ -13,6 +13,7 @@ import FormPart1 from "./FormPart1";
 import FormPart2 from "./FormPart2";
 import FormPart3 from "./FormPart3";
 import formatDate from "../../../utils/FormatDate";
+import md5 from 'md5';
 
 
 const MoversPackersBooking = () => {
@@ -127,6 +128,10 @@ const MoversPackersBooking = () => {
     }, [FormInputs.selectedDate, FormInputs.no_of_hours, FormInputs.postCode, FormInputs.skill, FormInputs.voucher, FormInputs.addon, FormInputs.addonHours, FormInputs.workerCount])
 
     const validateForm1 = () => {
+        if(FormInputs.noOfBoxes === ""){
+            notify("Please enter the no of boxes to pack", "error");
+            return false;
+        }
         if (FormInputs.selectedDate === "") {
             notify("Please select the start date", "error");
             return false;
@@ -141,6 +146,14 @@ const MoversPackersBooking = () => {
         }
         if (FormInputs.workerCount === 0) {
             notify("Please enter number of workers required", "error");
+            return false;
+        }
+        if (FormInputs.hasLift === "") {
+            notify("Please select the availablity of lift", "error");
+            return false;
+        }
+        if (FormInputs.floors === "") {
+            notify("Please enter the no of floors", "error");
             return false;
         }
 
@@ -191,7 +204,7 @@ const MoversPackersBooking = () => {
     }
 
     const bookMoversPackers = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/book-movers-packers/', {
+        let response = await fetch('http://127.0.0.1:8000/api/book-movers-packers/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -217,8 +230,18 @@ const MoversPackersBooking = () => {
         })
         let data = await response.json();
         console.log(data);
-        if (data['success']) {
-            notify(data['response'], "success");
+        if (FormInputs.paymentMethod == "Online") {
+            let md5hash = md5(FormInputs.totalCost + "hayamesolutions" + data['booking_ids'] + "9d6c2b8c9cdd591ebd27c16ca5720fe4")
+
+            let url = "https://pay.merchant.razer.com/RMS/pay/hayamesolutions?amount=" + FormInputs.totalCost + "&orderid=" + data['booking_ids'] + "&bill_name=" + user['first_name'] + " " + user['last_name'] + "&bill_email=" + user['email'] + "&country=MY&vcode=" + md5hash;
+
+            window.location.href = url;
+        }
+        else {
+            if (data['success']) {
+                notify(data['response'], "success");
+                navigate('/booking-history');
+            }
         }
     }
 
@@ -249,7 +272,7 @@ const MoversPackersBooking = () => {
             setPage(page - 1);
         }
         else{
-            navigate('/book');
+            navigate('/');
         }
     }
 

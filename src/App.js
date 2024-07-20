@@ -21,6 +21,7 @@ import BookingHistory from './pages/BookingHistory/BookingHistory';
 import CheckBookings from './pages/CheckBookings/CheckBookings';
 import Profile from './pages/Profile/Profile';
 import BookingDetails from './pages/BookingDetails/BookingDetails';
+import AllocateWorkers from './pages/AllocateWorkers/AllocateWorkers';
 import { AuthProvider } from './context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -108,6 +109,10 @@ function App() {
     {
       path: '/booking-details',
       element: <AuthProvider><BookingDetails /></AuthProvider>,
+    },
+    {
+      path: '/allocate-workers',
+      element: <AuthProvider><AllocateWorkers /></AuthProvider>,
     },
   ])
 

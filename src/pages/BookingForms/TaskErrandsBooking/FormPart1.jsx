@@ -81,7 +81,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             <div className="row form-section-row" id="book-task-errands-worker-count-section">
                 <div className="form-label-bold">Number of Workers</div>
                 <div className="col-6 p-0">
-                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} required />
+                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} defaultValue={FormInputs.workerCount} required />
                 </div>
             </div>
 
@@ -182,7 +182,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             <div className="row form-section-row" id="book-task-errands-start-time-section">
                 <div className="form-label-bold">Enter the type of task:</div>
                 <div className="col-12 col-sm-12 col-md-6 col-lg-6 m-0 p-0">
-                    <input type="text" className="input-field" name="taskType" onChange={handleChange} required />
+                    <input type="text" className="input-field" name="taskType" onChange={handleChange} defaultValue={FormInputs.taskType} required />
                 </div>
             </div>
 

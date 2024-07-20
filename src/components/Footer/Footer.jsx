@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="row m-0 footer-row">
             <div className="footer-logo-col col-12 col-sm-12 col-md-5 col-lg-5">
                 <img src={Logo} alt="" className="footer-logo" />
-                <div className="footer-tagline">Professional Cleaning Services | Hayame</div>
+                <div className="footer-tagline">Talent as a Service | Hayame</div>
                 <div className="py-1">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" /></svg>
                     <span className="px-2">support@hayame.my</span>
@@ -63,7 +63,7 @@ const Footer = () => {
                         <li><Link to='/about-us' className="footer-links">About Us</Link></li>
                         <li><Link to='/contact-us' className="footer-links">Contact Us</Link></li>
                         <li><Link to='/faqs' className="footer-links">FAQs</Link></li>
-                        <li><Link to='/book' className="footer-links">Make Booking</Link></li>
+                        <li><Link to='/' className="footer-links">Make Booking</Link></li>
                     </ul>
                 </div>
             </div>

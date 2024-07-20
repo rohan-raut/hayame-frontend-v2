@@ -8,6 +8,7 @@
     width: 65px;
     height: 65px;
     cursor: pointer;
+    z-index: 100;
 }
 
 .social-media-icons-container img{

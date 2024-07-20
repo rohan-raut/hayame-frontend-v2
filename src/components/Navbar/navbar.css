@@ -23,7 +23,7 @@ nav {
     background-color: #A4E2D5;
     position: sticky;
     top: 0%;
-    z-index: 10;
+    z-index: 100;
     /* box-shadow: 0px 1px 20px -11px black; */
     border-bottom: 1px solid white;
 }

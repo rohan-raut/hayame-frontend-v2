@@ -11,7 +11,7 @@ const FAQ = () => {
         let headerElement = e.target;
 
         // if clicked on cross icon, get the parent's sibling element
-        if(accordionContent == null){
+        if (accordionContent == null) {
             accordionContent = e.target.parentElement.nextElementSibling;
             headerElement = e.target.parentElement;
         }
@@ -31,69 +31,63 @@ const FAQ = () => {
             <div className="row justify-content-center m-0">
                 <div className="col-11 col-sm-11 col-md-10 col-lg-10">
                     <div class="accordion-container">
+
                         <div class="accordion-item">
                             <button class="accordion-header" onClick={OpenCloseFAQ}>
                                 What services do you offer?<span class="icon">+</span>
                             </button>
                             <div class="accordion-content">
-                                <p>Hayame offers variety of cleaning services provided, such as residential,
-                                    commercial, deep cleaning, move-in/move-out cleaning, etc. Please
-                                    refer to <Link to="/product-and-services">https://hayame.my/product-and-services</Link> for more details </p>
+                                <p>Hayame Solutions offers a wide range of home services, including cleaning, laundry, aircon maintenance, and home improvement. We connect you with highly skilled and dependable service partners to meet all your household needs.</p>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <button class="accordion-header" onClick={OpenCloseFAQ}>
-                                How do you charge for your services? <span class="icon">+</span>
+                                How do I book your services? <span class="icon">+</span>
                             </button>
                             <div class="accordion-content">
-                                <p>Hayame pricing structure are based on cleaner per hour computation, Current promotional rate are set at RM 20.00 per hour </p>
+                                <p>Booking a service is easy. Simply visit our website, select the service you need, choose a convenient date and time, and provide your contact details. Our team will confirm your booking and ensure a service partner is assigned to your request. </p>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <button class="accordion-header" onClick={OpenCloseFAQ}>
-                                Do I need to provide any cleaning equipment or supplies?  <span class="icon">+</span>
+                                Are the service partners verified and trustworthy?  <span class="icon">+</span>
                             </button>
                             <div class="accordion-content">
-                                <p>Hayame utilize clients cleaning equipment and cleaning materials,
-                                    primary factor for this is due cleanliness reasoning. </p>
+                                <p>Yes, all our service partners go through a rigorous vetting process to ensure they are skilled, reliable, and trustworthy. We prioritize your safety and satisfaction. </p>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <button class="accordion-header" onClick={OpenCloseFAQ}>
-                                How do you ensure the quality of your cleaning?  <span class="icon">+</span>
+                                What if I am not satisfied with the service provided?  <span class="icon">+</span>
                             </button>
                             <div class="accordion-content">
-                                <p>Hayame ensures highest quality of cleaning, our service implements
-                                    several key measures, “Professional Training”, “Quality Control Checks”,
-                                    “Client Feedback”, “Reliable and Consistent Staff”, “Responsive Customer
-                                    Service” </p>
+                                <p>Customer satisfaction is our top priority. If you are not satisfied with the service, please contact our customer support within 24 hours of the service. We will address your concerns and take appropriate actions to resolve the issue. </p>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <button class="accordion-header" onClick={OpenCloseFAQ}>
-                                Can I request the same cleaner for every visit?  <span class="icon">+</span>
+                                Can I reschedule or cancel a booking?  <span class="icon">+</span>
                             </button>
                             <div class="accordion-content">
-                                <p>Yes, this is possible, please contact to us at support@hayame.my and
-                                    we will be able arrange this request.</p>
+                                <p>Yes, you can reschedule or cancel a booking. Please do so at least 24 hours before the scheduled service time to avoid any cancellation fees. You can manage your bookings through our website or by contacting customer support.</p>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <button class="accordion-header" onClick={OpenCloseFAQ}>
-                                What should I do before the cleaning service arrives?  <span class="icon">+</span>
+                                How can I contact customer support?  <span class="icon">+</span>
                             </button>
                             <div class="accordion-content">
                                 <p>
-                                    <ul>
-                                        <li><strong>Declutter Spaces:</strong> Clear away toys, clothes, and personal items from surfaces and floors to allow cleaners direct access to areas needing attention.</li>
-                                        <li><strong>Secure Valuables and Fragile Items:</strong> Safely store away any valuable, fragile, or sentimental items to prevent accidents during the cleaning process.</li>
-                                        <li><strong>Provide Clear Instructions:</strong> Leave specific instructions for areas that need special care or should be avoided, and arrange for pet safety and comfort. </li>
-                                        <li><strong>Prepare the Space:</strong> Ensure there's available parking and provide any necessary access codes or keys for entry.</li>
-                                        <li><strong>Communicate Preferences and Concerns:</strong> Inform the cleaning service of any preferences regarding cleaning products or special considerations like allergies, and specify if you have areas requiring particular attention. </li>
-                                    </ul>
+                                    You can reach our customer support team via phone, email, or live chat on our website. Our team is available to assist you with any queries or issues you may have.
                                 </p>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

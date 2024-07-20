@@ -7,6 +7,7 @@ import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons
 import DataTable from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
 import formatDate from "../../utils/FormatDate";
+import formatTime from "../../utils/FormatTime";
 
 
 const BookingHistory = () => {
@@ -40,7 +41,7 @@ const BookingHistory = () => {
         },
         {
             name: 'Start Time',
-            selector: row => row.start_time,
+            selector: row => formatTime(row.start_time),
         },
         {
             name: 'Hours',

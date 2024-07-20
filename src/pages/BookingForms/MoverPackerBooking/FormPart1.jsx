@@ -60,7 +60,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             <div className="row form-section-row">
                 <div className="form-label-bold">Estimate number of boxes to pack</div>
                 <div className="col-6 p-0">
-                    <input type="number" className="input-field" name="noOfBoxes" onChange={handleChange} required />
+                    <input type="number" className="input-field" name="noOfBoxes" onChange={handleChange} defaultValue={FormInputs.noOfBoxes} required />
                 </div>
             </div>
 
@@ -75,7 +75,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             <div className="row form-section-row" id="book-movers-packers-worker-count-section">
                 <div className="form-label-bold">Number of Workers</div>
                 <div className="col-6 p-0">
-                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} required />
+                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} defaultValue={FormInputs.workerCount} required />
                 </div>
             </div>
 
@@ -208,7 +208,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             <div className="row form-section-row">
                 <div className="form-label-bold">Number of your Floor</div>
                 <div className="col-6 p-0">
-                    <input type="number" className="input-field" name="floors" onChange={handleChange} required />
+                    <input type="number" className="input-field" name="floors" onChange={handleChange} defaultValue={FormInputs.floors} required />
                 </div>
             </div>
 

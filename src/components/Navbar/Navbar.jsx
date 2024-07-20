@@ -31,7 +31,6 @@ const Navbar = () => {
                 <ul className="navbar-ul">
                     <li><Link to="/about-us" className="navbar-link">About Us</Link></li>
                     <li><Link to="/contact-us" className="navbar-link">Contact Us</Link></li>
-                    <li><Link to="/book" className="navbar-link">Make Booking</Link></li>
                     {(authTokens !== null) ? (
                         <li className="navbar-dropdown-1">
                             <span className="navbar-link">

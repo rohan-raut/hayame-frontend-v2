@@ -6,6 +6,8 @@ import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 import InvoiceGenerator from '../../utils/InvoiceGenerator';
+import formatDate from '../../utils/FormatDate';
+import formatTime from '../../utils/FormatTime';
 
 const BookingDetails = () => {
     let { authTokens, user } = useContext(AuthContext);
@@ -51,7 +53,7 @@ const BookingDetails = () => {
         <div>
             <Navbar />
             <div className="row justify-content-center mx-0 my-5">
-                <div className="col-5 booking-details-card">
+                <div className="col-12 col-sm-12 col-md-8 col-lg-5 booking-details-card">
                     <h1 className="booking-details-h1">Booking Details</h1>
 
                     <div className="d-flex justify-content-between py-1">
@@ -105,12 +107,12 @@ const BookingDetails = () => {
 
                     <div className="d-flex justify-content-between py-1">
                         <div className="text-bold">Start Date</div>
-                        {bookingDetails !== null && <div>{bookingDetails.start_date}</div>}
+                        {bookingDetails !== null && <div>{formatDate(bookingDetails.start_date)}</div>}
                     </div>
 
                     <div className="d-flex justify-content-between py-1">
                         <div className="text-bold">Start Time</div>
-                        {bookingDetails !== null && <div>{bookingDetails.start_time}</div>}
+                        {bookingDetails !== null && <div>{formatTime(bookingDetails.start_time)}</div>}
                     </div>
 
                     <div className="d-flex justify-content-between py-1">

@@ -423,7 +423,7 @@ const Register = () => {
                         <img src={Logo} alt="" />
                     </div>
                     <div>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, cum enim dolorem harum rem soluta et. Laudantium eveniet repellendus quia, tenetur nisi obcaecati, a molestiae nihil distinctio sapiente, nostrum deleniti exercitationem? Quasi, culpa veniam optio repellat, illum, rerum cupiditate temporibus qui praesentium blanditiis repudiandae. Autem necessitatibus quae maiores illo eaque.
+                        Hayame Solutions Sdn Bhd stands at the forefront where technology meets services, offering a state-of-the-art platform that caters to all your home and professional needs. Our innovative solutions range from cleaning, laundry, and aircon maintenance to comprehensive home improvement services, seamlessly connecting thousands of Malaysian households with a curated pool of highly skilled service partners.
                     </div>
                     <div>
                         <ShortCustomerReviews />

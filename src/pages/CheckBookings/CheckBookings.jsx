@@ -3,79 +3,53 @@ import { Space, Table, Tag } from 'antd';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import AuthContext from '../../context/AuthContext';
+import DataTable from 'react-data-table-component';
+import { useNavigate } from 'react-router-dom';
 
 const CheckBookings = () => {
     const [tableData, setTableData] = useState();
 
     let { authTokens } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+
     const columns = [
         {
-            title: 'Booking ID',
-            dataIndex: 'id',
-            key: 'id',
-            render: (text) => <a>{text}</a>,
-            width: '6%'
+            name: 'Booking ID',
+            selector: row => row.booking_id,
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
-            width: '20%'
+            name: 'Address',
+            selector: row => row.address,
         },
         {
-            title: 'Property Type',
-            dataIndex: 'property_type',
-            key: 'property_type',
-            width: '10%'
+            name: 'Customer Name',
+            selector: row => row.customer_name,
         },
         {
-            title: 'Customer Name',
-            dataIndex: 'customer_name',
-            key: 'customer_name',
-            width: '10%'
+            name: 'Customer Phone',
+            selector: row => row.customer_phone,
         },
         {
-            title: 'Customer Email',
-            dataIndex: 'customer_email',
-            key: 'customer_email',
-            width: '10%'
+            name: 'Start Date',
+            selector: row => row.start_date,
         },
         {
-            title: 'Customer Phone',
-            dataIndex: 'customer_phone',
-            key: 'customer_phone',
-            width: '10%'
+            name: 'Start Time',
+            selector: row => row.start_time,
         },
         {
-            title: 'Frequency',
-            dataIndex: 'frequency',
-            key: 'frequency',
-            width: '6%'
+            name: 'Hours',
+            selector: row => row.no_of_hours,
         },
         {
-            title: 'Start Date',
-            dataIndex: 'start_date',
-            key: 'start_date',
-            width: '6%'
+            name: 'Total Cost',
+            selector: row => row.total_cost,
         },
         {
-            title: 'Start Time',
-            dataIndex: 'start_time',
-            key: 'start_time',
-            width: '6%'
-        },
-        {
-            title: 'Hours',
-            dataIndex: 'no_of_hours',
-            key: 'no_of_hours',
-            width: '6%'
-        },
-        {
-            title: 'Total Cost',
-            dataIndex: 'total_cost',
-            key: 'total_cost',
-            width: '6%'
+            name: 'Actions',
+            button: true,
+            cell: (row) => <button onClick={() => navigate('/allocate-workers', { state: { skill: row.skill, bookingId: row.id } })}>Details</button>
         }
     ];
 
@@ -104,7 +78,7 @@ const CheckBookings = () => {
             <Navbar />
             <div className="row mx-0 my-5 justify-content-center">
                 <div className="col-11 col-sm-11 col-md-11 col-lg-10">
-                    <Table columns={columns} dataSource={tableData} scroll={{ x: 2000, }} />
+                    <DataTable columns={columns} data={tableData} />
                 </div>
             </div>
 

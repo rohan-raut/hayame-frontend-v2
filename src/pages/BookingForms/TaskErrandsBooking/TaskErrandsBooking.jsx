@@ -13,6 +13,7 @@ import FormPart1 from "./FormPart1";
 import FormPart2 from "./FormPart2";
 import FormPart3 from "./FormPart3";
 import formatDate from "../../../utils/FormatDate";
+import md5 from 'md5';
 
 
 const TaskErrandsBooking = () => {
@@ -141,6 +142,10 @@ const TaskErrandsBooking = () => {
             notify("Please enter number of workers required", "error");
             return false;
         }
+        if (FormInputs.taskType === "") {
+            notify("Please enter the type of task", "error");
+            return false;
+        }
 
         let startDate = new Date(FormInputs.selectedDate);
         let startHour = parseInt(FormInputs.startTime[0] + FormInputs.startTime[1]);
@@ -189,7 +194,7 @@ const TaskErrandsBooking = () => {
     }
 
     const bookTaskErrands = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/book-task-errands/', {
+        let response = await fetch('http://127.0.0.1:8000/api/book-task-errands/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -213,8 +218,18 @@ const TaskErrandsBooking = () => {
         })
         let data = await response.json();
         console.log(data);
-        if (data['success']) {
-            notify(data['response'], "success");
+        if (FormInputs.paymentMethod == "Online") {
+            let md5hash = md5(FormInputs.totalCost + "hayamesolutions" + data['booking_ids'] + "9d6c2b8c9cdd591ebd27c16ca5720fe4")
+
+            let url = "https://pay.merchant.razer.com/RMS/pay/hayamesolutions?amount=" + FormInputs.totalCost + "&orderid=" + data['booking_ids'] + "&bill_name=" + user['first_name'] + " " + user['last_name'] + "&bill_email=" + user['email'] + "&country=MY&vcode=" + md5hash;
+
+            window.location.href = url;
+        }
+        else {
+            if (data['success']) {
+                notify(data['response'], "success");
+                navigate('/booking-history');
+            }
         }
     }
 
@@ -245,7 +260,7 @@ const TaskErrandsBooking = () => {
             setPage(page - 1);
         }
         else{
-            navigate('/book');
+            navigate('/');
         }
     }
 

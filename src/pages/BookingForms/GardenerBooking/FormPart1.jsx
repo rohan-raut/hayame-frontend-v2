@@ -24,6 +24,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
         { 'label': '500 sq. feets', value: 500 },
         { 'label': '1000 sq. feets', value: 1000 },
         { 'label': '1500 sq. feets', value: 1500 },
+        { 'label': '2000 sq. feets', value: 2000 },
     ]
 
 
@@ -250,7 +251,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             <div className="row form-section-row" id="book-gardener-worker-count-section">
                 <div className="form-label-bold">Number of Gardeners</div>
                 <div className="col-6 p-0">
-                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} required />
+                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} defaultValue={FormInputs.workerCount} required />
                 </div>
             </div>
 

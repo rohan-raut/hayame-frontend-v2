@@ -143,7 +143,8 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                                     /hr
                                 </div>
                                 <div className="booking-freq-list">
-                                    <div>✓ Basic Cleaning</div>
+                                    <div>✓ Basic Work</div>
+                                    <div>✓ Warehouse Work</div>
                                     <div></div>
                                 </div>
                                 <div className="booking-freq-btn">Select</div>
@@ -210,7 +211,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             <div className="row form-section-row" id="book-general-worker-worker-count-section">
                 <div className="form-label-bold">Number of Workers</div>
                 <div className="col-6 p-0">
-                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} required />
+                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} defaultValue={FormInputs.workerCount} required />
                 </div>
             </div>
 
