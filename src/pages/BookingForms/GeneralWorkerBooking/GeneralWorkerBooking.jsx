@@ -199,7 +199,7 @@ const GeneralWorkerBooking = () => {
     }
 
     const bookCleaner = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/book-general-worker/', {
+        let response = await fetch('https://djangotest.hayame.my/api/book-general-worker/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

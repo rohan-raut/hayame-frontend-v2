@@ -84,7 +84,7 @@ const AllocateWorkers = () => {
             workerIds.push(selectedWorkers[i]['value']);
         }
 
-        let response = await fetch('http://127.0.0.1:8000/api/allocate-wokers/', {
+        let response = await fetch('https://djangotest.hayame.my/api/allocate-wokers/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
