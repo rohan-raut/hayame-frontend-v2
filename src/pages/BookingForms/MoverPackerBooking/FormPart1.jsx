@@ -31,7 +31,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
 
     const getAvailableSlots = async () => {
         if (FormInputs.postCode !== '' && FormInputs.selectedDate !== '' && FormInputs.workerCount != 0 && FormInputs.no_of_hours != "") {
-            let response = await fetch('https://djangotest.hayame.my/api/get-available-slots/', {
+            let response = await fetch('https://django.hayame.my/api/get-available-slots/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

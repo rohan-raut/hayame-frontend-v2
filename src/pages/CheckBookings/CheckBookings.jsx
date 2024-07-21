@@ -55,7 +55,7 @@ const CheckBookings = () => {
 
 
     const getTableData = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/check-bookings/', {
+        let response = await fetch('https://django.hayame.my/api/check-bookings/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

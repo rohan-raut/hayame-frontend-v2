@@ -21,7 +21,7 @@ const AllocateWorkers = () => {
 
     const getBookingDetails = async () => {
         if (skill !== null && bookingId != null) {
-            let response = await fetch('https://djangotest.hayame.my/api/get-booking-details/', {
+            let response = await fetch('https://django.hayame.my/api/get-booking-details/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const AllocateWorkers = () => {
 
     const getWorkersList = async () => {
         if (skill !== null) {
-            let response = await fetch('https://djangotest.hayame.my/api/get-workers-by-skill/', {
+            let response = await fetch('https://django.hayame.my/api/get-workers-by-skill/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const AllocateWorkers = () => {
             workerIds.push(selectedWorkers[i]['value']);
         }
 
-        let response = await fetch('https://djangotest.hayame.my/api/allocate-wokers/', {
+        let response = await fetch('https://django.hayame.my/api/allocate-wokers/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

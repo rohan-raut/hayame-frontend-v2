@@ -76,7 +76,7 @@ const ElderlyCareBooking = () => {
     }
 
     const getAllPostCodes = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/get-all-postcodes/', {
+        let response = await fetch('https://django.hayame.my/api/get-all-postcodes/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const ElderlyCareBooking = () => {
 
     const getCostOfBooking = async () => {
         if (FormInputs.frequency !== "" && FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
-            let response = await fetch('https://djangotest.hayame.my/api/get-elderly-care-booking_cost/', {
+            let response = await fetch('https://django.hayame.my/api/get-elderly-care-booking_cost/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -200,7 +200,7 @@ const ElderlyCareBooking = () => {
     }
 
     const bookElderlyCare = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/book-elderly-care/', {
+        let response = await fetch('https://django.hayame.my/api/book-elderly-care/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

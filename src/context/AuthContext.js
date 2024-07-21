@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
     let loginUser = async (e) => {
         e.preventDefault()
-        let response = await fetch('https://djangotest.hayame.my/api/login/', {
+        let response = await fetch('https://django.hayame.my/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
             last_name = "name";
         }
 
-        let response = await fetch('https://djangotest.hayame.my/api/google-signin/', {
+        let response = await fetch('https://django.hayame.my/api/google-signin/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

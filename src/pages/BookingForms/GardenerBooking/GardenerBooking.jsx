@@ -77,7 +77,7 @@ const GardenerBooking = () => {
     }
 
     const getAllPostCodes = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/get-all-postcodes/', {
+        let response = await fetch('https://django.hayame.my/api/get-all-postcodes/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const GardenerBooking = () => {
 
     const getCostOfBooking = async () => {
         if (FormInputs.frequency !== "" && FormInputs.selectedDate !== "" && FormInputs.no_of_hours !== "" && FormInputs.skill !== "" && FormInputs.postCode !== "") {
-            let response = await fetch('https://djangotest.hayame.my/api/get-gardener-booking_cost/', {
+            let response = await fetch('https://django.hayame.my/api/get-gardener-booking_cost/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -209,7 +209,7 @@ const GardenerBooking = () => {
     }
 
     const bookGardener = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/book-gardener/', {
+        let response = await fetch('https://django.hayame.my/api/book-gardener/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

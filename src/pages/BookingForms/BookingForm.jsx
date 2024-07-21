@@ -54,7 +54,7 @@ const BookingForm = () => {
     }
 
     const getAllPostCodes = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/get-all-postcodes/', {
+        let response = await fetch('https://django.hayame.my/api/get-all-postcodes/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -60,7 +60,7 @@ const BookingHistory = () => {
 
 
     const getTableData = async() => {
-        let response = await fetch('https://djangotest.hayame.my/api/booking-history/', {
+        let response = await fetch('https://django.hayame.my/api/booking-history/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

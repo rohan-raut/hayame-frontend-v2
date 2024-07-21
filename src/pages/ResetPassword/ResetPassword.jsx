@@ -62,7 +62,7 @@ const ResetPassword = () => {
         }
 
         if (verifyForm()) {
-            let api = 'https://djangotest.hayame.my/api/reset-password/' + user
+            let api = 'https://django.hayame.my/api/reset-password/' + user
 
             let response = await fetch(api, {
                 method: 'POST',

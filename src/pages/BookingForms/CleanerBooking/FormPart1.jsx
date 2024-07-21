@@ -29,7 +29,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
 
 
     const getPricesByFreq = async () => {
-        let response = await fetch('https://djangotest.hayame.my/api/get-frequency-discount-by-skill/', {
+        let response = await fetch('https://django.hayame.my/api/get-frequency-discount-by-skill/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
 
     const getAvailableSlots = async () => {
         if (FormInputs.postCode !== '' && FormInputs.selectedDate !== '' && FormInputs.workerCount != 0 && FormInputs.no_of_hours != "") {
-            let response = await fetch('https://djangotest.hayame.my/api/get-available-slots/', {
+            let response = await fetch('https://django.hayame.my/api/get-available-slots/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

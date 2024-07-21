@@ -19,7 +19,7 @@ const UserVerification = () => {
             user = pair[1]
         }
 
-        let api = "https://djangotest.hayame.my/api/verify-user/" + user;
+        let api = "https://django.hayame.my/api/verify-user/" + user;
 
         let response = await fetch(api, {
             method: 'GET',

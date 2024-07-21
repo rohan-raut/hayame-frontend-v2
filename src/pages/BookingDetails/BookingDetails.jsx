@@ -19,7 +19,7 @@ const BookingDetails = () => {
 
     const getBookingDetails = async () => {
         if (skill !== null && bookingId != null) {
-            let response = await fetch('https://djangotest.hayame.my/api/get-booking-details/', {
+            let response = await fetch('https://django.hayame.my/api/get-booking-details/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
