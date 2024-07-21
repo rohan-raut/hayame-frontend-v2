@@ -315,7 +315,7 @@
     }
 
     #booking-summary-active:checked~.booking-summary-card {
-        top: 0%;
+        top: 20%;
     }
 
     #booking-summary-active:checked~.booking-down-arrow {
@@ -354,7 +354,7 @@
     }
 
     #booking-summary-active:checked~.booking-summary-card {
-        top: 0%;
+        top: 20%;
     }
 
     #booking-summary-active:checked~.booking-summary-card>div>label {

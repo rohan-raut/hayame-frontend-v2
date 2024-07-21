@@ -114,7 +114,7 @@ const AllocateWorkers = () => {
 
                     <div className="d-flex justify-content-between py-1">
                         <div className="text-bold booking-details-padding-right">Address</div>
-                        {bookingDetails !== null && <div className="text-end">{bookingDetails.address}</div>}
+                        {bookingDetails !== null && <div className="text-end"><a href={"https://www.google.com/maps/search/" + (bookingDetails.address).replaceAll(" ", "+")} target="_blank">{bookingDetails.address}</a></div>}
                     </div>
 
                     <div className="d-flex justify-content-between py-1">

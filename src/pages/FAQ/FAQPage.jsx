@@ -41,101 +41,82 @@ const FAQPage = () => {
                                     What services do you offer?<span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
-                                    <p>Hayame offers variety of cleaning services provided, such as residential,
-                                        commercial, deep cleaning, move-in/move-out cleaning, etc. Please
-                                        refer to <Link to="/product-and-services">https://hayame.my/product-and-services</Link> for more details </p>
+                                    <p>Hayame Solutions offers a wide range of home services, including cleaning, laundry, aircon maintenance, and home improvement. We connect you with highly skilled and dependable service partners to meet all your household needs. </p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    How do you charge for your services? <span className="icon">+</span>
+                                    How do I book your services? <span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
-                                    <p>Hayame pricing structure are based on cleaner per hour computation, Current promotional rate are set at RM 20.00 per hour </p>
+                                    <p>Booking a service is easy. Simply visit our website, select the service you need, choose a convenient date and time, and provide your contact details. Our team will confirm your booking and ensure a service partner is assigned to your request. </p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    Do I need to provide any cleaning equipment or supplies?  <span className="icon">+</span>
+                                    Are the service partners verified and trustworthy? <span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
-                                    <p>Hayame utilize clients cleaning equipment and cleaning materials,
-                                        primary factor for this is due cleanliness reasoning. </p>
+                                    <p>Yes, all our service partners go through a rigorous vetting process to ensure they are skilled, reliable, and trustworthy. We prioritize your safety and satisfaction. </p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    How do you ensure the quality of your cleaning?  <span className="icon">+</span>
+                                    What if I am not satisfied with the service provided?  <span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
-                                    <p>Hayame ensures highest quality of cleaning, our service implements
-                                        several key measures, “Professional Training”, “Quality Control Checks”,
-                                        “Client Feedback”, “Reliable and Consistent Staff”, “Responsive Customer
-                                        Service” </p>
+                                    <p>Customer satisfaction is our top priority. If you are not satisfied with the service, please contact our customer support within 24 hours of the service. We will address your concerns and take appropriate actions to resolve the issue. </p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    How can I book a cleaning appointment?<span className="icon">+</span>
+                                    Can I reschedule or cancel a booking?<span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
-                                    <p>Booking can be done at ease by visiting <Link to="/">https://hayame.my</Link></p>
+                                    <p>Yes, you can reschedule or cancel a booking. Please do so at least 24 hours before the scheduled service time to avoid any cancellation fees. You can manage your bookings through our website or by contacting customer support.</p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    What is your cancellation or rescheduling policy?<span className="icon">+</span>
+                                    How do I pay for the services?<span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
-                                    <p>Please refer to <Link to="/refund-policy">https://hayame.my/refund-policy</Link></p>
+                                    <p>Payment can be made online through our secure payment gateway using credit/debit cards or e-wallets. Alternatively, you can choose to pay in cash after the service is completed.</p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    Can I request the same cleaner for every visit?  <span className="icon">+</span>
+                                    Do you offer any discounts or promotions?  <span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
-                                    <p>Yes, this is possible, please contact to us at support@hayame.my and
-                                        we will be able arrange this request.</p>
+                                    <p>Yes, we regularly offer discounts and promotions. Keep an eye on our website and social media pages for the latest deals. You can also subscribe to our newsletter to receive updates on special offers.</p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    How long does a typical cleaning take?<span className="icon">+</span>
+                                    How do we ensure the quality of our service?<span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
-                                    <p>Minimum duration required for the cleaning work would be 4 hours,
-                                        and this can be extended based on size of the house and type of
-                                        cleaning required </p>
+                                    <p>We ensure the quality of our service through a comprehensive vetting process for our service partners, regular training, and continuous performance monitoring. Additionally, we gather customer feedback after each service and use it to improve our standards. </p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    What should I do before the cleaning service arrives?  <span className="icon">+</span>
+                                    What safety measures are in place for COVID-19? <span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
                                     <p>
-                                        <ul>
-                                            <li><strong>Declutter Spaces:</strong> Clear away toys, clothes, and personal items from surfaces and floors to allow cleaners direct access to areas needing attention.</li>
-                                            <li><strong>Secure Valuables and Fragile Items:</strong> Safely store away any valuable, fragile, or sentimental items to prevent accidents during the cleaning process.</li>
-                                            <li><strong>Provide Clear Instructions:</strong> Leave specific instructions for areas that need special care or should be avoided, and arrange for pet safety and comfort. </li>
-                                            <li><strong>Prepare the Space:</strong> Ensure there's available parking and provide any necessary access codes or keys for entry.</li>
-                                            <li><strong>Communicate Preferences and Concerns:</strong> Inform the cleaning service of any preferences regarding cleaning products or special considerations like allergies, and specify if you have areas requiring particular attention. </li>
-                                        </ul>
+                                        We follow strict safety protocols to ensure the well-being of our customers and service partners. This includes regular health checks, use of masks, and sanitization of equipment. We adhere to all government guidelines to prevent the spread of COVID-19.
                                     </p>
                                 </div>
                             </div>
                             <div className="accordion-item">
                                 <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                    How do you handle pets during cleaning?<span className="icon">+</span>
+                                    How can I contact customer support?<span className="icon">+</span>
                                 </button>
                                 <div className="accordion-content">
                                     <p>
-                                        <ul>
-                                            <li><strong>Inform and Prepare:</strong> Clients are encouraged to inform us about their pets and provide any specific instructions for their care or areas to avoid, ensuring pets are safely secured away from the cleaning areas.</li>
-                                            <li><strong>Staff Awareness:</strong> Our cleaners are trained on how to interact with pets respectfully and safely, avoiding any stress or harm to the animals. </li>
-                                            <li><strong>Pet-Safe Cleaning:</strong> We use pet-friendly cleaning products upon request to protect the well-being of your pets, ensuring a safe environment for them throughout the cleaning process. </li>
-                                        </ul>
+                                        You can reach our customer support team via phone, email, or live chat on our website. Our team is available to assist you with any queries or issues you may have.
                                     </p>
                                 </div>
                             </div>

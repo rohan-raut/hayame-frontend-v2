@@ -26,7 +26,7 @@ const AboutUs = () => {
                 <h2 className="about-us-h2">Our Services</h2>
                 <div className="col-12 col-sm-12 col-md-8 col-lg-8">
                     <div className="about-us-sevice-type">Home/Office</div>
-                    <div className="about-us-taas">Talent-as-a-Service (Taas)</div>
+                    <div className="about-us-taas">Talent-as-a-Service (TaaS)</div>
                     <div className="row mx-0">
                         <div className="col-12 col-sm-6 col-md-4 col-lg-4 about-us-service-card">
                             <img src={CleanerService} alt="" />
@@ -56,7 +56,7 @@ const AboutUs = () => {
                 </div>
                 <div className="col-12 col-sm-6 col-md-4 col-lg-4">
                     <div className="about-us-sevice-type">Professional</div>
-                    <div className="about-us-taas">Talent-as-a-Service (Taas)</div>
+                    <div className="about-us-taas">Talent-as-a-Service (TaaS)</div>
                     <div className="about-us-service-long-card">
                         <img src={ProfessionalService} alt="" />
                         <div>Professional Workers</div>

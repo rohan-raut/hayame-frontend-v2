@@ -5,6 +5,8 @@ import Footer from '../../components/Footer/Footer';
 import AuthContext from '../../context/AuthContext';
 import DataTable from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
+import formatDate from "./../../utils/FormatDate";
+import formatTime from "./../../utils/FormatTime";
 
 const CheckBookings = () => {
     const [tableData, setTableData] = useState();
@@ -13,6 +15,19 @@ const CheckBookings = () => {
 
     const navigate = useNavigate();
 
+    const sortByDate = (rowA, rowB) => {
+        const a = rowA.start_date;
+        const b = rowB.start_date;
+
+        if(a > b){
+            return 1;
+        }
+        if(b > a){
+            return -1;
+        }
+        return 0;
+    }
+
     const columns = [
         {
             name: 'Booking ID',
@@ -20,7 +35,7 @@ const CheckBookings = () => {
         },
         {
             name: 'Address',
-            selector: row => row.address,
+            selector: row => <a href={"https://www.google.com/maps/search/" + (row.address).replaceAll(" ", "+")} target='_blank'>{row.address}</a>,
         },
         {
             name: 'Customer Name',
@@ -32,11 +47,13 @@ const CheckBookings = () => {
         },
         {
             name: 'Start Date',
-            selector: row => row.start_date,
+            selector: row => formatDate(row.start_date),
+            sortable: true,
+            sortFunction: sortByDate,
         },
         {
             name: 'Start Time',
-            selector: row => row.start_time,
+            selector: row => formatTime(row.start_time),
         },
         {
             name: 'Hours',
@@ -78,7 +95,7 @@ const CheckBookings = () => {
             <Navbar />
             <div className="row mx-0 my-5 justify-content-center">
                 <div className="col-11 col-sm-11 col-md-11 col-lg-10">
-                    <DataTable columns={columns} data={tableData} />
+                    <DataTable columns={columns} data={tableData} defaultSortFieldId={5} pagination />
                 </div>
             </div>
 
