@@ -71,31 +71,31 @@ const ContactUs = () => {
                         <h2 className="contact-us-h2">Send us a message</h2>
                         <form onChange={handleContactForm}>
                             <div className="row m-0">
-                                <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
-                                    <label for="exampleInputEmail1" class="form-label">First Name</label>
+                                <div className="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <label for="exampleInputEmail1" className="form-label">First Name</label>
                                     <input type="text" className="input-field" onChange={handleChange} required />
                                 </div>
-                                <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
-                                    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                                <div className="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <label for="exampleInputEmail1" className="form-label">Last Name</label>
                                     <input type="text" className="input-field" onChange={handleChange} required />
                                 </div>
-                                <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
-                                    <label for="exampleInputEmail1" class="form-label">Email Address</label>
+                                <div className="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <label for="exampleInputEmail1" className="form-label">Email Address</label>
                                     <input type="email" className="input-field" onChange={handleChange} required />
                                 </div>
-                                <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
-                                    <label for="exampleInputEmail1" class="form-label">Phone</label>
+                                <div className="mb-4 col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <label for="exampleInputEmail1" className="form-label">Phone</label>
                                     <input type="number" className="input-field" onChange={handleChange} required />
                                 </div>
-                                <div class="mb-4 col-12">
-                                    <label for="exampleInputEmail1" class="form-label">Subject</label>
+                                <div className="mb-4 col-12">
+                                    <label for="exampleInputEmail1" className="form-label">Subject</label>
                                     <input type="text" className="input-field" onChange={handleChange} required />
                                 </div>
-                                <div class="mb-4 col-12">
-                                    <label for="exampleInputEmail1" class="form-label">Message</label>
+                                <div className="mb-4 col-12">
+                                    <label for="exampleInputEmail1" className="form-label">Message</label>
                                     <textarea type="text" className="input-field" onChange={handleChange} rows="3" required ></textarea>
                                 </div>
-                                <div class="my-4 d-flex justify-content-end">
+                                <div className="my-4 d-flex justify-content-end">
                                     <button className="contact-us-form-btn">Submit</button>
                                 </div>
                             </div>

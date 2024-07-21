@@ -115,13 +115,13 @@ const ResetPassword = () => {
                     </div>
                     <div className="reset-password-form">
                         <form onSubmit={handelResetPassword}>
-                            <div class="mb-4 p-0">
-                                <input type="password" class="input-field" placeholder="New Password" name="password" onChange={handleChange} required />
+                            <div className="mb-4 p-0">
+                                <input type="password" className="input-field" placeholder="New Password" name="password" onChange={handleChange} required />
                             </div>
-                            <div class="mb-4 p-0">
-                                <input type="password" class="input-field" placeholder="Confirm Password" name="confirmPassword" onChange={handleChange} required />
+                            <div className="mb-4 p-0">
+                                <input type="password" className="input-field" placeholder="Confirm Password" name="confirmPassword" onChange={handleChange} required />
                             </div>
-                            <div class="mb-4 p-0">
+                            <div className="mb-4 p-0">
                                 <button className="reset-password-form-btn">Submit</button>
                             </div>
                         </form>

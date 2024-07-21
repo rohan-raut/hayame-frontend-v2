@@ -51,11 +51,11 @@ const ForgotPassword = () => {
                     </div>
                     <div className="forgot-password-form">
                         <form onSubmit={handelForgotPassword}>
-                            <div class="mb-4 p-0">
+                            <div className="mb-4 p-0">
                                 <label for="email" className="mb-2">Enter your registered email</label>
-                                <input type="email" class="input-field" placeholder="Email" name="email" onChange={handleChange} required />
+                                <input type="email" className="input-field" placeholder="Email" name="email" onChange={handleChange} required />
                             </div>
-                            <div class="mb-4 p-0">
+                            <div className="mb-4 p-0">
                                 <button className="forgot-password-form-btn">Submit</button>
                             </div>
                         </form>

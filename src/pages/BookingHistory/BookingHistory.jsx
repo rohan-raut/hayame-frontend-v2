@@ -83,7 +83,7 @@ const BookingHistory = () => {
             <Navbar />
             <div className="row mx-0 my-5 justify-content-center">
                 <div className="col-11 col-sm-11 col-md-11 col-lg-10">
-                    <DataTable columns={columns} data={tableData} />
+                    <DataTable columns={columns} data={tableData} pagination />
                 </div>
             </div>
 

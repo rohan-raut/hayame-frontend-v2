@@ -143,27 +143,27 @@ const Profile = () => {
                     <form className="profile-form-card" onSubmit={handleSubmit}>
                         <div className="row m-0">
                             <div className="col-6 mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
+                                <label for="firstName" className="form-label">First Name</label>
                                 <input type="text" className="input-field" onChange={handleChange} name="firstName" defaultValue={FormInput.firstName} required />
                             </div>
                             <div className="col-6 mb-3">
-                                <label for="lastName" class="form-label">Last Name</label>
+                                <label for="lastName" className="form-label">Last Name</label>
                                 <input type="text" className="input-field" onChange={handleChange} name="lastName" defaultValue={FormInput.lastName} required />
                             </div>
                             <div className="col-6 mb-3">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" className="form-label">Email</label>
                                 <input type="email" className="input-field" onChange={handleChange} name="email" defaultValue={FormInput.email} disabled required />
                             </div>
                             <div className="col-6 mb-3">
-                                <label for="phone" class="form-label">Phone</label>
+                                <label for="phone" className="form-label">Phone</label>
                                 <input type="text" className="input-field" onChange={handleChange} name="phone" defaultValue={FormInput.phone} required />
                             </div>
                             <div className="col-6 mb-3">
-                                <label for="password" class="form-label">Change Password</label>
+                                <label for="password" className="form-label">Change Password</label>
                                 <input type="password" className="input-field" onChange={handleChange} name="password" />
                             </div>
                             <div className="col-6 mb-3">
-                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <label for="confirmPassword" className="form-label">Confirm Password</label>
                                 <input type="password" className="input-field" onChange={handleChange} name="confirmPassword" />
                             </div>
                         </div>

@@ -120,9 +120,9 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                 <div className="form-label-bold">
                     How frequently would you like the service?
                 </div>
-                <div class="booking-freq-radio-buttons">
+                <div className="booking-freq-radio-buttons">
                     <label
-                        class="booking-freq-custom-radio"
+                        className="booking-freq-custom-radio"
                     >
                         <input
                             type="radio"
@@ -131,10 +131,10 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                             onChange={handleChange}
                             defaultChecked={FormInputs.frequency === "one-time"}
                         />
-                        <span class="booking-freq-radio-btn">
-                            <i class="las la-check">✔</i>
-                            <div class="booking-freq-inner-card">
-                                <h3 class="booking-h3">One-Time</h3>
+                        <span className="booking-freq-radio-btn">
+                            <i className="las la-check">✔</i>
+                            <div className="booking-freq-inner-card">
+                                <h3 className="booking-h3">One-Time</h3>
                                 <div className="booking-freq-price-discount color-transparent">
                                     Save {oneTimePrice.discount_perc}%
                                 </div>
@@ -151,13 +151,13 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                         </span>
                     </label>
                     <label
-                        class="booking-freq-custom-radio"
+                        className="booking-freq-custom-radio"
                     >
                         <input type="radio" name="frequency" value="weekly" onChange={handleChange} defaultChecked={FormInputs.frequency === "weekly"} />
-                        <span class="booking-freq-radio-btn">
-                            <i class="las la-check">✔</i>
-                            <div class="booking-freq-inner-card">
-                                <h3 class="booking-h3">Weekly</h3>
+                        <span className="booking-freq-radio-btn">
+                            <i className="las la-check">✔</i>
+                            <div className="booking-freq-inner-card">
+                                <h3 className="booking-h3">Weekly</h3>
                                 <div className="booking-freq-price-discount">
                                     Save {weeklyPrice.discount_perc}%
                                 </div>
@@ -174,13 +174,13 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
                         </span>
                     </label>
                     <label
-                        class="booking-freq-custom-radio"
+                        className="booking-freq-custom-radio"
                     >
                         <input type="radio" name="frequency" value="fortnightly" onChange={handleChange} defaultChecked={FormInputs.frequency === "fortnightly"} />
-                        <span class="booking-freq-radio-btn">
-                            <i class="las la-check">✔</i>
-                            <div class="booking-freq-inner-card">
-                                <h3 class="booking-h3">Fortnightly</h3>
+                        <span className="booking-freq-radio-btn">
+                            <i className="las la-check">✔</i>
+                            <div className="booking-freq-inner-card">
+                                <h3 className="booking-h3">Fortnightly</h3>
                                 <div className="booking-freq-price-discount">
                                     Save {fortnightlyPrice.discount_perc}%
                                 </div>

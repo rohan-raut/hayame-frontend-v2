@@ -48,7 +48,7 @@ const DatePicker = ( {FormInputs, setFormInputs}) => {
         }
 
         for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
-            liTag.push(<li class="inactive"></li>);
+            liTag.push(<li className="inactive"></li>);
         }
 
         for (let i = 1; i <= lastDateofMonth; i++) {
@@ -61,7 +61,7 @@ const DatePicker = ( {FormInputs, setFormInputs}) => {
                 classname = "inactive";
             }
 
-            // liTag += `<li class="${classname}" onClick="${selectedDate}">${i}</li>`;
+            // liTag += `<li className="${classname}" onClick="${selectedDate}">${i}</li>`;
             liTag.push(<li className={classname} onClick={selectedDate}>{i}</li>)
         }
 
@@ -102,16 +102,16 @@ const DatePicker = ( {FormInputs, setFormInputs}) => {
 
 
     return (
-        <div class="calendar-wrapper">
+        <div className="calendar-wrapper">
             <div className="calendar-header">
-                <p class="current-date p-0 m-0">{currentDate}</p>
-                <div class="icons">
-                    <span id="prev" class="material-symbols-rounded" onClick={changeMonth}>chevron_left</span>
-                    <span id="next" class="material-symbols-rounded" onClick={changeMonth}>chevron_right</span>
+                <p className="current-date p-0 m-0">{currentDate}</p>
+                <div className="icons">
+                    <span id="prev" className="material-symbols-rounded" onClick={changeMonth}>chevron_left</span>
+                    <span id="next" className="material-symbols-rounded" onClick={changeMonth}>chevron_right</span>
                 </div>
             </div>
-            <div class="calendar-section">
-                <ul class="weeks">
+            <div className="calendar-section">
+                <ul className="weeks">
                     <li>Sun</li>
                     <li>Mon</li>
                     <li>Tue</li>
@@ -120,8 +120,8 @@ const DatePicker = ( {FormInputs, setFormInputs}) => {
                     <li>Fri</li>
                     <li>Sat</li>
                 </ul>
-                {/* <ul class="days" dangerouslySetInnerHTML={{__html: liDaysTag}}></ul> */}
-                <ul class="days">{liDaysTag}</ul>
+                {/* <ul className="days" dangerouslySetInnerHTML={{__html: liDaysTag}}></ul> */}
+                <ul className="days">{liDaysTag}</ul>
             </div>
         </div>
     )

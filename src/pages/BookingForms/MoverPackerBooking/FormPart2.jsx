@@ -139,8 +139,8 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                 <div className="row m-0" id="book-movers-packers-select-location-section">
                     <div className="form-label-bold">Select your location</div>
                     <div id="map" className="mb-4"></div>
-                    <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-8">
-                        <label for="exampleInputEmail1" class="form-label">
+                    <div className="mb-4 col-12 col-sm-12 col-md-6 col-lg-8">
+                        <label for="exampleInputEmail1" className="form-label">
                             Address
                         </label>
                         <input
@@ -151,7 +151,7 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                             onChange={handleJobLocation}
                         />
                     </div>
-                    <div class="mb-4 col-12 col-sm-12 col-md-6 col-lg-4 booking-current-location-div">
+                    <div className="mb-4 col-12 col-sm-12 col-md-6 col-lg-4 booking-current-location-div">
                         <button
                             type="button"
                             onClick={getCurrentLocation}
@@ -170,8 +170,8 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                     </div>
                     <div className="row mx-0 my-4 justify-content-between">
                         <div className="col-12 col-sm-12 col-md-5 col-lg-5 p-0">
-                            <div class="mb-4">
-                                <label class="form-label">Post code</label>
+                            <div className="mb-4">
+                                <label className="form-label">Post code</label>
                                 <input
                                     type="text"
                                     className="input-field"
@@ -182,8 +182,8 @@ const FormPart2 = ({ FormInputs, setFormInputs }) => {
                             </div>
                         </div>
                         <div className="col-12 col-sm-12 col-md-5 col-lg-5 p-0">
-                            <div class="mb-4">
-                                <label class="form-label" style={{ width: "max-content" }}>
+                            <div className="mb-4">
+                                <label className="form-label" style={{ width: "max-content" }}>
                                     Type of Property
                                 </label>
                                 <div>

@@ -11,20 +11,20 @@ const Navbar = () => {
     return (
         <nav>
             <div>
-                <Link class="navbar-home-link" to="/">
+                <Link className="navbar-home-link" to="/">
                     <img src={Logo} alt="" />
                 </Link>
             </div>
 
             <input type="checkbox" id="navbar-sidebar-active" />
             <label id="navbar-overlay" for="navbar-sidebar-active"></label>
-            <label for="navbar-sidebar-active" class="navbar-open-sidebar-button">
+            <label for="navbar-sidebar-active" className="navbar-open-sidebar-button">
                 <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
             </label>
 
 
-            <div class="navbar-links-container">
-                <label for="navbar-sidebar-active" class="navbar-close-sidebar-button">
+            <div className="navbar-links-container">
+                <label for="navbar-sidebar-active" className="navbar-close-sidebar-button">
                     <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                 </label>
 
