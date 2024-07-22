@@ -29,27 +29,27 @@ const AboutUs = () => {
                     <div className="about-us-taas">Talent-as-a-Service (TaaS)</div>
                     <div className="row mx-0">
                         <div className="col-12 col-sm-6 col-md-4 col-lg-4 about-us-service-card">
-                            <img src={CleanerService} alt="" />
+                            <img src={CleanerService} alt="Cleaner Cleaning the desk" />
                             <div>Cleaning Service</div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-4 col-lg-4 about-us-service-card">
-                            <img src={ElderlyCareService} alt="" />
+                            <img src={ElderlyCareService} alt="Care Taker of elders" />
                             <div>Elderly Care</div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-4 col-lg-4 about-us-service-card">
-                            <img src={TaskErrandsService} alt="" />
+                            <img src={TaskErrandsService} alt="Man delivering the package" />
                             <div>Taks & Errands</div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-4 col-lg-4 about-us-service-card">
-                            <img src={GardenerService} alt="" />
+                            <img src={GardenerService} alt="Gardening" />
                             <div>Gardeners</div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-4 col-lg-4 about-us-service-card">
-                            <img src={MoverPackerService} alt="" />
+                            <img src={MoverPackerService} alt="Packing and Moving the lugage" />
                             <div>Packers & Movers</div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-4 col-lg-4 about-us-service-card">
-                            <img src={GeneralWorkerService} alt="" />
+                            <img src={GeneralWorkerService} alt="Warehouse Workers" />
                             <div>General Workers</div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ const AboutUs = () => {
                     <div className="about-us-sevice-type">Professional</div>
                     <div className="about-us-taas">Talent-as-a-Service (TaaS)</div>
                     <div className="about-us-service-long-card">
-                        <img src={ProfessionalService} alt="" />
+                        <img src={ProfessionalService} alt="Office Workers" />
                         <div>Professional Workers</div>
                     </div>
                 </div>

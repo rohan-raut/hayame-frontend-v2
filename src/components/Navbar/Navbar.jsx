@@ -12,7 +12,7 @@ const Navbar = () => {
         <nav>
             <div>
                 <Link className="navbar-home-link" to="/">
-                    <img src={Logo} alt="" />
+                    <img src={Logo} alt="Hayame Logo" />
                 </Link>
             </div>
 

@@ -101,7 +101,7 @@ const Login = () => {
             <div className="row m-0">
                 <div className="col-12 col-sm-12 col-md-4 col-lg-4 login-left-sidebar">
                     <div className="login-logo">
-                        <img src={Logo} alt="" />
+                        <img src={Logo} alt="Hayame Logo" />
                     </div>
                     <div>
                         Hayame Solutions Sdn Bhd stands at the forefront where technology meets services, offering a state-of-the-art platform that caters to all your home and professional needs. Our innovative solutions range from cleaning, laundry, and aircon maintenance to comprehensive home improvement services, seamlessly connecting thousands of Malaysian households with a curated pool of highly skilled service partners.

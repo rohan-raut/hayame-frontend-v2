@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <div className="row m-0 footer-row">
             <div className="footer-logo-col col-12 col-sm-12 col-md-5 col-lg-5">
-                <img src={Logo} alt="" className="footer-logo" />
+                <img src={Logo} alt="Hayame Logo" className="footer-logo" />
                 <div className="footer-tagline">Talent as a Service | Hayame</div>
                 <div className="py-1">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" /></svg>
@@ -20,13 +20,13 @@ const Footer = () => {
                 </div>
                 <div className="py-3">
                     <a className="footer-social-icons" href="https://www.instagram.com/hayamesolution" target="_blank">
-                        <img src={Instagram} alt="" />
+                        <img src={Instagram} alt="Instagram Icon" />
                     </a>
                     <a className="footer-social-icons" href="https://www.facebook.com/hayamedotmy" target="_blank">
-                        <img src={Facebook} alt="" />
+                        <img src={Facebook} alt="Facebook Icon" />
                     </a>
                     <a className="footer-social-icons" href="https://wa.me/60124343470" target="_blank">
-                        <img src={Whatsapp} alt="" />
+                        <img src={Whatsapp} alt="Whatsapp Icon" />
                     </a>
                 </div>
             </div>

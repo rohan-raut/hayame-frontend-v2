@@ -15,7 +15,7 @@ const SocialMediaIcons = () => {
 
   return (
     <div className="social-media-icons-container d-flex justify-content-center align-items-center" onClick={WhatsappLink}>
-        <img src={WhatsappDarkGreen} alt="" />
+        <img src={WhatsappDarkGreen} alt="Whatsapp Icon" />
     </div>
   )
 }
