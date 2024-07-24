@@ -14,6 +14,7 @@ import FormPart2 from "./FormPart2";
 import FormPart3 from "./FormPart3";
 import formatDate from "../../../utils/FormatDate";
 import md5 from 'md5';
+import { Helmet } from "react-helmet";
 
 
 const TaskErrandsBooking = () => {
@@ -114,7 +115,7 @@ const TaskErrandsBooking = () => {
         getAllPostCodes();
         console.log(location.state);
         if (location.state === null) {
-            navigate('/book');
+            navigate('/');
         }
         else {
             setFormInputs((values) => ({ ...values, ['postCode']: location.state.postcode }));
@@ -266,6 +267,12 @@ const TaskErrandsBooking = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Book Task and Errands - Hayame</title>
+                <link rel="canonical" href="/book-task-errands" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
 
             <div className="container my-5">

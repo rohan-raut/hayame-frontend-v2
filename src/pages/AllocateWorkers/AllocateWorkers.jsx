@@ -8,6 +8,7 @@ import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons
 import Select from "react-select";
 import formatDate from "../../utils/FormatDate";
 import formatTime from "../../utils/FormatTime";
+import { Helmet } from 'react-helmet';
 
 const AllocateWorkers = () => {
     let { authTokens, user } = useContext(AuthContext);
@@ -102,6 +103,12 @@ const AllocateWorkers = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Allocate Workers | Hayame</title>
+                <link rel="canonical" href="/allocate-workers" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
             <div className="row justify-content-center mx-0 my-5">
                 <div className="col-12 col-sm-12 col-md-8 col-lg-5 booking-details-card">

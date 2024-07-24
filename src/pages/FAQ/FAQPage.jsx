@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar';
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
+import { Helmet } from 'react-helmet';
 
 
 const FAQPage = () => {
@@ -29,6 +30,12 @@ const FAQPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Frequently Asked Questions - Hayame</title>
+                <meta name="description" content="Frequently Asked Question by the customers regarding Hayame or the different services that we provide." />
+                <link rel="canonical" href="/faq" />
+            </Helmet>
+
             <Navbar />
 
             <div className="container my-5">

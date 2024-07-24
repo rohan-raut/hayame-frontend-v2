@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
+import { Helmet } from 'react-helmet';
 
 
 const ContactUs = () => {
@@ -51,6 +52,12 @@ const ContactUs = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Contact Us - Hayame</title>
+                <meta name="description" content="You can contact us through filling the contact us form or you can directly reach out us through email or on phone for any concerns." />
+                <link rel="canonical" href="/contact-us" />
+            </Helmet>
+
             <Navbar />
 
             <div className="container my-5 contact-us-container">

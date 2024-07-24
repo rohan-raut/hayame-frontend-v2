@@ -14,6 +14,7 @@ import FormPart2 from "./FormPart2";
 import FormPart3 from "./FormPart3";
 import formatDate from "../../../utils/FormatDate";
 import md5 from 'md5';
+import { Helmet } from "react-helmet";
 
 
 const GardenerBooking = () => {
@@ -117,7 +118,7 @@ const GardenerBooking = () => {
         getAllPostCodes();
         console.log(location.state);
         if (location.state === null) {
-            navigate('/book');
+            navigate('/');
         }
         else {
             setFormInputs((values) => ({ ...values, ['postCode']: location.state.postcode }));
@@ -282,6 +283,12 @@ const GardenerBooking = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Book Gardening Service - Hayame</title>
+                <link rel="canonical" href="/book-gardener" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
 
             <div className="container my-5">

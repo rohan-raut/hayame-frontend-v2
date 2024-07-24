@@ -7,6 +7,7 @@ import DataTable from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
 import formatDate from "./../../utils/FormatDate";
 import formatTime from "./../../utils/FormatTime";
+import { Helmet } from 'react-helmet';
 
 const CheckBookings = () => {
     const [tableData, setTableData] = useState();
@@ -92,6 +93,12 @@ const CheckBookings = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Check Bookings - Hayame</title>
+                <link rel="canonical" href="/check-bookings" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
             <div className="row mx-0 my-5 justify-content-center">
                 <div className="col-11 col-sm-11 col-md-11 col-lg-10">

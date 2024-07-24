@@ -8,6 +8,7 @@ import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons
 import InvoiceGenerator from '../../utils/InvoiceGenerator';
 import formatDate from '../../utils/FormatDate';
 import formatTime from '../../utils/FormatTime';
+import { Helmet } from 'react-helmet';
 
 const BookingDetails = () => {
     let { authTokens, user } = useContext(AuthContext);
@@ -51,6 +52,12 @@ const BookingDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Booking Details | Hayame</title>
+                <link rel="canonical" href="/booking-details" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
             <div className="row justify-content-center mx-0 my-5">
                 <div className="col-12 col-sm-12 col-md-8 col-lg-5 booking-details-card">

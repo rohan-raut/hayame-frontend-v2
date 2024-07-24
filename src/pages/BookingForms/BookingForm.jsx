@@ -7,6 +7,7 @@ import { ToastContainer, toast, Bounce } from 'react-toastify';
 import CleanerBooking from './CleanerBooking/CleanerBooking';
 import { useNavigate } from 'react-router-dom';
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
+import { Helmet } from 'react-helmet';
 
 const BookingForm = () => {
     const [service, setService] = useState();
@@ -107,6 +108,12 @@ const BookingForm = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Booking Form - Hayame</title>
+                <link rel="canonical" href="/book" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
 
             <div className="container my-5">

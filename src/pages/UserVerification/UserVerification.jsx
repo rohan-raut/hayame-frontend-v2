@@ -1,4 +1,5 @@
-import React, { useEffect, userEffect, useState } from 'react'
+import React, { useEffect, userEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 const UserVerification = () => {
     const [message, setMessage] = useState("Hello");
@@ -32,8 +33,19 @@ const UserVerification = () => {
     }
 
     return (
-    <div>{message}</div>
-  )
+        <div>
+            <Helmet>
+                <title>User Verification - Hayame</title>
+                <link rel="canonical" href="/user-verification" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
+            <p>
+                {message}
+            </p>
+
+        </div>
+    )
 }
 
 export default UserVerification

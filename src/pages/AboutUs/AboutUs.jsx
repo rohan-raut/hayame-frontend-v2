@@ -4,10 +4,17 @@ import Navbar from '../../components/Navbar/Navbar';
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 import Footer from '../../components/Footer/Footer';
 import { GardenerService, CleanerService, ElderlyCareService, GeneralWorkerService, TaskErrandsService, MoverPackerService, ProfessionalService } from '../../assets';
+import { Helmet } from 'react-helmet';
 
 const AboutUs = () => {
     return (
         <div>
+            <Helmet>
+                <title>About Us | Hayame</title>
+                <meta name="description" content="Hayame provide solutions range from cleaning, laundry, and aircon maintenance to comprehensive home improvement services, seamlessly connecting thousands of Malaysian households with a curated pool of highly skilled service partners." />
+                <link rel="canonical" href="/about-us" />
+            </Helmet>
+
             <Navbar />
             <div className="about-us-header">
                 <div className="about-us-header-img"></div>

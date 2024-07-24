@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./forgotPassword.css";
 import Navbar from '../../components/Navbar/Navbar';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const ForgotPassword = () => {
     const [Inputs, setInputs] = useState();
@@ -43,6 +44,12 @@ const ForgotPassword = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Forgot Password - Hayame</title>
+                <link rel="canonical" href="/forgot-password" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
             <div className="row m-0 justify-content-center align-items-center forgot-password-row">
                 <div className="col-11 col-sm-11 col-md-6 col-lg-4 forgot-password-card">

@@ -9,6 +9,7 @@ import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import Select from "react-select";
 import { useNavigate } from 'react-router-dom';
+import {Helmet} from 'react-helmet';
 
 const Home = () => {
     const [service, setService] = useState();
@@ -110,6 +111,13 @@ const Home = () => {
     return (
 
         <div>
+
+            <Helmet>
+                <title>Hayame - Professional Home Service Provider in Malaysia</title>
+                <meta name="description" content="Hayame is one of the best service providers in Malaysia, we provide different services as cleaning, gardening, elderly care, movers and packers." />
+                <link rel="canonical" href="/" />
+            </Helmet>
+
             <Navbar />
 
             <div className="row mx-0 home-header-section">

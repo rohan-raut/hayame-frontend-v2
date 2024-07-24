@@ -14,6 +14,7 @@ import 'reactjs-popup/dist/index.css';
 import { LoginSocialFacebook, LoginSocialGoogle } from 'reactjs-social-login';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 
 const Register = () => {
@@ -417,6 +418,12 @@ const Register = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Register - Hayame</title>
+                <link rel="canonical" href="/register" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <div className="row m-0">
                 <div className="col-12 col-sm-12 col-md-4 col-lg-4 register-left-sidebar">
                     <div className="register-logo">

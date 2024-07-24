@@ -4,6 +4,7 @@ import Footer from '../../components/Footer/Footer';
 import "./profile.css";
 import AuthContext from '../../context/AuthContext';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const Profile = () => {
     const [FormInput, setFormInputs] = useState({
@@ -136,6 +137,12 @@ const Profile = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Profile - Hayame</title>
+                <link rel="canonical" href="/profile" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
             <div className="row mx-0 justify-content-center my-5">
                 <div className="col-11 col-sm-11 col-md-11 col-lg-7">

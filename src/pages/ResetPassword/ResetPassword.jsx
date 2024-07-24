@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./resetPassword.css";
 import Navbar from '../../components/Navbar/Navbar';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 
 const ResetPassword = () => {
@@ -107,6 +108,12 @@ const ResetPassword = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Reset Password - Hayame</title>
+                <link rel="canonical" href="/reset-password" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <Navbar />
             <div className="row m-0 justify-content-center reset-password-row">
                 <div className="col-11 col-sm-11 col-md-6 col-lg-4 reset-password-card">

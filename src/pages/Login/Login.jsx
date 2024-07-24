@@ -13,6 +13,7 @@ import AuthContext from '../../context/AuthContext';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 
 const Login = () => {
@@ -98,6 +99,12 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Login - Hayame</title>
+                <link rel="canonical" href="/login" />
+                <meta name="robots" content="noindex" />
+            </Helmet>
+
             <div className="row m-0">
                 <div className="col-12 col-sm-12 col-md-4 col-lg-4 login-left-sidebar">
                     <div className="login-logo">
