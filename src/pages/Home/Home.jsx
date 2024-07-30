@@ -8,8 +8,8 @@ import Footer from '../../components/Footer/Footer';
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import Select from "react-select";
-import { useNavigate } from 'react-router-dom';
-import {Helmet} from 'react-helmet';
+import { useNavigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     const [service, setService] = useState();
@@ -180,10 +180,14 @@ const Home = () => {
                 <div className="container d-flex justify-content-center home-services-container">
                     <div className="row mx-0 justify-content-center home-services-row">
                         <div className="col-4 col-sm-4 col-md-2 col-lg-2 home-services-icon">
-                            <img src={CleaningIcon} alt="Cleaning Service Icon" />
-                            <div className="home-services-name">
-                                <p>Cleaning</p>
-                            </div>
+                            <Link to="/book-cleaning-service" className="no-decoration color-black">
+                                <div>
+                                    <img src={CleaningIcon} alt="Cleaning Service Icon" />
+                                    <div className="home-services-name">
+                                        <p>Cleaning</p>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
                         <div className="col-4 col-sm-4 col-md-2 col-lg-2 home-services-icon">
                             <img src={GardenerIcon} alt="Gardening Service Icon" />

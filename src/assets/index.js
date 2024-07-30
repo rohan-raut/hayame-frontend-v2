@@ -25,6 +25,15 @@ import MissionIcon from "./mission-icon.svg";
 import ValuesIcon from "./values-icon.svg";
 import VisionIcon from "./vision-icon.svg";
 
+import CleanerWithVaccum from "./cleaner-cleaning-room.jpg";
+import CleanKitchen from "./clean-kitchen.jpg";
+import CleanLivingRoom from "./clean-living-room.jpg";
+import CleanBedroom from "./clean-bedroom.jpg";
+import CleanBathroom from "./clean-bathroom.jpg";
+import CleanBalcony from "./clean-balcony.jpg";
+import CleanersMovingBoxes from "./cleaner-moving-boxes.jpg";
+import HayameCleaner from "./hayame-cleaner-cleaning-room.jpeg";
+
 export {
     ResidentialCleaning,
     CleaningInstruments,
@@ -50,4 +59,12 @@ export {
     MissionIcon,
     ValuesIcon,
     VisionIcon,
+    CleanerWithVaccum,
+    CleanKitchen,
+    CleanersMovingBoxes,
+    CleanBalcony,
+    CleanBathroom,
+    CleanBedroom,
+    CleanLivingRoom,
+    HayameCleaner,
 }

@@ -22,6 +22,7 @@ import CheckBookings from './pages/CheckBookings/CheckBookings';
 import Profile from './pages/Profile/Profile';
 import BookingDetails from './pages/BookingDetails/BookingDetails';
 import AllocateWorkers from './pages/AllocateWorkers/AllocateWorkers';
+import CleaningServiceLanding from './pages/ServiceLandingPages/CleaningServiceLanding/CleaningServiceLanding';
 import { AuthProvider } from './context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -113,6 +114,10 @@ function App() {
     {
       path: '/allocate-workers',
       element: <AuthProvider><AllocateWorkers /></AuthProvider>,
+    },
+    {
+      path: '/book-cleaning-service',
+      element: <AuthProvider><CleaningServiceLanding /></AuthProvider>,
     },
   ])
 
