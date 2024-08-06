@@ -129,8 +129,8 @@ const CleaningServiceLanding = () => {
     return (
         <div>
             <Helmet>
-                <title>Best Cleaning Service Company in Malaysia - Hayame</title>
-                <meta name="description" content="Hayame is one of the best cleaning service providers in various regions of Malaysia like Alam Impian, Klang, Shah Alam, Subang, Petaling Jaya and Damansara." />
+                <title>House Cleaning Service Company in Malaysia - Hayame</title>
+                <meta name="description" content="Hayame is one of the best house cleaning service providers in various regions of Malaysia like Alam Impian, Klang, Shah Alam, Subang, Petaling Jaya and Damansara." />
                 <link rel="canonical" href="/book-cleaning-service" />
             </Helmet>
 
@@ -138,9 +138,9 @@ const CleaningServiceLanding = () => {
             <div className="row m-0 cleaning-service-landing-header-section">
                 <div className="cleaning-service-landing-header-img"></div>
                 <div className="cleaning-sevice-landing-form-section">
-                    <h1 className="cleaning-service-landing-h1">Book Your Cleaning Service Now and Let us Take care of the Rest</h1>
+                    <h1 className="cleaning-service-landing-h1">House Cleaning Service in Malaysia - Kuala Lumpur and Selangor</h1>
 
-                    <p className="color-white mb-4">Hayame Cleaning services aim to provide a comprehensive and reliable solution for maintaining a clean and comfortable home environment.</p>
+                    <p className="color-white mb-4">Hayame House Cleaning Service aims to provide a comprehensive and reliable solution for maintaining a clean and comfortable home environment.</p>
 
                     <form onSubmit={handleSubmit}>
                         <div className="row m-0">
@@ -166,7 +166,7 @@ const CleaningServiceLanding = () => {
 
 
             <div className="row mx-0 justify-content-evenly cleaning-service-landing-process-section">
-                <h2 className="cleaning-service-landing-h2 mb-5">Easy 3 Step Booking Process</h2>
+                <h2 className="cleaning-service-landing-h2 mb-5">Easy 3 Step House Cleaning Service Booking</h2>
                 <div className="col-10 col-sm-10 col-md-3 col-lg-3 mb-3 cleaning-service-landing-process-card p-4">
                     <div className="text-center mb-1">
                         Step 1
@@ -207,7 +207,7 @@ const CleaningServiceLanding = () => {
 
 
             <div className="row mx-0 justify-content-center cleaning-service-landing-cover-section">
-                <h2 className="cleaning-service-landing-h2 mb-5">What Our Cleaning Service Covers</h2>
+                <h2 className="cleaning-service-landing-h2 mb-5">What Our House Cleaning Service Covers</h2>
                 <div className="row mx-0 justify-content-evenly">
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
                         <img src={CleanLivingRoom} alt="" />
@@ -217,6 +217,7 @@ const CleaningServiceLanding = () => {
                             <li>Vacuuming carpets and rugs</li>
                             <li>Mopping floors</li>
                             <li>Cleaning windows and mirrors</li>
+                            <li>Deep Cleaning</li>
                         </ul>
                     </div>
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
@@ -227,6 +228,7 @@ const CleaningServiceLanding = () => {
                             <li>Dusting and wiping surfaces</li>
                             <li>Vacuuming carpets and rugs</li>
                             <li>Mopping floors</li>
+                            <li>Deep Cleaning</li>
                         </ul>
                     </div>
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
@@ -236,6 +238,7 @@ const CleaningServiceLanding = () => {
                             <li>Cleaning countertops, sinks, and stovetops</li>
                             <li>Wiping down appliances</li>
                             <li>Mopping floors</li>
+                            <li>Deep Cleaning</li>
                         </ul>
                     </div>
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
@@ -303,6 +306,55 @@ const CleaningServiceLanding = () => {
                             <p>Easy to reach out to us through Whatsapp, Email or by filling the <Link to="/contact-us" className="no-decoration">Contact Us</Link> form.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div className="row mx-0 justify-content-evenly">
+                <h2 className="cleaning-service-landing-h2 mb-4 text-center">Where We Provide Our Professional House Cleaning Services</h2>
+                <div className="col-12 col-sm-6 col-md-5 col-lg-3 text-center">
+                    <h3 className="cleaning-service-landing-h3 mb-3">Kuala Lumpur</h3>
+                    <ul className="list-style-type-none">
+                        <li>Bukit Bintang</li>
+                        <li>Chow Kit</li>
+                        <li>Sentul</li>
+                        <li>Brickfields (Little India)</li>
+                        <li>Bangsar</li>
+                        <li>Kepong</li>
+                        <li>Setapak</li>
+                        <li>Taman Tun Dr Ismail (TTDI)</li>
+                        <li>Mont Kiara</li>
+                        <li>Sri Hartamas</li>
+                        <li>Cheras</li>
+                        <li>Seputeh</li>
+                        <li>Kampung Baru</li>
+                        <li>Ampang Hilir</li>
+                        <li>Titiwangsa</li>
+                        <li>Damansara Heights</li>
+                    </ul>
+                </div>
+                <div className="col-12 col-sm-6 col-md-5 col-lg-3 text-center">
+                    <h3 className="cleaning-service-landing-h3 mb-3">Selangor</h3>
+                    <ul className="list-style-type-none">
+                        <li>Shah Alam</li>
+                        <li>Petaling Jaya</li>
+                        <li>Subang Jaya</li>
+                        <li>Klang</li>
+                        <li>Puchong</li>
+                        <li>Selayang</li>
+                        <li>Rawang</li>
+                        <li>Seri Kembangan</li>
+                        <li>Ampang</li>
+                        <li>Kajang</li>
+                        <li>Bangi</li>
+                        <li>Cyberjaya</li>
+                        <li>Putrajaya</li>
+                        <li>Sungai Buloh</li>
+                        <li>Setia Alam</li>
+                        <li>Port Klang</li>
+                        <li>Banting</li>
+                        <li>Sepang</li>
+                        <li>Kota Kemuning</li>
+                    </ul>
                 </div>
             </div>
 
@@ -386,7 +438,7 @@ const CleaningServiceLanding = () => {
                     <div className="accordion-container">
                         <div className="accordion-item">
                             <button className="accordion-header" onClick={OpenCloseFAQ}>
-                                How do I book your cleaning service? <span className="icon">+</span>
+                                How do I book your professional house cleaning service? <span className="icon">+</span>
                             </button>
                             <div className="accordion-content">
                                 <p>Booking a service is easy. Simply visit our website, select cleaning service, choose a convenient date and time, and provide your contact details. Our team will confirm your booking and ensure a service partner is assigned to your request. </p>
