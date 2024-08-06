@@ -210,7 +210,7 @@ const CleaningServiceLanding = () => {
                 <h2 className="cleaning-service-landing-h2 mb-5">What Our House Cleaning Service Covers</h2>
                 <div className="row mx-0 justify-content-evenly">
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
-                        <img src={CleanLivingRoom} alt="" />
+                        <img src={CleanLivingRoom} alt="Clean Living Room" />
                         <h3>Living Areas</h3>
                         <ul>
                             <li>Dusting and Wiping</li>
@@ -221,7 +221,7 @@ const CleaningServiceLanding = () => {
                         </ul>
                     </div>
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
-                        <img src={CleanBedroom} alt="" />
+                        <img src={CleanBedroom} alt="Clean Bedroom" />
                         <h3>Bedrooms</h3>
                         <ul>
                             <li>Changing bed linens</li>
@@ -232,7 +232,7 @@ const CleaningServiceLanding = () => {
                         </ul>
                     </div>
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
-                        <img src={CleanKitchen} alt="" />
+                        <img src={CleanKitchen} alt="Clean Kitchen" />
                         <h3>Kitchen</h3>
                         <ul>
                             <li>Cleaning countertops, sinks, and stovetops</li>
@@ -242,7 +242,7 @@ const CleaningServiceLanding = () => {
                         </ul>
                     </div>
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
-                        <img src={CleanBathroom} alt="" />
+                        <img src={CleanBathroom} alt="Clean Bathroom" />
                         <h3>Bathroom</h3>
                         <ul>
                             <li>Scrubbing and disinfecting sinks, toilets, showers, and bathtubs</li>
@@ -251,7 +251,7 @@ const CleaningServiceLanding = () => {
                         </ul>
                     </div>
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
-                        <img src={CleanersMovingBoxes} alt="" />
+                        <img src={CleanersMovingBoxes} alt="Cleaners Moving Boxes" />
                         <h3>Move-in/Move-out</h3>
                         <ul>
                             <li>Cleaning and Packing</li>
@@ -260,7 +260,7 @@ const CleaningServiceLanding = () => {
                         </ul>
                     </div>
                     <div className="col-11 col-sm-11 col-md-5 col-lg-3 cleaning-service-landing-cover-card">
-                        <img src={CleanBalcony} alt="" />
+                        <img src={CleanBalcony} alt="Clean Balcony" />
                         <h3>Additional Areas</h3>
                         <ul>
                             <li>Balconies</li>
@@ -276,7 +276,7 @@ const CleaningServiceLanding = () => {
             <div className="row mx-0 justify-content-center cleaning-service-landing-benefits-section">
                 <h2 className="cleaning-service-landing-h2 mb-5 color-34AFAA">Why Choose Hayame for Cleaning Service</h2>
                 <div className="col-11 col-sm-11 col-md-12 col-lg-5 mb-5">
-                    <img src={HayameCleaner} alt="" width="100%" />
+                    <img src={HayameCleaner} alt="Hayame Cleaner Cleaning Room" width="100%" />
                 </div>
                 <div className="col-11 col-sm-11 col-md-12 col-lg-7">
                     <div className="row justify-content-center mx-0">
