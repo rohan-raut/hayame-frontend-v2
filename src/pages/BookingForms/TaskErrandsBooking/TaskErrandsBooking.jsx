@@ -25,7 +25,7 @@ const TaskErrandsBooking = () => {
         no_of_hours: "",
         startTime: "",
         startTimeLabel: "",
-        workerCount: 0,
+        workerCount: 1,
         address: "",
         postCode: "",
         propertyType: "",

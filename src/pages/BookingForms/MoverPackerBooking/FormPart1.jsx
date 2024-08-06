@@ -28,6 +28,22 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
         }
     }, [FormInputs.no_of_hours]);
 
+    const handleWorkerCount = (event) => {
+        let name = event.target.name;
+        let value = parseInt(event.target.value);
+        if(value < 1){
+            value = 1;
+        }
+        else if(value > 5){
+            value = 5;
+        }
+        if(value === "NaN"){
+            value = 1;
+            console.log("yoyo");
+        }
+        setFormInputs((values) => ({ ...values, [name]: value }));
+    }
+
 
     const getAvailableSlots = async () => {
         if (FormInputs.postCode !== '' && FormInputs.selectedDate !== '' && FormInputs.workerCount != 0 && FormInputs.no_of_hours != "") {
@@ -75,7 +91,7 @@ const FormPart1 = ({ FormInputs, setFormInputs }) => {
             <div className="row form-section-row" id="book-movers-packers-worker-count-section">
                 <div className="form-label-bold">Number of Workers</div>
                 <div className="col-6 p-0">
-                    <input type="number" className="input-field" name="workerCount" onChange={handleChange} defaultValue={FormInputs.workerCount} required />
+                    <input type="number" className="input-field" name="workerCount" onChange={handleWorkerCount} defaultValue={FormInputs.workerCount} required />
                 </div>
             </div>
 
